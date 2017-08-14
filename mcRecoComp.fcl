@@ -1,0 +1,10 @@
+BEGIN_PROLOG
+
+mcRecoComp:
+{ 
+    module_type:                "MCRecoComp"
+
+}
+
+END_PROLOG
+
