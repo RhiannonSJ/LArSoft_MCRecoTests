@@ -1,4 +1,4 @@
-#include "hitFilter.fcl"
+#include "mcRecoComp.fcl"
 
 process_name: MCRecoComp      #The process name must NOT contain any underscores
 
@@ -25,23 +25,16 @@ physics: {
   }
   analyzers: {
      # ParameterSets for zero or more analyzer modules
+    mcRecoComp: @local::mcRecoComp  
   }
 
   filters: {
+     # ParameterSets for zero or more filter modules
   }
 
-  path0:  []
-  stream: [ out0 ]
+  path0:  [ mcRecoComp ]
 
-  trigger_paths: [ path0 ]
-  end_paths:    [ stream ]
+  end_paths:    [ path0 ]
 
 }
 
-outputs: {
-    out0: { module_type: RootOutput
-            #fileName: "%ifb_hitFilteredEvents_%p-%tc.root"
-            dataTier: "mcrecocomp"
-            compressionLevel: 1
-          }
-}
