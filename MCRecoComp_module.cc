@@ -22,10 +22,18 @@
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "art/Framework/Services/Optional/TFileService.h"
 #include "nusimdata/SimulationBase/MCTruth.h"
+#include "nusimdata/SimulationBase/MCNeutrino.h"
+#include "nusimdata/SimulationBase/MCParticle.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Vertex.h"
 #include "lardataobj/MCBase/MCTrack.h"
 #include "larreco/RecoAlg/PMAlg/PmaTrack3D.h"
+
+#include <cmath>
+#include <vector>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
 
 namespace recotests {
 	class MCRecoComp;
@@ -65,7 +73,93 @@ recotests::MCRecoComp::MCRecoComp(fhicl::ParameterSet const & p):
 
 void recotests::MCRecoComp::analyze(art::Event const & e)
 {
-	//
+
+	// Get the truth handle
+	art::Handle< std::vector< simb::MCTruth > > mct_handle;
+	e.getByLabel( "generator", mct_handle );
+
+    // Try and get the vertex positions from each event
+    // Get the Vertex handle and print something to check it's working
+    art::Handle< std::vector< recob::Vertex > > vtx_handle;
+	e.getByLabel( "pmalgtrackmaker", vtx_handle );
+
+    // Get something out of the vertices and print
+    // Check the validity of the handle
+    int vtx_size = vtx_handle->size();
+    int mct_size = mct_handle->size();
+
+    // Open file to append
+    std::ofstream file;
+    file.open( "/sbnd/app/users/rsjones/LArSoft_v06_49_03/LArSoft-v06_49_03/srcs/recoperformance/recoperformance/distances.txt", std::ios_base::app );
+
+    if( vtx_size && mct_size && mct_handle.isValid() ){
+   
+        for( auto & mct : (*mct_handle) ){
+
+            // True neutrino vertex ( primary vertex position)
+            double nu_x, nu_y, nu_z;
+
+            nu_x = mct.GetNeutrino().Lepton().Vx();
+            nu_y = mct.GetNeutrino().Lepton().Vy();
+            nu_z = mct.GetNeutrino().Lepton().Vz();
+
+            std::cout << "---------------------------------------------" << std::endl;
+            std::cout << " Location of neutrino vertex      : (" << nu_x << ", " << nu_y << ", " << nu_z << ")" << std::endl;
+
+            std::cout << "---------------------------------------------" << std::endl;
+            std::cout << " Number of reconstructed vertices : " << vtx_size << std::endl;
+
+            if( vtx_size && vtx_handle.isValid() ){
+
+                // Vector to hold the square-distances between the true primary vertex and the reconstructed vertices
+                // Find which is the smallest and assume this was reconstructed as the primary
+                std::vector< double > sqdistances; 
+               
+                for( auto & vtx : (*vtx_handle) ){
+           
+                    // Access 3D reconstructed vertex position using:  
+                    // Array to hold points
+                    double xyz[3];
+
+                    // Set array to be current vertex position
+                    vtx.XYZ(xyz);
+
+                    // x,y,z of current vertex
+                    double x, y, z;
+
+                    x = xyz[0];
+                    y = xyz[1];
+                    z = xyz[2];
+
+                    std::cout << " Location of reconstructed vertex  : (" << x << ", " << y << ", " << z << ")" << std::endl;
+
+                    // Find square distances between true vertex and reconstructed vertex in y-z plane
+                    //      x-axis is unreliable
+                    sqdistances.push_back( pow( ( nu_y - y ), 2 ) + pow( ( nu_z - z ), 2 ) );
+                }
+     
+                std::cout << "---------------------------------------------" << std::endl;
+                for( unsigned int i = 0; i < sqdistances.size(); ++i ){
+                    std::cout << sqdistances[i] << std::endl;
+                }
+                // Find the minimum value in the vector of distances and append txt file
+                std::vector< double >::iterator result = std::min_element( std::begin( sqdistances ), std::end( sqdistances ) );
+
+                double min_dist_2D = sqdistances[ std::distance( std::begin( sqdistances ), result ) ]; 
+
+                // Write the minimum distance in the y-z plane to a .txt file for reading in a ROOT macro
+                file << sqrt( min_dist_2D ) << std::endl; 
+
+            }
+            std::cout << "---------------------------------------------" << std::endl;
+        }
+
+    }
+
+
+
+	/*
+    //
 	// Comparing truth and reco information
 	// 
 	// Start by printing event info to a txt file
@@ -87,37 +181,7 @@ void recotests::MCRecoComp::analyze(art::Event const & e)
 	art::Handle< std::vector< pma::Track3D > > track3d_handle;
 	e.getByLabel("pmalgtrackmaker", track3d_handle );
 
-	// Check validity of the handle
-	int mctrack_size = mctrack_handle->size();
-	int mct_size     = mct_handle->size();
-
-    // MCTrack
-	if( mctrack_handle.isValid() && mctrack_size ){
-
-        // Let's start by simply printing out some information
-        for ( auto const& mctrack : (*mctrack_handle)){
-    
-            std::cout << "'Reco?' PDG Codes : " << mctrack.PdgCode() << std::endl; 
-            std::cout << "'Reco?' Track ID  : " << mctrack.TrackID() << std::endl; 
-
-        }
-
-    }
-
-    // Truth stuff
-    if( mct_handle.isValid() && mct_size ){
-
-        // Let's start by simply printing out some information
-        for ( auto const& mct : (*mct_handle)){
-   
-            int n_particles = mct.NParticles();
-            for ( int i = 0; i < n_particles; ++i ){
-                std::cout << "Truth PDG Codes  : " << mct.GetParticle(i).PdgCode() << std::endl; 
-                std::cout << "Truth Track ID   : " << mct.GetParticle(i).TrackId() << std::endl; 
-
-            }
-        }
-    }
+    */
 }
 
 void recotests::MCRecoComp::reconfigure(fhicl::ParameterSet const & /*p*/)

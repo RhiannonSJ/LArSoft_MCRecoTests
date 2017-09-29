@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export FHICL_DIR=/sbnd/app/users/rsjones/LArSoft_reco_validation/LArSoft-v06_45_00/srcs/recoperformance/recoperformance
+export FHICL_DIR=/sbnd/app/users/rsjones/LArSoft_v06_49_03/LArSoft-v06_49_03/srcs/recoperformance/recoperformance
 cd $MRB_BUILDDIR
 mrbsetenv
 mrb i -j4
