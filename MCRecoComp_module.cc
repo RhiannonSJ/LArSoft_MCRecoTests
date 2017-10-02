@@ -35,6 +35,10 @@
 #include <iomanip>
 #include <fstream>
 
+#include "TROOT.h"
+#include "TNtuple.h"
+#include "TFile.h"
+
 namespace recotests {
 	class MCRecoComp;
 }
@@ -57,10 +61,14 @@ public:
 
 	// Selected optional functions.
 	void reconfigure(fhicl::ParameterSet const & p) override;
+    void beginJob() override;
+    void endJob() override;
 
 private:
 
 	// Declare member data here.
+    // Initiate nTuple to hold dX, dY, dZ and dR (2D)
+    TNtuple *fNt;
 
 };
 
@@ -99,24 +107,24 @@ void recotests::MCRecoComp::analyze(art::Event const & e)
             // True neutrino vertex ( primary vertex position)
             double nu_x, nu_y, nu_z;
 
+
             nu_x = mct.GetNeutrino().Lepton().Vx();
             nu_y = mct.GetNeutrino().Lepton().Vy();
             nu_z = mct.GetNeutrino().Lepton().Vz();
-
-            std::cout << "---------------------------------------------" << std::endl;
-            std::cout << " Location of neutrino vertex      : (" << nu_x << ", " << nu_y << ", " << nu_z << ")" << std::endl;
-
-            std::cout << "---------------------------------------------" << std::endl;
-            std::cout << " Number of reconstructed vertices : " << vtx_size << std::endl;
 
             if( vtx_size && vtx_handle.isValid() ){
 
                 // Vector to hold the square-distances between the true primary vertex and the reconstructed vertices
                 // Find which is the smallest and assume this was reconstructed as the primary
-                std::vector< double > sqdistances; 
-               
+                std::vector< double > dR, dX, dY, dZ;
+
+                dR.clear();
+                dX.clear();
+                dY.clear();
+                dZ.clear();
+
                 for( auto & vtx : (*vtx_handle) ){
-           
+            
                     // Access 3D reconstructed vertex position using:  
                     // Array to hold points
                     double xyz[3];
@@ -131,29 +139,31 @@ void recotests::MCRecoComp::analyze(art::Event const & e)
                     y = xyz[1];
                     z = xyz[2];
 
-                    std::cout << " Location of reconstructed vertex  : (" << x << ", " << y << ", " << z << ")" << std::endl;
-
                     // Find square distances between true vertex and reconstructed vertex in y-z plane
                     //      x-axis is unreliable
-                    sqdistances.push_back( pow( ( nu_y - y ), 2 ) + pow( ( nu_z - z ), 2 ) );
+                    dR.push_back( pow( ( nu_y - y ), 2 ) + pow( ( nu_z - z ), 2 ) );
+                    dX.push_back( abs( x - nu_x ) );
+                    dY.push_back( abs( y - nu_y ) );
+                    dZ.push_back( abs( z - nu_z ) );
+
                 }
      
-                std::cout << "---------------------------------------------" << std::endl;
-                for( unsigned int i = 0; i < sqdistances.size(); ++i ){
-                    std::cout << sqdistances[i] << std::endl;
-                }
                 // Find the minimum value in the vector of distances and append txt file
-                std::vector< double >::iterator result = std::min_element( std::begin( sqdistances ), std::end( sqdistances ) );
+                std::vector< double >::iterator result = std::min_element( std::begin( dR ), std::end( dR ) );
 
-                double min_dist_2D = sqdistances[ std::distance( std::begin( sqdistances ), result ) ]; 
+                // Define 2D distance and 1D distances for the 'primary' reconstructed vertex
+                double dr = sqrt( dR[ std::distance( std::begin( dR ), result ) ] ); 
+                double dx = dX[ std::distance( std::begin( dR ), result ) ];
+                double dy = dY[ std::distance( std::begin( dR ), result ) ];
+                double dz = dZ[ std::distance( std::begin( dR ), result ) ];
+
+                fNt->Fill(dx, dy, dz, dr);
 
                 // Write the minimum distance in the y-z plane to a .txt file for reading in a ROOT macro
-                file << sqrt( min_dist_2D ) << std::endl; 
+                file << sqrt( dr ) << std::endl; 
 
             }
-            std::cout << "---------------------------------------------" << std::endl;
         }
-
     }
 
 
@@ -182,6 +192,29 @@ void recotests::MCRecoComp::analyze(art::Event const & e)
 	e.getByLabel("pmalgtrackmaker", track3d_handle );
 
     */
+}
+
+void recotests::MCRecoComp::beginJob()
+{
+    std::cout << " BeginJob " << std::endl;
+
+    // Implementation of optional member function here.
+    fNt = new TNtuple( "fNt", "True and reconstructed vertex position comparison", "dX:dY:dZ:dR");
+
+    fNt->SetDirectory(0);
+}
+
+void recotests::MCRecoComp::endJob()
+{
+    std::cout << " EndJob " << std::endl;
+    
+    // Implementation of optional member function here.
+    TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_49_03/LArSoft-v06_49_03/srcs/recoperformance/recoperformance/plots/nt_distances.root", "UPDATE" );
+    fNt->Write();
+    f->Close();
+
+    delete f;
+    delete fNt;
 }
 
 void recotests::MCRecoComp::reconfigure(fhicl::ParameterSet const & /*p*/)
