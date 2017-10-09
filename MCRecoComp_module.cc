@@ -112,56 +112,66 @@ void recotests::MCRecoComp::analyze(art::Event const & e)
             nu_y = mct.GetNeutrino().Lepton().Vy();
             nu_z = mct.GetNeutrino().Lepton().Vz();
 
-            if( vtx_size && vtx_handle.isValid() ){
+            // Only print the events which occur within the active volume
+            if( nu_x < 200 && nu_x > -200 && nu_y < 200 && nu_y > -200 && nu_z < 500 && nu_z > 0 ){
 
-                // Vector to hold the square-distances between the true primary vertex and the reconstructed vertices
-                // Find which is the smallest and assume this was reconstructed as the primary
-                std::vector< double > dR, dX, dY, dZ;
+                if( vtx_size && vtx_handle.isValid() ){
+    
+                    // Vector to hold the square-distances between the true primary vertex and the reconstructed vertices
+                    // Find which is the smallest and assume this was reconstructed as the primary
+                    std::vector< double > dR, dX, dY, dZ, X, Y, Z;
+    
+                    dR.clear();
+                    dX.clear();
+                    dY.clear();
+                    dZ.clear();
+    
+                    for( auto & vtx : (*vtx_handle) ){
+                
+                        // Access 3D reconstructed vertex position using:  
+                        // Array to hold points
+                        double xyz[3];
+    
+                        // Set array to be current vertex position
+                        vtx.XYZ(xyz);
+    
+                        // x,y,z of current vertex
+                        double x, y, z;
+    
+                        x = xyz[0];
+                        y = xyz[1];
+                        z = xyz[2];
+    
+                        // Find square distances between true vertex and reconstructed vertex in y-z plane
+                        //      x-axis is unreliable
+                        dR.push_back( pow( ( nu_y - y ), 2 ) + pow( ( nu_z - z ), 2 ) );
+                        dX.push_back( x - nu_x ); // Reco - true vertex
+                        dY.push_back( y - nu_y );
+                        dZ.push_back( z - nu_z );
+    
+                        X.push_back( x );
+                        Y.push_back( y );
+                        Z.push_back( z );
+                    }
+         
+                    // Find the minimum value in the vector of distances and append txt file
+                    std::vector< double >::iterator result = std::min_element( std::begin( dR ), std::end( dR ) );
 
-                dR.clear();
-                dX.clear();
-                dY.clear();
-                dZ.clear();
+                    // Define 2D distance and 1D distances for the 'primary' reconstructed vertex
+                    double dr = sqrt( dR[ std::distance( std::begin( dR ), result ) ] ); 
+                    double dx = dX[ std::distance( std::begin( dR ), result ) ];
+                    double dy = dY[ std::distance( std::begin( dR ), result ) ];
+                    double dz = dZ[ std::distance( std::begin( dR ), result ) ];
+    
+                    double x_r = X[ std::distance( std::begin( dR ), result ) ];
+                    double y_r = Y[ std::distance( std::begin( dR ), result ) ];
+                    double z_r = Z[ std::distance( std::begin( dR ), result ) ];
 
-                for( auto & vtx : (*vtx_handle) ){
-            
-                    // Access 3D reconstructed vertex position using:  
-                    // Array to hold points
-                    double xyz[3];
+                    fNt->Fill( dx, dy, dz, dr, x_r, y_r, z_r, nu_x, nu_y, nu_z );
 
-                    // Set array to be current vertex position
-                    vtx.XYZ(xyz);
-
-                    // x,y,z of current vertex
-                    double x, y, z;
-
-                    x = xyz[0];
-                    y = xyz[1];
-                    z = xyz[2];
-
-                    // Find square distances between true vertex and reconstructed vertex in y-z plane
-                    //      x-axis is unreliable
-                    dR.push_back( pow( ( nu_y - y ), 2 ) + pow( ( nu_z - z ), 2 ) );
-                    dX.push_back( abs( x - nu_x ) );
-                    dY.push_back( abs( y - nu_y ) );
-                    dZ.push_back( abs( z - nu_z ) );
-
+                    // Write the minimum distance in the y-z plane to a .txt file for reading in a ROOT macro
+                    file << sqrt( dr ) << std::endl; 
                 }
-     
-                // Find the minimum value in the vector of distances and append txt file
-                std::vector< double >::iterator result = std::min_element( std::begin( dR ), std::end( dR ) );
-
-                // Define 2D distance and 1D distances for the 'primary' reconstructed vertex
-                double dr = sqrt( dR[ std::distance( std::begin( dR ), result ) ] ); 
-                double dx = dX[ std::distance( std::begin( dR ), result ) ];
-                double dy = dY[ std::distance( std::begin( dR ), result ) ];
-                double dz = dZ[ std::distance( std::begin( dR ), result ) ];
-
-                fNt->Fill(dx, dy, dz, dr);
-
-                // Write the minimum distance in the y-z plane to a .txt file for reading in a ROOT macro
-                file << sqrt( dr ) << std::endl; 
-
             }
         }
     }
@@ -199,7 +209,7 @@ void recotests::MCRecoComp::beginJob()
     std::cout << " BeginJob " << std::endl;
 
     // Implementation of optional member function here.
-    fNt = new TNtuple( "fNt", "True and reconstructed vertex position comparison", "dX:dY:dZ:dR");
+    fNt = new TNtuple( "fNt", "True and reconstructed vertex position comparison", "dX:dY:dZ:dR:Xr:Yr:Zr:Xt:Yt:Zt");
 
     fNt->SetDirectory(0);
 }
@@ -209,7 +219,7 @@ void recotests::MCRecoComp::endJob()
     std::cout << " EndJob " << std::endl;
     
     // Implementation of optional member function here.
-    TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_49_03/LArSoft-v06_49_03/srcs/recoperformance/recoperformance/plots/nt_distances.root", "UPDATE" );
+    TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_49_03/LArSoft-v06_49_03/srcs/recoperformance/recoperformance/plots/nt_distances_in_AV.root", "UPDATE" );
     fNt->Write();
     f->Close();
 

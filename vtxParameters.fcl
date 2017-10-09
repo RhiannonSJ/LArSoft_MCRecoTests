@@ -1,0 +1,10 @@
+BEGIN_PROLOG
+
+vtxParameters:
+{ 
+    module_type:                "VtxParameters"
+
+}
+
+END_PROLOG
+
