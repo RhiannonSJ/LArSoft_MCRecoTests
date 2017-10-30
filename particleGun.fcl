@@ -1,0 +1,10 @@
+BEGIN_PROLOG
+
+particleGun:
+{ 
+    module_type:                "ParticleGun"
+
+}
+
+END_PROLOG
+

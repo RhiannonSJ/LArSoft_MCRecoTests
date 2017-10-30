@@ -1,0 +1,3390 @@
+%MSG-i MF_INIT_OK:  Early 10-Oct-2017 12:53:47 CDT JobSetup
+Messagelogger initialization complete.
+%MSG
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+10-Oct-2017 12:53:51 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_0/prodgenie_sbnd_GenieGen-20170905T141930_32611fa6-040c-4904-bae8-93e5abf1ae2f_G4-20170905T143213_DetSim-20170905T151617_Reco-20170905T163304.root"
+%MSG-i Root_Information:  Early TClass::Init() 10-Oct-2017 12:53:51 CDT JobSetup
+no dictionary for class art::DoNotRecordParents is available
+%MSG
+10-Oct-2017 12:53:54 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_0/prodgenie_sbnd_GenieGen-20170905T141930_32611fa6-040c-4904-bae8-93e5abf1ae2f_G4-20170905T143213_DetSim-20170905T151617_Reco-20170905T163304.root"
+Begin processing the 1st record. run: 1 subRun: 166 event: 16501 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 2nd record. run: 1 subRun: 166 event: 16502 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 3rd record. run: 1 subRun: 166 event: 16503 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 4th record. run: 1 subRun: 166 event: 16504 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 5th record. run: 1 subRun: 166 event: 16505 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 6th record. run: 1 subRun: 166 event: 16506 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 7th record. run: 1 subRun: 166 event: 16507 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 8th record. run: 1 subRun: 166 event: 16508 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 9th record. run: 1 subRun: 166 event: 16509 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 10th record. run: 1 subRun: 166 event: 16510 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 11th record. run: 1 subRun: 166 event: 16511 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 12th record. run: 1 subRun: 166 event: 16512 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 13th record. run: 1 subRun: 166 event: 16513 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 14th record. run: 1 subRun: 166 event: 16514 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 15th record. run: 1 subRun: 166 event: 16515 at 10-Oct-2017 12:53:55 CDT
+ ---- Non-primary ---- 
+ Truth primary 
+24.2739, 6.38002, 247.864
+ True primary 
+-34.3306, 53.5498, 295.232
+ This track 
+-27.1235, 65.8586, 286.992
+ ---- Non-primary ---- 
+ Truth primary 
+24.2739, 6.38002, 247.864
+ True primary 
+-34.3306, 53.5498, 295.232
+ This track 
+-34.8622, 65.3481, 282.21
+ ------ Primary ------ 
+ Truth primary 
+24.2739, 6.38002, 247.864
+ True primary 
+-34.3306, 53.5498, 295.232
+ This track 
+-34.3306, 53.5498, 295.232
+Begin processing the 16th record. run: 1 subRun: 166 event: 16516 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 17th record. run: 1 subRun: 166 event: 16517 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 18th record. run: 1 subRun: 166 event: 16518 at 10-Oct-2017 12:53:55 CDT
+ ------ Primary ------ 
+ Truth primary 
+174.783, 198.866, 370.18
+ True primary 
+-26.3469, 199.32, 368.433
+ This track 
+-26.3469, 199.32, 368.433
+Begin processing the 19th record. run: 1 subRun: 166 event: 16519 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 20th record. run: 1 subRun: 166 event: 16520 at 10-Oct-2017 12:53:55 CDT
+ ---- Non-primary ---- 
+ Truth primary 
+170.982, 92.7345, 136.246
+ True primary 
+-28.6949, 91.4476, 134.55
+ This track 
+-28.9132, 91.9633, 134.352
+ ---- Non-primary ---- 
+ Truth primary 
+170.982, 92.7345, 136.246
+ True primary 
+-28.6949, 91.4476, 134.55
+ This track 
+-28.4287, 90.8184, 134.792
+Begin processing the 21st record. run: 1 subRun: 166 event: 16521 at 10-Oct-2017 12:53:55 CDT
+ ---- Non-primary ---- 
+ Truth primary 
+-187.752, -195.044, 368.827
+ True primary 
+12.3232, -194.979, 368.859
+ This track 
+12.6547, -195.535, 369.15
+ ------ Primary ------ 
+ Truth primary 
+-187.752, -195.044, 368.827
+ True primary 
+12.3232, -194.979, 368.859
+ This track 
+12.3337, -195.039, 368.84
+ ------ Primary ------ 
+ Truth primary 
+-187.752, -195.044, 368.827
+ True primary 
+12.3232, -194.979, 368.859
+ This track 
+12.2662, -194.749, 368.942
+Begin processing the 22nd record. run: 1 subRun: 166 event: 16522 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 23rd record. run: 1 subRun: 166 event: 16523 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 24th record. run: 1 subRun: 166 event: 16524 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 25th record. run: 1 subRun: 166 event: 16525 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 26th record. run: 1 subRun: 166 event: 16526 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 27th record. run: 1 subRun: 166 event: 16527 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 28th record. run: 1 subRun: 166 event: 16528 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 29th record. run: 1 subRun: 166 event: 16529 at 10-Oct-2017 12:53:55 CDT
+ ------ Primary ------ 
+ Truth primary 
+184.469, -52.9562, 208.023
+ True primary 
+-15.914, -53.0052, 208.062
+ This track 
+-15.8392, -53.1396, 207.777
+ ---- Non-primary ---- 
+ Truth primary 
+184.469, -52.9562, 208.023
+ True primary 
+-15.914, -53.0052, 208.062
+ This track 
+-16.1791, -53.5972, 208.128
+ ------ Primary ------ 
+ Truth primary 
+184.469, -52.9562, 208.023
+ True primary 
+-15.914, -53.0052, 208.062
+ This track 
+-15.8331, -52.7397, 208.169
+ ---- Non-primary ---- 
+ Truth primary 
+184.469, -52.9562, 208.023
+ True primary 
+-15.914, -53.0052, 208.062
+ This track 
+-30.511, 7.97477, 372.313
+Begin processing the 30th record. run: 1 subRun: 166 event: 16530 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 31st record. run: 1 subRun: 166 event: 16531 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 32nd record. run: 1 subRun: 166 event: 16532 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 33rd record. run: 1 subRun: 166 event: 16533 at 10-Oct-2017 12:53:55 CDT
+ ------ Primary ------ 
+ Truth primary 
+-178.67, -173.594, 376.608
+ True primary 
+22.5057, -173.514, 376.526
+ This track 
+22.5322, -173.563, 376.556
+ ---- Non-primary ---- 
+ Truth primary 
+-178.67, -173.594, 376.608
+ True primary 
+22.5057, -173.514, 376.526
+ This track 
+22.9445, -174.328, 377.028
+ ---- Non-primary ---- 
+ Truth primary 
+-178.67, -173.594, 376.608
+ True primary 
+22.5057, -173.514, 376.526
+ This track 
+17.2351, -169.607, 390.595
+Begin processing the 34th record. run: 1 subRun: 166 event: 16534 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 35th record. run: 1 subRun: 166 event: 16535 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 36th record. run: 1 subRun: 166 event: 16536 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 37th record. run: 1 subRun: 166 event: 16537 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 38th record. run: 1 subRun: 166 event: 16538 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 39th record. run: 1 subRun: 166 event: 16539 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 40th record. run: 1 subRun: 166 event: 16540 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 41st record. run: 1 subRun: 166 event: 16541 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 42nd record. run: 1 subRun: 166 event: 16542 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 43rd record. run: 1 subRun: 166 event: 16543 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 44th record. run: 1 subRun: 166 event: 16544 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 45th record. run: 1 subRun: 166 event: 16545 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 46th record. run: 1 subRun: 166 event: 16546 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 47th record. run: 1 subRun: 166 event: 16547 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 48th record. run: 1 subRun: 166 event: 16548 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 49th record. run: 1 subRun: 166 event: 16549 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 50th record. run: 1 subRun: 166 event: 16550 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 51st record. run: 1 subRun: 166 event: 16551 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 52nd record. run: 1 subRun: 166 event: 16552 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 53rd record. run: 1 subRun: 166 event: 16553 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 54th record. run: 1 subRun: 166 event: 16554 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 55th record. run: 1 subRun: 166 event: 16555 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 56th record. run: 1 subRun: 166 event: 16556 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 57th record. run: 1 subRun: 166 event: 16557 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 58th record. run: 1 subRun: 166 event: 16558 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 59th record. run: 1 subRun: 166 event: 16559 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 60th record. run: 1 subRun: 166 event: 16560 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 61st record. run: 1 subRun: 166 event: 16561 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 62nd record. run: 1 subRun: 166 event: 16562 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 63rd record. run: 1 subRun: 166 event: 16563 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 64th record. run: 1 subRun: 166 event: 16564 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 65th record. run: 1 subRun: 166 event: 16565 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 66th record. run: 1 subRun: 166 event: 16566 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 67th record. run: 1 subRun: 166 event: 16567 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 68th record. run: 1 subRun: 166 event: 16568 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 69th record. run: 1 subRun: 166 event: 16569 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 70th record. run: 1 subRun: 166 event: 16570 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 71st record. run: 1 subRun: 166 event: 16571 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 72nd record. run: 1 subRun: 166 event: 16572 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 73rd record. run: 1 subRun: 166 event: 16573 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 74th record. run: 1 subRun: 166 event: 16574 at 10-Oct-2017 12:53:55 CDT
+ ------ Primary ------ 
+ Truth primary 
+149.828, 65.8948, 241.671
+ True primary 
+-35.0462, 57.8142, 256.578
+ This track 
+-35.0462, 57.8142, 256.578
+Begin processing the 75th record. run: 1 subRun: 166 event: 16575 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 76th record. run: 1 subRun: 166 event: 16576 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 77th record. run: 1 subRun: 166 event: 16577 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 78th record. run: 1 subRun: 166 event: 16578 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 79th record. run: 1 subRun: 166 event: 16579 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 80th record. run: 1 subRun: 166 event: 16580 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 81st record. run: 1 subRun: 166 event: 16581 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 82nd record. run: 1 subRun: 166 event: 16582 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 83rd record. run: 1 subRun: 166 event: 16583 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 84th record. run: 1 subRun: 166 event: 16584 at 10-Oct-2017 12:53:55 CDT
+ ------ Primary ------ 
+ Truth primary 
+-179.324, 31.3744, 477.076
+ True primary 
+22.19, 31.7038, 477
+ This track 
+22.19, 31.7038, 477
+ ---- Non-primary ---- 
+ Truth primary 
+-179.324, 31.3744, 477.076
+ True primary 
+22.19, 31.7038, 477
+ This track 
+10.2712, 27.1265, 480.156
+ ---- Non-primary ---- 
+ Truth primary 
+-179.324, 31.3744, 477.076
+ True primary 
+22.19, 31.7038, 477
+ This track 
+21.2421, 29.5515, 482.125
+ ---- Non-primary ---- 
+ Truth primary 
+-179.324, 31.3744, 477.076
+ True primary 
+22.19, 31.7038, 477
+ This track 
+20.1612, 28.7866, 481.497
+Begin processing the 85th record. run: 1 subRun: 166 event: 16585 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 86th record. run: 1 subRun: 166 event: 16586 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 87th record. run: 1 subRun: 166 event: 16587 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 88th record. run: 1 subRun: 166 event: 16588 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 89th record. run: 1 subRun: 166 event: 16589 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 90th record. run: 1 subRun: 166 event: 16590 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 91st record. run: 1 subRun: 166 event: 16591 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 92nd record. run: 1 subRun: 166 event: 16592 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 93rd record. run: 1 subRun: 166 event: 16593 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 94th record. run: 1 subRun: 166 event: 16594 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 95th record. run: 1 subRun: 166 event: 16595 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 96th record. run: 1 subRun: 166 event: 16596 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 97th record. run: 1 subRun: 166 event: 16597 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 98th record. run: 1 subRun: 166 event: 16598 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 99th record. run: 1 subRun: 166 event: 16599 at 10-Oct-2017 12:53:55 CDT
+Begin processing the 100th record. run: 1 subRun: 166 event: 16600 at 10-Oct-2017 12:53:55 CDT
+10-Oct-2017 12:53:55 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_0/prodgenie_sbnd_GenieGen-20170905T141930_32611fa6-040c-4904-bae8-93e5abf1ae2f_G4-20170905T143213_DetSim-20170905T151617_Reco-20170905T163304.root"
+10-Oct-2017 12:53:55 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_1/prodgenie_sbnd_GenieGen-20170905T141707_bb1587a2-d268-4ff8-bf54-b084f69083e1_G4-20170905T143210_DetSim-20170905T151616_Reco-20170905T164656.root"
+10-Oct-2017 12:53:55 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_1/prodgenie_sbnd_GenieGen-20170905T141707_bb1587a2-d268-4ff8-bf54-b084f69083e1_G4-20170905T143210_DetSim-20170905T151616_Reco-20170905T164656.root"
+ ------ Primary ------ 
+ Truth primary 
+136.202, 131.358, 129.652
+ True primary 
+-34.9743, 113.282, 152.772
+ This track 
+-34.9743, 113.282, 152.772
+ ---- Non-primary ---- 
+ Truth primary 
+136.202, 131.358, 129.652
+ True primary 
+-34.9743, 113.282, 152.772
+ This track 
+-7.4571, 97.82, 167.082
+ ------ Primary ------ 
+ Truth primary 
+194.959, 49.8816, 150.607
+ True primary 
+-5.0595, 49.8698, 150.377
+ This track 
+-5.0595, 49.8698, 150.377
+ ---- Non-primary ---- 
+ Truth primary 
+194.959, 49.8816, 150.607
+ True primary 
+-5.0595, 49.8698, 150.377
+ This track 
+-16.0198, 63.4612, 291.922
+ ------ Primary ------ 
+ Truth primary 
+41.4627, 118.397, 195.931
+ True primary 
+-34.9301, 98.0362, 339.415
+ This track 
+-34.9301, 98.0362, 339.415
+ ------ Primary ------ 
+ Truth primary 
+187.084, 40.9175, 477.454
+ True primary 
+-13.3277, 40.9847, 477.529
+ This track 
+-13.3966, 41.0052, 477.499
+ ------ Primary ------ 
+ Truth primary 
+187.084, 40.9175, 477.454
+ True primary 
+-13.3277, 40.9847, 477.529
+ This track 
+-13.6758, 41.0923, 477.734
+ ---- Non-primary ---- 
+ Truth primary 
+187.084, 40.9175, 477.454
+ True primary 
+-13.3277, 40.9847, 477.529
+ This track 
+-12.8786, 40.8449, 478.195
+ ------ Primary ------ 
+ Truth primary 
+-176.935, 26.6395, 473.032
+ True primary 
+23.5549, 26.7602, 473.01
+ This track 
+23.6714, 26.7002, 472.927
+ ---- Non-primary ---- 
+ Truth primary 
+-176.935, 26.6395, 473.032
+ True primary 
+23.5549, 26.7602, 473.01
+ This track 
+22.0033, 27.5604, 474.116
+ ------ Primary ------ 
+ Truth primary 
+160.304, -44.0641, 56.9637
+ True primary 
+-34.9398, -47.7024, 67.396
+ This track 
+-34.9398, -47.7024, 67.396
+ ---- Non-primary ---- 
+ Truth primary 
+160.304, -44.0641, 56.9637
+ True primary 
+-34.9398, -47.7024, 67.396
+ This track 
+-30.7095, -31.7857, 57.0148
+ ---- Non-primary ---- 
+ Truth primary 
+160.304, -44.0641, 56.9637
+ True primary 
+-34.9398, -47.7024, 67.396
+ This track 
+-32.249, -146.414, 68.6217
+ ---- Non-primary ---- 
+ Truth primary 
+160.304, -44.0641, 56.9637
+ True primary 
+-34.9398, -47.7024, 67.396
+ This track 
+-34.3868, -82.7687, 63.4274
+ ------ Primary ------ 
+ Truth primary 
+-189.063, 96.1323, 444.695
+ True primary 
+10.3773, 95.3366, 444.271
+ This track 
+10.3773, 95.3366, 444.271
+ ---- Non-primary ---- 
+ Truth primary 
+183.231, 121.526, 237.859
+ True primary 
+-15.035, 129.6, 254.205
+ This track 
+-17.4214, 100.14, 249.641
+ ------ Primary ------ 
+ Truth primary 
+183.231, 121.526, 237.859
+ True primary 
+-15.035, 129.6, 254.205
+ This track 
+-15.0105, 129.587, 254.197
+ ---- Non-primary ---- 
+ Truth primary 
+183.231, 121.526, 237.859
+ True primary 
+-15.035, 129.6, 254.205
+ This track 
+-16.2095, 130.635, 254.891
+ ------ Primary ------ 
+ Truth primary 
+177.075, -104.424, 127.038
+ True primary 
+-23.1355, -105.025, 127.442
+ This track 
+-23.1583, -104.954, 127.193
+ ---- Non-primary ---- 
+ Truth primary 
+177.075, -104.424, 127.038
+ True primary 
+-23.1355, -105.025, 127.442
+ This track 
+-23.4107, -104.076, 127.513
+ ---- Non-primary ---- 
+ Truth primary 
+177.075, -104.424, 127.038
+ True primary 
+-23.1355, -105.025, 127.442
+ This track 
+-12.9024, -136.193, 283.682
+ ------ Primary ------ 
+ Truth primary 
+169.885, 142.407, 184.203
+ True primary 
+-30.8723, 142.391, 184.196
+ This track 
+-30.8723, 142.391, 184.196
+ ------ Primary ------ 
+ Truth primary 
+169.885, 142.407, 184.203
+ True primary 
+-30.8723, 142.391, 184.196
+ This track 
+-30.8723, 142.391, 184.196
+ ---- Non-primary ---- 
+ Truth primary 
+169.885, 142.407, 184.203
+ True primary 
+-30.8723, 142.391, 184.196
+ This track 
+-29.058, 140.83, 183.124
+ ------ Primary ------ 
+ Truth primary 
+153.016, 70.6995, 272.744
+ True primary 
+-35.0434, 80.4653, 298.49
+ This track 
+-35.0434, 80.4653, 298.49
+ ------ Primary ------ 
+ Truth primary 
+-107.828, -56.2015, 230.692
+ True primary 
+1.89018, 8.85094, 236.007
+ This track 
+1.89018, 8.85094, 236.007
+ ------ Primary ------ 
+ Truth primary 
+198.586, 62.0533, 134.967
+ True primary 
+-2.38307, 61.5679, 134.465
+ This track 
+-2.38307, 61.5679, 134.465
+Begin processing the 200th record. run: 1 subRun: 83 event: 8300 at 10-Oct-2017 12:53:55 CDT
+10-Oct-2017 12:53:55 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_1/prodgenie_sbnd_GenieGen-20170905T141707_bb1587a2-d268-4ff8-bf54-b084f69083e1_G4-20170905T143210_DetSim-20170905T151616_Reco-20170905T164656.root"
+10-Oct-2017 12:53:55 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_2/prodgenie_sbnd_GenieGen-20170905T141925_54a9893c-9e04-4e9f-b409-ad4a4d3e7721_G4-20170905T143122_DetSim-20170905T151455_Reco-20170905T162816.root"
+10-Oct-2017 12:53:55 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_2/prodgenie_sbnd_GenieGen-20170905T141925_54a9893c-9e04-4e9f-b409-ad4a4d3e7721_G4-20170905T143122_DetSim-20170905T151455_Reco-20170905T162816.root"
+ ------ Primary ------ 
+ Truth primary 
+198.454, -149.081, 393.709
+ True primary 
+-2.57673, -149.086, 393.621
+ This track 
+-2.57673, -149.086, 393.621
+ ---- Non-primary ---- 
+ Truth primary 
+198.454, -149.081, 393.709
+ True primary 
+-2.57673, -149.086, 393.621
+ This track 
+-5.37392, -128.722, 396.003
+ ---- Non-primary ---- 
+ Truth primary 
+175.091, -91.3015, 11.7256
+ True primary 
+-25.4357, -91.3201, 11.7223
+ This track 
+-20.4483, -93.5412, 21.002
+ ------ Primary ------ 
+ Truth primary 
+175.091, -91.3015, 11.7256
+ True primary 
+-25.4357, -91.3201, 11.7223
+ This track 
+-25.4284, -91.3236, 11.7226
+ ---- Non-primary ---- 
+ Truth primary 
+175.091, -91.3015, 11.7256
+ True primary 
+-25.4357, -91.3201, 11.7223
+ This track 
+-26.2018, -90.9572, 12.1881
+ ---- Non-primary ---- 
+ Truth primary 
+175.091, -91.3015, 11.7256
+ True primary 
+-25.4357, -91.3201, 11.7223
+ This track 
+34.4474, 21.1336, 207.394
+ ------ Primary ------ 
+ Truth primary 
+-197.514, 6.86107, 315.519
+ True primary 
+3.18224, 6.5221, 315.666
+ This track 
+3.24953, 6.71824, 315.818
+ ------ Primary ------ 
+ Truth primary 
+-197.514, 6.86107, 315.519
+ True primary 
+3.18224, 6.5221, 315.666
+ This track 
+3.13616, 6.41933, 315.697
+ ---- Non-primary ---- 
+ Truth primary 
+197.36, -48.5116, 394.697
+ True primary 
+-3.97789, -48.9187, 395.651
+ This track 
+-34.8695, -45.056, 385.049
+ ------ Primary ------ 
+ Truth primary 
+197.36, -48.5116, 394.697
+ True primary 
+-3.97789, -48.9187, 395.651
+ This track 
+-3.97789, -48.9187, 395.651
+ ------ Primary ------ 
+ Truth primary 
+-174.537, 196.324, 237.475
+ True primary 
+26.3327, 196.283, 237.639
+ This track 
+26.3327, 196.283, 237.639
+ ------ Primary ------ 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+24.2804, -22.1191, 333.458
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+10.0438, -47.313, 295.967
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+15.0526, -38.5994, 308.233
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+10.7076, -44.5201, 303.68
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+11.6691, -21.2254, 294.143
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+13.6461, -76.4332, 244.798
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+27.3601, -23.0175, 368.499
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+10.0156, -56.1331, 264.967
+ ---- Non-primary ---- 
+ Truth primary 
+-176.16, -21.7106, 334.312
+ True primary 
+24.2804, -22.1191, 333.458
+ This track 
+33.8273, -30.0844, 365.119
+ ------ Primary ------ 
+ Truth primary 
+192.664, 77.2697, 107.344
+ True primary 
+-8.89142, 77.1182, 107.526
+ This track 
+-8.96466, 77.192, 107.594
+ ------ Primary ------ 
+ Truth primary 
+192.664, 77.2697, 107.344
+ True primary 
+-8.89142, 77.1182, 107.526
+ This track 
+-8.62164, 76.8462, 107.275
+ ---- Non-primary ---- 
+ Truth primary 
+192.664, 77.2697, 107.344
+ True primary 
+-8.89142, 77.1182, 107.526
+ This track 
+-9.36192, 77.2818, 108.275
+ ---- Non-primary ---- 
+ Truth primary 
+192.664, 77.2697, 107.344
+ True primary 
+-8.89142, 77.1182, 107.526
+ This track 
+-6.30968, 65.4647, 112.508
+ ------ Primary ------ 
+ Truth primary 
+-184.052, 173.643, 433.265
+ True primary 
+17.1053, 173.604, 433.201
+ This track 
+17.1053, 173.604, 433.201
+ ------ Primary ------ 
+ Truth primary 
+86.5728, 105.136, 12.4872
+ True primary 
+-20.8438, 27.7199, 50.1972
+ This track 
+-20.8438, 27.7199, 50.1972
+Begin processing the 300th record. run: 1 subRun: 190 event: 19000 at 10-Oct-2017 12:53:55 CDT
+10-Oct-2017 12:53:55 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_2/prodgenie_sbnd_GenieGen-20170905T141925_54a9893c-9e04-4e9f-b409-ad4a4d3e7721_G4-20170905T143122_DetSim-20170905T151455_Reco-20170905T162816.root"
+10-Oct-2017 12:53:55 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_3/prodgenie_sbnd_GenieGen-20170905T141915_e7d01ff3-ff99-4ee0-a562-194ed35738cf_G4-20170905T143117_DetSim-20170905T151458_Reco-20170905T163328.root"
+10-Oct-2017 12:53:55 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_3/prodgenie_sbnd_GenieGen-20170905T141915_e7d01ff3-ff99-4ee0-a562-194ed35738cf_G4-20170905T143117_DetSim-20170905T151458_Reco-20170905T163328.root"
+ ------ Primary ------ 
+ Truth primary 
+-78.7186, 6.19912, 103.91
+ True primary 
+35.0326, 79.3434, 169.475
+ This track 
+35.0326, 79.3434, 169.475
+ ------ Primary ------ 
+ Truth primary 
+189.476, -7.61324, 464.657
+ True primary 
+-10.4373, -7.65117, 464.689
+ This track 
+-10.5317, -7.61405, 464.711
+ ---- Non-primary ---- 
+ Truth primary 
+189.476, -7.61324, 464.657
+ True primary 
+-10.4373, -7.65117, 464.689
+ This track 
+-9.42666, -6.9556, 464.784
+ ------ Primary ------ 
+ Truth primary 
+-167.604, 53.2292, 411.547
+ True primary 
+34.0973, 53.4047, 411.562
+ This track 
+34.0973, 53.4047, 411.562
+ ------ Primary ------ 
+ Truth primary 
+197.282, -122.193, 38.895
+ True primary 
+-3.64644, -122.205, 40.1843
+ This track 
+-3.64644, -122.205, 40.1843
+ ---- Non-primary ---- 
+ Truth primary 
+197.282, -122.193, 38.895
+ True primary 
+-3.64644, -122.205, 40.1843
+ This track 
+-6.40656, -120.166, 37.3878
+ ------ Primary ------ 
+ Truth primary 
+130.529, 94.9096, 68.0134
+ True primary 
+-35.1116, 59.1219, 85.1107
+ This track 
+-35.1116, 59.1219, 85.1107
+ ------ Primary ------ 
+ Truth primary 
+39.2002, -57.3401, 161.989
+ True primary 
+-34.7827, -67.9815, 240.821
+ This track 
+-34.7827, -67.9815, 240.821
+ ------ Primary ------ 
+ Truth primary 
+-115.988, -90.9928, 17.5851
+ True primary 
+35.0213, -108.63, 111.66
+ This track 
+35.0213, -108.63, 111.66
+ ------ Primary ------ 
+ Truth primary 
+164.219, -9.79601, 332.309
+ True primary 
+-34.8759, -11.7039, 332.701
+ This track 
+-34.8759, -11.7039, 332.701
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+31.9351, 18.8815, 308.75
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+26.7783, 13.588, 282.736
+ ------ Primary ------ 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+34.7464, 43.2631, 248.224
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+27.0855, 26.8079, 298.199
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+11.381, 5.82977, 297.122
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+18.0286, 12.0612, 290.943
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+31.4289, 32.1116, 292.839
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+21.8629, 19.255, 332.102
+ ---- Non-primary ---- 
+ Truth primary 
+-128.206, 15.6006, 223.317
+ True primary 
+34.7464, 43.2631, 248.224
+ This track 
+31.8571, 18.8511, 308.918
+ ------ Primary ------ 
+ Truth primary 
+-186.484, -91.7334, 2.63905
+ True primary 
+14.4959, -91.8825, 2.61501
+ This track 
+14.4959, -91.8825, 2.61501
+ ------ Primary ------ 
+ Truth primary 
+198.496, 126.511, 193.819
+ True primary 
+-1.47453, 126.418, 193.722
+ This track 
+-1.77602, 126.615, 193.755
+ ---- Non-primary ---- 
+ Truth primary 
+198.496, 126.511, 193.819
+ True primary 
+-1.47453, 126.418, 193.722
+ This track 
+-0.908875, 126.343, 193.541
+ ------ Primary ------ 
+ Truth primary 
+115.773, -176.87, 38.3783
+ True primary 
+-17.3309, -88.348, 49.1793
+ This track 
+-17.3309, -88.348, 49.1793
+ ------ Primary ------ 
+ Truth primary 
+-127.663, 21.7062, 329.323
+ True primary 
+29.563, 4.88337, 398.877
+ This track 
+29.563, 4.88337, 398.877
+ ---- Non-primary ---- 
+ Truth primary 
+-127.663, 21.7062, 329.323
+ True primary 
+29.563, 4.88337, 398.877
+ This track 
+27.9971, -2.968, 410.333
+ ---- Non-primary ---- 
+ Truth primary 
+-127.663, 21.7062, 329.323
+ True primary 
+29.563, 4.88337, 398.877
+ This track 
+23.4049, -1.42298, 414.858
+ ---- Non-primary ---- 
+ Truth primary 
+-127.663, 21.7062, 329.323
+ True primary 
+29.563, 4.88337, 398.877
+ This track 
+17.4437, -7.6999, 425.755
+ ------ Primary ------ 
+ Truth primary 
+-173.77, -5.28655, 202.574
+ True primary 
+26.2427, -5.47764, 202.616
+ This track 
+26.1786, -5.5002, 202.687
+ ------ Primary ------ 
+ Truth primary 
+-173.77, -5.28655, 202.574
+ True primary 
+26.2427, -5.47764, 202.616
+ This track 
+26.2464, -5.47468, 202.615
+ ------ Primary ------ 
+ Truth primary 
+179.67, 13.0383, 234.349
+ True primary 
+-21.319, 13.0675, 234.277
+ This track 
+-21.528, 12.9363, 234.607
+ ---- Non-primary ---- 
+ Truth primary 
+179.67, 13.0383, 234.349
+ True primary 
+-21.319, 13.0675, 234.277
+ This track 
+-20.8073, 13.3266, 234.819
+ ---- Non-primary ---- 
+ Truth primary 
+179.67, 13.0383, 234.349
+ True primary 
+-21.319, 13.0675, 234.277
+ This track 
+-21.603, 13.1998, 234.952
+ ---- Non-primary ---- 
+ Truth primary 
+179.67, 13.0383, 234.349
+ True primary 
+-21.319, 13.0675, 234.277
+ This track 
+-23.6797, 11.4953, 238.776
+ ------ Primary ------ 
+ Truth primary 
+-181.961, -128.045, 287.535
+ True primary 
+18.3126, -128.178, 287.68
+ This track 
+18.3781, -128.209, 287.783
+ ------ Primary ------ 
+ Truth primary 
+-181.961, -128.045, 287.535
+ True primary 
+18.3126, -128.178, 287.68
+ This track 
+18.3833, -128.142, 287.671
+ ------ Primary ------ 
+ Truth primary 
+-154.164, -108.948, 190.228
+ True primary 
+11.7121, -101.644, 177.032
+ This track 
+11.6887, -101.616, 177.007
+ ---- Non-primary ---- 
+ Truth primary 
+-154.164, -108.948, 190.228
+ True primary 
+11.7121, -101.644, 177.032
+ This track 
+13.1442, -103.354, 178.614
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_3/prodgenie_sbnd_GenieGen-20170905T141915_e7d01ff3-ff99-4ee0-a562-194ed35738cf_G4-20170905T143117_DetSim-20170905T151458_Reco-20170905T163328.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_4/prodgenie_sbnd_GenieGen-20170905T141938_338bd7bb-0932-4d6f-88db-254ccc6ff40b_G4-20170905T143112_DetSim-20170905T151541_Reco-20170905T162744.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_4/prodgenie_sbnd_GenieGen-20170905T141938_338bd7bb-0932-4d6f-88db-254ccc6ff40b_G4-20170905T143112_DetSim-20170905T151541_Reco-20170905T162744.root"
+ ------ Primary ------ 
+ Truth primary 
+15.3685, 3.6818, 415.214
+ True primary 
+-34.8949, 49.0846, 481.645
+ This track 
+-34.8949, 49.0846, 481.645
+ ------ Primary ------ 
+ Truth primary 
+-175.168, -24.4589, 294.603
+ True primary 
+25.2189, -24.8107, 294.504
+ This track 
+25.2189, -24.8107, 294.504
+ ------ Primary ------ 
+ Truth primary 
+-125.66, -119.642, 196.873
+ True primary 
+35.1494, -137.274, 226.635
+ This track 
+35.1494, -137.274, 226.635
+ ------ Primary ------ 
+ Truth primary 
+79.2984, 184.728, 309.16
+ True primary 
+-35.1206, 47.5582, 375.735
+ This track 
+-35.1206, 47.5582, 375.735
+ ---- Non-primary ---- 
+ Truth primary 
+194.872, 74.2504, 161.743
+ True primary 
+-30.9446, 96.4106, 152.687
+ This track 
+-29.2916, 98.3388, 155.118
+ ------ Primary ------ 
+ Truth primary 
+194.872, 74.2504, 161.743
+ True primary 
+-30.9446, 96.4106, 152.687
+ This track 
+-30.9446, 96.4106, 152.687
+ ---- Non-primary ---- 
+ Truth primary 
+194.872, 74.2504, 161.743
+ True primary 
+-30.9446, 96.4106, 152.687
+ This track 
+-29.1096, 98.7601, 155.782
+ ------ Primary ------ 
+ Truth primary 
+-164.409, 76.2506, 295.554
+ True primary 
+35.0012, 76.3818, 300.709
+ This track 
+35.0012, 76.3818, 300.709
+ ---- Non-primary ---- 
+ Truth primary 
+-164.409, 76.2506, 295.554
+ True primary 
+35.0012, 76.3818, 300.709
+ This track 
+33.5757, 75.3187, 305.108
+ ------ Primary ------ 
+ Truth primary 
+149.598, -115.778, 78.0773
+ True primary 
+-17.5819, -180.709, 93.0162
+ This track 
+-17.5819, -180.709, 93.0162
+ ------ Primary ------ 
+ Truth primary 
+177.389, -114.979, 373.385
+ True primary 
+-22.8518, -114.93, 373.715
+ This track 
+-22.6465, -114.798, 373.682
+ ---- Non-primary ---- 
+ Truth primary 
+177.389, -114.979, 373.385
+ True primary 
+-22.8518, -114.93, 373.715
+ This track 
+-21.7804, -114.238, 373.545
+ ------ Primary ------ 
+ Truth primary 
+196.159, 126.093, 334.443
+ True primary 
+-5.20645, 131.313, 325.676
+ This track 
+-5.20645, 131.313, 325.676
+ ---- Non-primary ---- 
+ Truth primary 
+196.159, 126.093, 334.443
+ True primary 
+-5.20645, 131.313, 325.676
+ This track 
+-5.22181, 120.137, 349.485
+ ---- Non-primary ---- 
+ Truth primary 
+196.159, 126.093, 334.443
+ True primary 
+-5.20645, 131.313, 325.676
+ This track 
+-6.80334, 117.116, 352.935
+ ---- Non-primary ---- 
+ Truth primary 
+196.159, 126.093, 334.443
+ True primary 
+-5.20645, 131.313, 325.676
+ This track 
+-14.687, 89.7, 378.889
+ ------ Primary ------ 
+ Truth primary 
+44.3097, 57.5076, 49.632
+ True primary 
+-34.6333, 31.5, 236.796
+ This track 
+-34.6333, 31.5, 236.796
+ ------ Primary ------ 
+ Truth primary 
+149.91, 28.8658, 413.614
+ True primary 
+-35.0899, -57.1964, 485.9
+ This track 
+-35.0899, -57.1964, 485.9
+Begin processing the 500th record. run: 1 subRun: 182 event: 18200 at 10-Oct-2017 12:53:56 CDT
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_4/prodgenie_sbnd_GenieGen-20170905T141938_338bd7bb-0932-4d6f-88db-254ccc6ff40b_G4-20170905T143112_DetSim-20170905T151541_Reco-20170905T162744.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_5/prodgenie_sbnd_GenieGen-20170905T141922_51f41b2e-c6f4-48d2-abb8-9bb5d80dd170_G4-20170905T143126_DetSim-20170905T151632_Reco-20170905T162621.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_5/prodgenie_sbnd_GenieGen-20170905T141922_51f41b2e-c6f4-48d2-abb8-9bb5d80dd170_G4-20170905T143126_DetSim-20170905T151632_Reco-20170905T162621.root"
+ ------ Primary ------ 
+ Truth primary 
+-190.692, 199.827, 283.024
+ True primary 
+10.0236, 199.798, 282.565
+ This track 
+10.0236, 199.798, 282.565
+ ------ Primary ------ 
+ Truth primary 
+-148.279, 187.4, 112.839
+ True primary 
+34.4571, 195.225, 140.419
+ This track 
+34.4571, 195.225, 140.419
+ ------ Primary ------ 
+ Truth primary 
+141.262, 53.8079, 362.9
+ True primary 
+-1.38599, -23.5489, 344.738
+ This track 
+-1.38599, -23.5489, 344.738
+ ------ Primary ------ 
+ Truth primary 
+191.401, -95.2085, 30.711
+ True primary 
+-10.3211, -97.2349, 29.964
+ This track 
+-10.3211, -97.2349, 29.964
+ ------ Primary ------ 
+ Truth primary 
+-30.3854, 153.935, 315.846
+ True primary 
+35.1189, 167.012, 454.835
+ This track 
+35.1189, 167.012, 454.835
+ ---- Non-primary ---- 
+ Truth primary 
+-30.3854, 153.935, 315.846
+ True primary 
+35.1189, 167.012, 454.835
+ This track 
+23.1884, 169.385, 469.807
+ ------ Primary ------ 
+ Truth primary 
+163.265, 184.978, 379.637
+ True primary 
+-12.6814, 79.7362, 354.401
+ This track 
+-12.6814, 79.7362, 354.401
+ ------ Primary ------ 
+ Truth primary 
+194.58, 1.94657, 498.7
+ True primary 
+-5.52163, 1.91797, 498.719
+ This track 
+-5.52163, 1.91797, 498.719
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_5/prodgenie_sbnd_GenieGen-20170905T141922_51f41b2e-c6f4-48d2-abb8-9bb5d80dd170_G4-20170905T143126_DetSim-20170905T151632_Reco-20170905T162621.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_6/prodgenie_sbnd_GenieGen-20170905T141732_e182a5b5-8e0e-4e2a-a0f5-ceabd0729cb7_G4-20170905T143221_DetSim-20170905T151310_Reco-20170905T163408.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_6/prodgenie_sbnd_GenieGen-20170905T141732_e182a5b5-8e0e-4e2a-a0f5-ceabd0729cb7_G4-20170905T143221_DetSim-20170905T151310_Reco-20170905T163408.root"
+ ------ Primary ------ 
+ Truth primary 
+174.547, 141.729, 304.158
+ True primary 
+-26.8251, 141.622, 304.272
+ This track 
+-26.8467, 141.613, 304.251
+ ---- Non-primary ---- 
+ Truth primary 
+174.547, 141.729, 304.158
+ True primary 
+-26.8251, 141.622, 304.272
+ This track 
+-35.1302, 148.159, 421.184
+ ---- Non-primary ---- 
+ Truth primary 
+174.547, 141.729, 304.158
+ True primary 
+-26.8251, 141.622, 304.272
+ This track 
+-26.3311, 141.827, 304.756
+ ------ Primary ------ 
+ Truth primary 
+175.297, -169.319, 178.699
+ True primary 
+-24.9418, -169.186, 178.543
+ This track 
+-24.9141, -169.147, 178.519
+ ---- Non-primary ---- 
+ Truth primary 
+175.297, -169.319, 178.699
+ True primary 
+-24.9418, -169.186, 178.543
+ This track 
+-25.4252, -169.853, 178.95
+ ------ Primary ------ 
+ Truth primary 
+-152.021, -198.946, 466.938
+ True primary 
+35.308, -178.747, 495.805
+ This track 
+35.308, -178.747, 495.805
+ ------ Primary ------ 
+ Truth primary 
+159.732, 176.778, 176.811
+ True primary 
+-34.9149, 175.061, 193.356
+ This track 
+-34.9149, 175.061, 193.356
+ ------ Primary ------ 
+ Truth primary 
+187.39, -187.605, 315.846
+ True primary 
+-13.1065, -187.593, 315.805
+ This track 
+-13.1131, -187.593, 315.797
+ ---- Non-primary ---- 
+ Truth primary 
+187.39, -187.605, 315.846
+ True primary 
+-13.1065, -187.593, 315.805
+ This track 
+-12.7942, -187.602, 316.197
+ ---- Non-primary ---- 
+ Truth primary 
+169.721, -32.0506, 256.764
+ True primary 
+-30.6994, -32.0646, 257.375
+ This track 
+-34.7708, -33.6139, 257.167
+ ------ Primary ------ 
+ Truth primary 
+169.721, -32.0506, 256.764
+ True primary 
+-30.6994, -32.0646, 257.375
+ This track 
+-30.6994, -32.0646, 257.375
+ ------ Primary ------ 
+ Truth primary 
+44.7174, -92.2691, 31.6417
+ True primary 
+-26.9394, 10.532, 158.002
+ This track 
+-26.9394, 10.532, 158.002
+ ---- Non-primary ---- 
+ Truth primary 
+179.04, -13.9623, 201.054
+ True primary 
+-20.989, -14.0475, 201.951
+ This track 
+-15.9975, -10.4904, 220.167
+ ---- Non-primary ---- 
+ Truth primary 
+179.04, -13.9623, 201.054
+ True primary 
+-20.989, -14.0475, 201.951
+ This track 
+-4.5244, -16.0383, 206.459
+ ---- Non-primary ---- 
+ Truth primary 
+179.04, -13.9623, 201.054
+ True primary 
+-20.989, -14.0475, 201.951
+ This track 
+-30.6828, -15.4492, 233.323
+ ---- Non-primary ---- 
+ Truth primary 
+179.04, -13.9623, 201.054
+ True primary 
+-20.989, -14.0475, 201.951
+ This track 
+-21.5123, -15.2335, 200.591
+ ------ Primary ------ 
+ Truth primary 
+179.04, -13.9623, 201.054
+ True primary 
+-20.989, -14.0475, 201.951
+ This track 
+-20.989, -14.0475, 201.951
+ ---- Non-primary ---- 
+ Truth primary 
+179.04, -13.9623, 201.054
+ True primary 
+-20.989, -14.0475, 201.951
+ This track 
+-22.9242, -14.4909, 228.281
+ ------ Primary ------ 
+ Truth primary 
+172.528, 133.745, 374.566
+ True primary 
+-27.6343, 133.878, 374.532
+ This track 
+-27.6343, 133.878, 374.532
+ ------ Primary ------ 
+ Truth primary 
+-54.0711, 29.689, 404.613
+ True primary 
+34.9982, -57.1608, 499.593
+ This track 
+34.9982, -57.1608, 499.593
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_6/prodgenie_sbnd_GenieGen-20170905T141732_e182a5b5-8e0e-4e2a-a0f5-ceabd0729cb7_G4-20170905T143221_DetSim-20170905T151310_Reco-20170905T163408.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_7/prodgenie_sbnd_GenieGen-20170905T141917_55a88b2a-e258-47c0-8ab7-14869a783b15_G4-20170905T143121_DetSim-20170905T151602_Reco-20170905T163011.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_7/prodgenie_sbnd_GenieGen-20170905T141917_55a88b2a-e258-47c0-8ab7-14869a783b15_G4-20170905T143121_DetSim-20170905T151602_Reco-20170905T163011.root"
+ ------ Primary ------ 
+ Truth primary 
+-137.876, 41.3156, 194.802
+ True primary 
+35.0262, 18.3984, 254.903
+ This track 
+35.0262, 18.3984, 254.903
+ ------ Primary ------ 
+ Truth primary 
+169.499, 78.3275, 100.962
+ True primary 
+-30.5326, 78.2445, 101.101
+ This track 
+-30.5326, 78.2445, 101.101
+ ---- Non-primary ---- 
+ Truth primary 
+169.499, 78.3275, 100.962
+ True primary 
+-30.5326, 78.2445, 101.101
+ This track 
+-23.4903, 74.9718, 114.635
+ ------ Primary ------ 
+ Truth primary 
+105.533, -71.7502, 10.726
+ True primary 
+-35.0025, -24.8421, 22.3429
+ This track 
+-35.0025, -24.8421, 22.3429
+ ------ Primary ------ 
+ Truth primary 
+179.427, -157.738, 346.022
+ True primary 
+-20.7437, -157.648, 345.93
+ This track 
+-20.7437, -157.648, 345.93
+ ------ Primary ------ 
+ Truth primary 
+-127.43, 84.1754, 464.914
+ True primary 
+34.9243, 116.244, 478.304
+ This track 
+34.9243, 116.244, 478.304
+ ------ Primary ------ 
+ Truth primary 
+-192.657, 158.706, 408.471
+ True primary 
+7.68681, 159.118, 408.479
+ This track 
+7.68681, 159.118, 408.479
+ ---- Non-primary ---- 
+ Truth primary 
+-192.657, 158.706, 408.471
+ True primary 
+7.68681, 159.118, 408.479
+ This track 
+1.61756, 155.092, 404.176
+ ------ Primary ------ 
+ Truth primary 
+192.269, -62.1647, 71.7693
+ True primary 
+-8.19076, -61.9165, 72.5516
+ This track 
+-8.19076, -61.9165, 72.5516
+ ---- Non-primary ---- 
+ Truth primary 
+192.269, -62.1647, 71.7693
+ True primary 
+-8.19076, -61.9165, 72.5516
+ This track 
+-8.15926, -59.9456, 65.2492
+ ------ Primary ------ 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-3.93074, -51.0952, 448.791
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-4.16295, -58.2635, 460.73
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-11.2253, -66.8556, 472.806
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-4.53769, -47.9427, 468.784
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-5.62538, -49.697, 479.489
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-4.15162, -61.4289, 460.213
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-9.29429, -90.0365, 498.938
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-17.2644, -84.0815, 496.74
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-4.60861, -61.1567, 461.366
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-4.03191, -60.6257, 458.854
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-4.58765, -48.728, 468.501
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-8.82579, -53.7223, 474.149
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-15.0789, -78.3576, 485.964
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-14.6736, -78.5427, 486.618
+ ---- Non-primary ---- 
+ Truth primary 
+196.129, -51.3625, 448.729
+ True primary 
+-3.93074, -51.0952, 448.791
+ This track 
+-11.646, -55.5439, 481.8
+ ---- Non-primary ---- 
+ Truth primary 
+-182.231, -198.498, 258.85
+ True primary 
+18.8449, -197.364, 259.082
+ This track 
+9.14216, -131.027, 241.751
+ ---- Non-primary ---- 
+ Truth primary 
+-182.231, -198.498, 258.85
+ True primary 
+18.8449, -197.364, 259.082
+ This track 
+12.7327, -191.858, 263.907
+ ------ Primary ------ 
+ Truth primary 
+-182.231, -198.498, 258.85
+ True primary 
+18.8449, -197.364, 259.082
+ This track 
+19.0914, -197.715, 258.878
+ ---- Non-primary ---- 
+ Truth primary 
+-182.231, -198.498, 258.85
+ True primary 
+18.8449, -197.364, 259.082
+ This track 
+9.45169, -130.651, 243.483
+ ------ Primary ------ 
+ Truth primary 
+-182.231, -198.498, 258.85
+ True primary 
+18.8449, -197.364, 259.082
+ This track 
+18.7, -197.301, 259.182
+ ---- Non-primary ---- 
+ Truth primary 
+-182.231, -198.498, 258.85
+ True primary 
+18.8449, -197.364, 259.082
+ This track 
+19.3199, -183.296, 307.51
+ ------ Primary ------ 
+ Truth primary 
+155.049, 144.178, 481.625
+ True primary 
+-1.61715, 108.235, 469.728
+ This track 
+-1.61715, 108.235, 469.728
+ ------ Primary ------ 
+ Truth primary 
+127.396, -110.385, 131.355
+ True primary 
+-34.8964, -102.525, 182.485
+ This track 
+-34.8964, -102.525, 182.485
+ ------ Primary ------ 
+ Truth primary 
+-152.816, 2.31019, 360.63
+ True primary 
+34.96, -1.17127, 360.092
+ This track 
+34.96, -1.17127, 360.092
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_7/prodgenie_sbnd_GenieGen-20170905T141917_55a88b2a-e258-47c0-8ab7-14869a783b15_G4-20170905T143121_DetSim-20170905T151602_Reco-20170905T163011.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_8/prodgenie_sbnd_GenieGen-20170905T141807_1b25e668-4a63-4a74-8096-a5ffb3ca0209_G4-20170905T143124_DetSim-20170905T151334_Reco-20170905T163039.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_8/prodgenie_sbnd_GenieGen-20170905T141807_1b25e668-4a63-4a74-8096-a5ffb3ca0209_G4-20170905T143124_DetSim-20170905T151334_Reco-20170905T163039.root"
+ ------ Primary ------ 
+ Truth primary 
+-98.322, -4.57605, 313.365
+ True primary 
+34.9708, -66.0269, 462.609
+ This track 
+34.9708, -66.0269, 462.609
+ ------ Primary ------ 
+ Truth primary 
+197.128, -31.5024, 294.603
+ True primary 
+-3.83907, -31.5219, 294.893
+ This track 
+-3.83907, -31.5219, 294.893
+ ------ Primary ------ 
+ Truth primary 
+171.34, -22.3237, 101.18
+ True primary 
+-29.935, -21.9329, 100.116
+ This track 
+-29.9344, -21.9061, 100.163
+ ---- Non-primary ---- 
+ Truth primary 
+171.34, -22.3237, 101.18
+ True primary 
+-29.935, -21.9329, 100.116
+ This track 
+-29.9218, -21.388, 101.062
+ ------ Primary ------ 
+ Truth primary 
+159.898, 145.18, 228.554
+ True primary 
+-34.4343, 144.884, 236.622
+ This track 
+-34.4343, 144.884, 236.622
+ ------ Primary ------ 
+ Truth primary 
+174.726, -148.364, 483.86
+ True primary 
+-23.158, -149.701, 483.797
+ This track 
+-23.158, -149.701, 483.797
+ ------ Primary ------ 
+ Truth primary 
+-190.964, -125.423, 490.776
+ True primary 
+34.236, -88.3428, 483.465
+ This track 
+34.236, -88.3428, 483.465
+ ------ Primary ------ 
+ Truth primary 
+-184.087, -52.1186, 302.853
+ True primary 
+17.3191, -52.1405, 302.464
+ This track 
+17.3191, -52.1405, 302.464
+ ------ Primary ------ 
+ Truth primary 
+-82.524, 44.1862, 59.3172
+ True primary 
+35.0254, 131.711, 238.624
+ This track 
+35.0254, 131.711, 238.624
+ ------ Primary ------ 
+ Truth primary 
+-168.328, 138.512, 119.598
+ True primary 
+32.6361, 138.365, 119.593
+ This track 
+32.5641, 138.568, 119.811
+ ------ Primary ------ 
+ Truth primary 
+-168.328, 138.512, 119.598
+ True primary 
+32.6361, 138.365, 119.593
+ This track 
+32.7207, 138.145, 119.681
+ ------ Primary ------ 
+ Truth primary 
+77.8558, 13.1552, 376.608
+ True primary 
+-34.8843, -21.3445, 418.87
+ This track 
+-34.8843, -21.3445, 418.87
+ ------ Primary ------ 
+ Truth primary 
+-99.2982, 66.2773, 218.867
+ True primary 
+34.872, 75.3071, 221.148
+ This track 
+34.872, 75.3071, 221.148
+ ------ Primary ------ 
+ Truth primary 
+163.46, -118.056, 331.272
+ True primary 
+-34.74, -118.808, 336.382
+ This track 
+-34.74, -118.808, 336.382
+ ---- Non-primary ---- 
+ Truth primary 
+-163.168, -84.8243, 183.437
+ True primary 
+35.0577, -82.0102, 185.226
+ This track 
+35.3989, -89.3599, 192.106
+ ------ Primary ------ 
+ Truth primary 
+-163.168, -84.8243, 183.437
+ True primary 
+35.0577, -82.0102, 185.226
+ This track 
+35.0577, -82.0102, 185.226
+ ------ Primary ------ 
+ Truth primary 
+-188.48, -160.662, 71.8356
+ True primary 
+12.9189, -164.951, 70.0668
+ This track 
+12.9189, -164.951, 70.0668
+ ---- Non-primary ---- 
+ Truth primary 
+-188.48, -160.662, 71.8356
+ True primary 
+12.9189, -164.951, 70.0668
+ This track 
+13.9018, -183.373, 111.87
+ ------ Primary ------ 
+ Truth primary 
+-131.265, 86.936, 260.22
+ True primary 
+34.8894, 106.085, 363.298
+ This track 
+34.8894, 106.085, 363.298
+Begin processing the 900th record. run: 1 subRun: 188 event: 18800 at 10-Oct-2017 12:53:56 CDT
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_8/prodgenie_sbnd_GenieGen-20170905T141807_1b25e668-4a63-4a74-8096-a5ffb3ca0209_G4-20170905T143124_DetSim-20170905T151334_Reco-20170905T163039.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_9/prodgenie_sbnd_GenieGen-20170905T141824_37ff802b-834f-4919-b348-bbd06d499c15_G4-20170905T143118_DetSim-20170905T151314_Reco-20170905T163002.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_9/prodgenie_sbnd_GenieGen-20170905T141824_37ff802b-834f-4919-b348-bbd06d499c15_G4-20170905T143118_DetSim-20170905T151314_Reco-20170905T163002.root"
+ ---- Non-primary ---- 
+ Truth primary 
+155.493, 45.452, 91.6825
+ True primary 
+-23.9062, 24.2873, 59.0589
+ This track 
+-19.2095, 23.1909, 56.0245
+ ---- Non-primary ---- 
+ Truth primary 
+155.493, 45.452, 91.6825
+ True primary 
+-23.9062, 24.2873, 59.0589
+ This track 
+-23.0667, 23.732, 59.6664
+ ---- Non-primary ---- 
+ Truth primary 
+-173.864, 27.1489, 388.949
+ True primary 
+27.6197, 27.0602, 389.1
+ This track 
+2.62044, 3.63112, 384.607
+ ---- Non-primary ---- 
+ Truth primary 
+-173.864, 27.1489, 388.949
+ True primary 
+27.6197, 27.0602, 389.1
+ This track 
+27.4591, 27.6292, 389.972
+ ---- Non-primary ---- 
+ Truth primary 
+-126.302, 19.4254, 309.16
+ True primary 
+35.0297, -17.9684, 388.681
+ This track 
+34.4721, -18.4123, 390.668
+ ------ Primary ------ 
+ Truth primary 
+-126.302, 19.4254, 309.16
+ True primary 
+35.0297, -17.9684, 388.681
+ This track 
+35.0297, -17.9684, 388.681
+ ------ Primary ------ 
+ Truth primary 
+-112.395, 129.507, 296.306
+ True primary 
+23.2613, 146.786, 294.899
+ This track 
+23.3011, 146.776, 294.903
+ ---- Non-primary ---- 
+ Truth primary 
+-112.395, 129.507, 296.306
+ True primary 
+23.2613, 146.786, 294.899
+ This track 
+24.8754, 146.376, 295.074
+ ------ Primary ------ 
+ Truth primary 
+168.524, 155.464, 352.088
+ True primary 
+-32.6092, 155.588, 352.142
+ This track 
+-32.5989, 155.561, 352.024
+ ------ Primary ------ 
+ Truth primary 
+168.524, 155.464, 352.088
+ True primary 
+-32.6092, 155.588, 352.142
+ This track 
+-32.6333, 155.652, 352.418
+ ------ Primary ------ 
+ Truth primary 
+-123.404, 8.65873, 38.1735
+ True primary 
+1.67488, 3.7134, 21.0487
+ This track 
+1.67488, 3.7134, 21.0487
+ ------ Primary ------ 
+ Truth primary 
+183.997, 100.313, 428.563
+ True primary 
+-35.017, 83.8443, 411.453
+ This track 
+-35.017, 83.8443, 411.453
+ ------ Primary ------ 
+ Truth primary 
+161.924, -158.888, 184.203
+ True primary 
+-34.8077, -163.197, 194.711
+ This track 
+-34.8077, -163.197, 194.711
+ ------ Primary ------ 
+ Truth primary 
+-82.9577, 96.8909, 36.0964
+ True primary 
+35.0913, 61.8834, 110.098
+ This track 
+35.0913, 61.8834, 110.098
+ ---- Non-primary ---- 
+ Truth primary 
+183.455, -108.582, 330.217
+ True primary 
+-17.3477, -108.5, 330.078
+ This track 
+-1.84982, -137.441, 326.294
+ ------ Primary ------ 
+ Truth primary 
+183.455, -108.582, 330.217
+ True primary 
+-17.3477, -108.5, 330.078
+ This track 
+-17.3477, -108.5, 330.078
+ ---- Non-primary ---- 
+ Truth primary 
+183.455, -108.582, 330.217
+ True primary 
+-17.3477, -108.5, 330.078
+ This track 
+-12.8654, -92.9672, 341.33
+ ---- Non-primary ---- 
+ Truth primary 
+183.455, -108.582, 330.217
+ True primary 
+-17.3477, -108.5, 330.078
+ This track 
+-18.0366, -109.048, 329.882
+ ---- Non-primary ---- 
+ Truth primary 
+183.455, -108.582, 330.217
+ True primary 
+-17.3477, -108.5, 330.078
+ This track 
+-17.7371, -108.811, 330.926
+ ------ Primary ------ 
+ Truth primary 
+-191.777, -122.937, 121.049
+ True primary 
+8.07609, -122.953, 121.506
+ This track 
+8.07609, -122.953, 121.506
+ ------ Primary ------ 
+ Truth primary 
+172.428, -155.923, 123.14
+ True primary 
+-27.9781, -156.011, 122.984
+ This track 
+-28.0341, -155.951, 123.075
+ ------ Primary ------ 
+ Truth primary 
+172.428, -155.923, 123.14
+ True primary 
+-27.9781, -156.011, 122.984
+ This track 
+-28.1364, -155.842, 123.241
+ ------ Primary ------ 
+ Truth primary 
+-165.477, 54.2369, 107.944
+ True primary 
+35.0525, 55.4266, 107.128
+ This track 
+35.0525, 55.4266, 107.128
+ ---- Non-primary ---- 
+ Truth primary 
+-165.477, 54.2369, 107.944
+ True primary 
+35.0525, 55.4266, 107.128
+ This track 
+18.7307, -68.8053, 163.079
+ ------ Primary ------ 
+ Truth primary 
+119.082, 60.0999, 76.7268
+ True primary 
+-34.7965, 57.8442, 202.632
+ This track 
+-34.7965, 57.8442, 202.632
+ ------ Primary ------ 
+ Truth primary 
+-137.056, 33.926, 360.744
+ True primary 
+2.155, 23.1351, 294.732
+ This track 
+2.155, 23.1351, 294.732
+ ------ Primary ------ 
+ Truth primary 
+-138.806, 116.86, 17.3178
+ True primary 
+34.8134, 124.012, 98.1282
+ This track 
+34.8134, 124.012, 98.1282
+ ------ Primary ------ 
+ Truth primary 
+-114.354, 134.474, 361.654
+ True primary 
+34.9798, 148.018, 394.269
+ This track 
+34.9798, 148.018, 394.269
+ ------ Primary ------ 
+ Truth primary 
+124.279, -108.167, 447.088
+ True primary 
+-11.3983, -107.532, 429.962
+ This track 
+-11.3983, -107.532, 429.962
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_9/prodgenie_sbnd_GenieGen-20170905T141824_37ff802b-834f-4919-b348-bbd06d499c15_G4-20170905T143118_DetSim-20170905T151314_Reco-20170905T163002.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_10/prodgenie_sbnd_GenieGen-20170905T141415_d4b19266-57c7-41f4-bf52-1dadf2637c4c_G4-20170905T143409_DetSim-20170905T151413_Reco-20170905T163224.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_10/prodgenie_sbnd_GenieGen-20170905T141415_d4b19266-57c7-41f4-bf52-1dadf2637c4c_G4-20170905T143409_DetSim-20170905T151413_Reco-20170905T163224.root"
+ ------ Primary ------ 
+ Truth primary 
+91.1515, 104.877, 38.3699
+ True primary 
+-34.9428, 159.755, 121.499
+ This track 
+-34.9428, 159.755, 121.499
+ ---- Non-primary ---- 
+ Truth primary 
+-172.027, 27.8481, 53.2715
+ True primary 
+28.7669, 27.1736, 54.0255
+ This track 
+28.9521, 26.0778, 53.4703
+ ---- Non-primary ---- 
+ Truth primary 
+-172.027, 27.8481, 53.2715
+ True primary 
+28.7669, 27.1736, 54.0255
+ This track 
+29.0434, 25.5373, 53.1964
+ ---- Non-primary ---- 
+ Truth primary 
+-172.027, 27.8481, 53.2715
+ True primary 
+28.7669, 27.1736, 54.0255
+ This track 
+25.8297, 30.8117, 65.5436
+ ------ Primary ------ 
+ Truth primary 
+174.464, 102.619, 32.3141
+ True primary 
+-26.2833, 102.932, 32.7147
+ This track 
+-26.2833, 102.932, 32.7147
+ ---- Non-primary ---- 
+ Truth primary 
+174.464, 102.619, 32.3141
+ True primary 
+-26.2833, 102.932, 32.7147
+ This track 
+-34.7981, 108.497, 74.7498
+ ---- Non-primary ---- 
+ Truth primary 
+174.464, 102.619, 32.3141
+ True primary 
+-26.2833, 102.932, 32.7147
+ This track 
+-25.1664, 101.176, 32.3807
+ ---- Non-primary ---- 
+ Truth primary 
+174.464, 102.619, 32.3141
+ True primary 
+-26.2833, 102.932, 32.7147
+ This track 
+-25.5811, 105.445, 33.9725
+ ---- Non-primary ---- 
+ Truth primary 
+174.464, 102.619, 32.3141
+ True primary 
+-26.2833, 102.932, 32.7147
+ This track 
+-26.4442, 104.895, 32.8769
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-24.6928, -12.5762, 125.406
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-27.9421, -41.2359, 77.6885
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-25.5001, -17.698, 114.892
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-22.4792, -13.1142, 116.189
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-21.668, -11.5608, 117.095
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-29.2031, -43.9317, 81.0811
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-24.147, -49.0203, 72.0319
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-27.0601, -44.133, 82.921
+ ---- Non-primary ---- 
+ Truth primary 
+175.645, -18.3384, 113.959
+ True primary 
+-24.742, -17.4305, 114.508
+ This track 
+-29.1527, -44.6407, 79.5371
+ ---- Non-primary ---- 
+ Truth primary 
+191.021, 127.746, 101.806
+ True primary 
+-9.97699, 127.495, 101.994
+ This track 
+-9.94922, 128.022, 102.095
+ ------ Primary ------ 
+ Truth primary 
+191.021, 127.746, 101.806
+ True primary 
+-9.97699, 127.495, 101.994
+ This track 
+-9.97915, 127.514, 101.959
+ ------ Primary ------ 
+ Truth primary 
+-165.788, -27.904, 46.3948
+ True primary 
+34.3656, -28.0761, 46.3859
+ This track 
+34.3656, -28.0761, 46.3859
+ ---- Non-primary ---- 
+ Truth primary 
+-175.463, 23.3734, 24.5391
+ True primary 
+24.84, 23.9777, 23.223
+ This track 
+24.6359, 24.0454, 22.744
+ ---- Non-primary ---- 
+ Truth primary 
+-175.463, 23.3734, 24.5391
+ True primary 
+24.84, 23.9777, 23.223
+ This track 
+25.4118, 23.7882, 24.5651
+ ---- Non-primary ---- 
+ Truth primary 
+-175.463, 23.3734, 24.5391
+ True primary 
+24.84, 23.9777, 23.223
+ This track 
+24.1104, 25.889, 26.1899
+10-Oct-2017 12:53:56 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_10/prodgenie_sbnd_GenieGen-20170905T141415_d4b19266-57c7-41f4-bf52-1dadf2637c4c_G4-20170905T143409_DetSim-20170905T151413_Reco-20170905T163224.root"
+10-Oct-2017 12:53:56 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_11/prodgenie_sbnd_GenieGen-20170905T141849_cd348104-e09f-4e4a-8722-06d390375044_G4-20170905T143119_DetSim-20170905T151610_Reco-20170905T163534.root"
+10-Oct-2017 12:53:56 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_11/prodgenie_sbnd_GenieGen-20170905T141849_cd348104-e09f-4e4a-8722-06d390375044_G4-20170905T143119_DetSim-20170905T151610_Reco-20170905T163534.root"
+ ------ Primary ------ 
+ Truth primary 
+-145.403, 34.7308, 189.691
+ True primary 
+34.7291, 23.5003, 209.094
+ This track 
+34.7291, 23.5003, 209.094
+ ------ Primary ------ 
+ Truth primary 
+103.561, 66.5324, 129.216
+ True primary 
+-30.676, 84.5934, 147.219
+ This track 
+-30.676, 84.5934, 147.219
+ ---- Non-primary ---- 
+ Truth primary 
+103.561, 66.5324, 129.216
+ True primary 
+-30.676, 84.5934, 147.219
+ This track 
+-32.6377, 84.4374, 155.856
+ ------ Primary ------ 
+ Truth primary 
+-146.13, 59.2319, 200.173
+ True primary 
+34.9513, 55.6805, 215.303
+ This track 
+34.9513, 55.6805, 215.303
+ ------ Primary ------ 
+ Truth primary 
+-195.596, 157.649, 281.406
+ True primary 
+5.98053, 157.782, 281.376
+ This track 
+6.01511, 157.807, 281.432
+ ---- Non-primary ---- 
+ Truth primary 
+-195.596, 157.649, 281.406
+ True primary 
+5.98053, 157.782, 281.376
+ This track 
+4.78894, 157.242, 282.006
+ ------ Primary ------ 
+ Truth primary 
+166.751, -70.065, 406.704
+ True primary 
+-34.4988, -69.9903, 406.705
+ This track 
+-34.4988, -69.9903, 406.705
+ ---- Non-primary ---- 
+ Truth primary 
+166.751, -70.065, 406.704
+ True primary 
+-34.4988, -69.9903, 406.705
+ This track 
+-30.9461, -68.8735, 411.898
+ ---- Non-primary ---- 
+ Truth primary 
+166.751, -70.065, 406.704
+ True primary 
+-34.4988, -69.9903, 406.705
+ This track 
+-8.63473, -73.9688, 336.715
+ ------ Primary ------ 
+ Truth primary 
+155.997, -155.798, 175.505
+ True primary 
+-34.9736, -160.196, 182.811
+ This track 
+-34.9736, -160.196, 182.811
+ ------ Primary ------ 
+ Truth primary 
+130.086, -35.7509, 0.497089
+ True primary 
+-35.1048, -13.5708, 76.1871
+ This track 
+-35.1048, -13.5708, 76.1871
+ ------ Primary ------ 
+ Truth primary 
+-80.4917, -128.802, 283.004
+ True primary 
+20.2818, -114.827, 226.198
+ This track 
+20.2818, -114.827, 226.198
+ ------ Primary ------ 
+ Truth primary 
+171.879, 149.911, 425.933
+ True primary 
+-28.6962, 149.78, 426.013
+ This track 
+-28.4917, 149.912, 426.183
+ ---- Non-primary ---- 
+ Truth primary 
+171.879, 149.911, 425.933
+ True primary 
+-28.6962, 149.78, 426.013
+ This track 
+-28.7257, 149.93, 426.53
+ ------ Primary ------ 
+ Truth primary 
+99.0711, -125.629, 13.9322
+ True primary 
+-34.7787, -198.706, 179.427
+ This track 
+-34.7787, -198.706, 179.427
+ ------ Primary ------ 
+ Truth primary 
+-178.623, 40.9861, 484.364
+ True primary 
+21.3506, 40.8834, 484.237
+ This track 
+21.3739, 40.7084, 484.245
+ ------ Primary ------ 
+ Truth primary 
+-178.623, 40.9861, 484.364
+ True primary 
+21.3506, 40.8834, 484.237
+ This track 
+21.2922, 41.2018, 484.274
+ ---- Non-primary ---- 
+ Truth primary 
+-178.623, 40.9861, 484.364
+ True primary 
+21.3506, 40.8834, 484.237
+ This track 
+20.92, 41.5046, 484.669
+ ------ Primary ------ 
+ Truth primary 
+139.815, 173.84, 158.159
+ True primary 
+-34.7241, 109.255, 278.402
+ This track 
+-34.7241, 109.255, 278.402
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_11/prodgenie_sbnd_GenieGen-20170905T141849_cd348104-e09f-4e4a-8722-06d390375044_G4-20170905T143119_DetSim-20170905T151610_Reco-20170905T163534.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_12/prodgenie_sbnd_GenieGen-20170905T141825_7e21e5e6-35bc-4fa2-87f9-10a5e1df085d_G4-20170905T143106_DetSim-20170905T151231_Reco-20170905T162747.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_12/prodgenie_sbnd_GenieGen-20170905T141825_7e21e5e6-35bc-4fa2-87f9-10a5e1df085d_G4-20170905T143106_DetSim-20170905T151231_Reco-20170905T162747.root"
+ ------ Primary ------ 
+ Truth primary 
+-150.53, 157.481, 454.564
+ True primary 
+1.90362, 188.741, 444.435
+ This track 
+1.90362, 188.741, 444.435
+ ------ Primary ------ 
+ Truth primary 
+171.663, -27.8937, 109.991
+ True primary 
+-29.1299, -27.9361, 110.433
+ This track 
+-29.1299, -27.9361, 110.433
+ ---- Non-primary ---- 
+ Truth primary 
+172.685, -125.566, 333.311
+ True primary 
+-28.1425, -137.334, 332.691
+ This track 
+-28.5532, -198.238, 207.81
+ ---- Non-primary ---- 
+ Truth primary 
+172.685, -125.566, 333.311
+ True primary 
+-28.1425, -137.334, 332.691
+ This track 
+-28.8629, -125.43, 333.355
+ ---- Non-primary ---- 
+ Truth primary 
+172.685, -125.566, 333.311
+ True primary 
+-28.1425, -137.334, 332.691
+ This track 
+-25.0131, -145.017, 443.931
+ ---- Non-primary ---- 
+ Truth primary 
+172.685, -125.566, 333.311
+ True primary 
+-28.1425, -137.334, 332.691
+ This track 
+-26.0702, -129.978, 383.197
+ ---- Non-primary ---- 
+ Truth primary 
+172.685, -125.566, 333.311
+ True primary 
+-28.1425, -137.334, 332.691
+ This track 
+-26.7575, -135.779, 387.587
+ ------ Primary ------ 
+ Truth primary 
+199.909, 170.097, 33.8108
+ True primary 
+-1.42712, 169.155, 33.011
+ This track 
+-1.42593, 169.157, 33.0119
+ ---- Non-primary ---- 
+ Truth primary 
+199.909, 170.097, 33.8108
+ True primary 
+-1.42712, 169.155, 33.011
+ This track 
+-1.49155, 171.058, 34.5142
+ ------ Primary ------ 
+ Truth primary 
+-152.285, 43.2697, 101.281
+ True primary 
+34.8587, 119.893, 138.356
+ This track 
+34.8587, 119.893, 138.356
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-21.2497, -2.23347, 59.8903
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-20.7037, -2.41768, 60.8912
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-20.8458, -4.28958, 62.3761
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-1.21867, 17.3217, 31.16
+ ------ Primary ------ 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-28.7779, 15.9336, 39.3516
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-20.9114, -1.01339, 58.7923
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-26.5292, 16.6272, 39.979
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-25.1803, 6.03778, 50.4122
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-22.2753, 2.02593, 54.4923
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-20.3255, -3.37688, 61.5128
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-9.71746, -14.0411, 73.8437
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-13.9315, -3.9625, 63.3013
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-4.22839, -32.0812, 91.7925
+ ---- Non-primary ---- 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-20.3701, -2.45979, 60.8869
+ ------ Primary ------ 
+ Truth primary 
+169.544, 15.5599, 39.1383
+ True primary 
+-28.7779, 15.9336, 39.3516
+ This track 
+-29.0373, 15.8356, 39.3036
+ ------ Primary ------ 
+ Truth primary 
+-191.766, 78.1788, 329.999
+ True primary 
+9.3866, 77.9629, 330.297
+ This track 
+9.3866, 77.9629, 330.297
+ ---- Non-primary ---- 
+ Truth primary 
+-191.766, 78.1788, 329.999
+ True primary 
+9.3866, 77.9629, 330.297
+ This track 
+2.53663, 78.6242, 334.766
+ ---- Non-primary ---- 
+ Truth primary 
+-151.341, -19.905, 462.671
+ True primary 
+32.0368, -35.1288, 441.301
+ This track 
+11.6311, -72.9657, 424.305
+ ---- Non-primary ---- 
+ Truth primary 
+-151.341, -19.905, 462.671
+ True primary 
+32.0368, -35.1288, 441.301
+ This track 
+31.8123, -41.8594, 443.779
+ ------ Primary ------ 
+ Truth primary 
+-151.341, -19.905, 462.671
+ True primary 
+32.0368, -35.1288, 441.301
+ This track 
+32.0368, -35.1288, 441.301
+ ---- Non-primary ---- 
+ Truth primary 
+-151.341, -19.905, 462.671
+ True primary 
+32.0368, -35.1288, 441.301
+ This track 
+30.4562, -44.6539, 442.238
+ ------ Primary ------ 
+ Truth primary 
+186.146, -24.2483, 238.361
+ True primary 
+-14.402, -24.3873, 239.045
+ This track 
+-14.4104, -24.4144, 238.932
+ ------ Primary ------ 
+ Truth primary 
+186.146, -24.2483, 238.361
+ True primary 
+-14.402, -24.3873, 239.045
+ This track 
+-14.3973, -24.372, 239.108
+ ------ Primary ------ 
+ Truth primary 
+170.959, 65.5257, 81.6623
+ True primary 
+-29.7658, 65.5603, 81.6468
+ This track 
+-29.8452, 65.5712, 81.604
+ ------ Primary ------ 
+ Truth primary 
+170.959, 65.5257, 81.6623
+ True primary 
+-29.7658, 65.5603, 81.6468
+ This track 
+-29.8788, 65.5801, 81.7589
+ ------ Primary ------ 
+ Truth primary 
+177.213, 157.665, 481.625
+ True primary 
+-23.8578, 158.03, 481.637
+ This track 
+-23.8578, 158.03, 481.637
+ ---- Non-primary ---- 
+ Truth primary 
+177.213, 157.665, 481.625
+ True primary 
+-23.8578, 158.03, 481.637
+ This track 
+-35.0232, 175.365, 480.309
+ ---- Non-primary ---- 
+ Truth primary 
+177.213, 157.665, 481.625
+ True primary 
+-23.8578, 158.03, 481.637
+ This track 
+-29.2951, 166.789, 481.343
+ ------ Primary ------ 
+ Truth primary 
+98.7858, 7.31449, 301.666
+ True primary 
+-35.0943, 29.5125, 464.748
+ This track 
+-35.0943, 29.5125, 464.748
+ ------ Primary ------ 
+ Truth primary 
+-176.47, -117.37, 231.667
+ True primary 
+24.6524, -117.531, 231.808
+ This track 
+24.726, -117.253, 231.631
+ ------ Primary ------ 
+ Truth primary 
+-176.47, -117.37, 231.667
+ True primary 
+24.6524, -117.531, 231.808
+ This track 
+24.6366, -117.591, 231.846
+ ------ Primary ------ 
+ Truth primary 
+-189.374, -89.9175, 362.608
+ True primary 
+10.9251, -90.0533, 362.877
+ This track 
+10.923, -90.0494, 362.776
+ ---- Non-primary ---- 
+ Truth primary 
+-189.374, -89.9175, 362.608
+ True primary 
+10.9251, -90.0533, 362.877
+ This track 
+11.0009, -90.1972, 366.6
+ ---- Non-primary ---- 
+ Truth primary 
+-189.374, -89.9175, 362.608
+ True primary 
+10.9251, -90.0533, 362.877
+ This track 
+12.8787, -93.7224, 421.561
+ ---- Non-primary ---- 
+ Truth primary 
+-189.374, -89.9175, 362.608
+ True primary 
+10.9251, -90.0533, 362.877
+ This track 
+5.00285, -99.9224, 414.054
+ ------ Primary ------ 
+ Truth primary 
+138.675, -24.2399, 121.237
+ True primary 
+-35.1396, -41.0464, 144.523
+ This track 
+-35.1396, -41.0464, 144.523
+ ------ Primary ------ 
+ Truth primary 
+154.947, 70.5463, 244.949
+ True primary 
+-34.3499, 66.1387, 246.497
+ This track 
+-34.3499, 66.1387, 246.497
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_12/prodgenie_sbnd_GenieGen-20170905T141825_7e21e5e6-35bc-4fa2-87f9-10a5e1df085d_G4-20170905T143106_DetSim-20170905T151231_Reco-20170905T162747.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_13/prodgenie_sbnd_GenieGen-20170905T141726_09133e80-dd16-4e3d-897e-4ae00f118e9a_G4-20170905T143113_DetSim-20170905T151639_Reco-20170905T163432.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_13/prodgenie_sbnd_GenieGen-20170905T141726_09133e80-dd16-4e3d-897e-4ae00f118e9a_G4-20170905T143113_DetSim-20170905T151639_Reco-20170905T163432.root"
+ ------ Primary ------ 
+ Truth primary 
+-195.281, -30.0312, 87.3482
+ True primary 
+4.88883, -30.1053, 87.4504
+ This track 
+4.93859, -30.1798, 87.512
+ ------ Primary ------ 
+ Truth primary 
+-195.281, -30.0312, 87.3482
+ True primary 
+4.88883, -30.1053, 87.4504
+ This track 
+4.81024, -29.9878, 87.3532
+ ---- Non-primary ---- 
+ Truth primary 
+-195.281, -30.0312, 87.3482
+ True primary 
+4.88883, -30.1053, 87.4504
+ This track 
+10.0374, -37.935, 93.2825
+ ------ Primary ------ 
+ Truth primary 
+153.273, -154.685, 289.802
+ True primary 
+-34.9187, -150.113, 321.58
+ This track 
+-34.9187, -150.113, 321.58
+ ------ Primary ------ 
+ Truth primary 
+126.687, 51.3025, 296.594
+ True primary 
+-34.5732, 33.0522, 329.202
+ This track 
+-34.5732, 33.0522, 329.202
+ ------ Primary ------ 
+ Truth primary 
+-86.1552, -162.691, 200.307
+ True primary 
+28.942, -145.081, 324.622
+ This track 
+28.942, -145.081, 324.622
+ ------ Primary ------ 
+ Truth primary 
+65.7431, -140.203, 210.054
+ True primary 
+-34.8456, -168.647, 377.668
+ This track 
+-34.8456, -168.647, 377.668
+ ------ Primary ------ 
+ Truth primary 
+-191.771, 101.522, 421.642
+ True primary 
+11.8242, 84.83, 373.081
+ This track 
+11.8242, 84.83, 373.081
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_13/prodgenie_sbnd_GenieGen-20170905T141726_09133e80-dd16-4e3d-897e-4ae00f118e9a_G4-20170905T143113_DetSim-20170905T151639_Reco-20170905T163432.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_14/prodgenie_sbnd_GenieGen-20170905T141838_0bc3a15e-f4c1-47f9-a534-8c54dfd591ae_G4-20170905T143106_DetSim-20170905T151608_Reco-20170905T163550.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_14/prodgenie_sbnd_GenieGen-20170905T141838_0bc3a15e-f4c1-47f9-a534-8c54dfd591ae_G4-20170905T143106_DetSim-20170905T151608_Reco-20170905T163550.root"
+ ------ Primary ------ 
+ Truth primary 
+76.8982, 62.6758, 397.68
+ True primary 
+-35.1933, 69.3062, 472.892
+ This track 
+-35.1933, 69.3062, 472.892
+ ---- Non-primary ---- 
+ Truth primary 
+196.68, -87.7237, 190.857
+ True primary 
+-3.86949, -88.0249, 191.233
+ This track 
+-3.12845, -87.9692, 191.83
+ ---- Non-primary ---- 
+ Truth primary 
+196.68, -87.7237, 190.857
+ True primary 
+-3.86949, -88.0249, 191.233
+ This track 
+-1.04625, -85.5018, 189.52
+ ------ Primary ------ 
+ Truth primary 
+179.285, -28.4594, 120.208
+ True primary 
+-1.14434, -41.4896, 114.964
+ This track 
+-1.14434, -41.4896, 114.964
+ ---- Non-primary ---- 
+ Truth primary 
+-180.441, 50.0733, 9.7167
+ True primary 
+20.5332, 50.0805, 10.0807
+ This track 
+21.065, 50.4829, 10.8116
+ ---- Non-primary ---- 
+ Truth primary 
+-180.441, 50.0733, 9.7167
+ True primary 
+20.5332, 50.0805, 10.0807
+ This track 
+8.07803, 59.019, 7.27364
+ ------ Primary ------ 
+ Truth primary 
+-156.963, -116.534, 246.498
+ True primary 
+34.9172, -119.233, 254.684
+ This track 
+34.9172, -119.233, 254.684
+ ------ Primary ------ 
+ Truth primary 
+149.031, 82.023, 385.305
+ True primary 
+-35.2084, 94.6311, 444.979
+ This track 
+-35.2084, 94.6311, 444.979
+ ------ Primary ------ 
+ Truth primary 
+-61.2847, 183.919, 374.543
+ True primary 
+34.5606, 154.642, 494.437
+ This track 
+34.5606, 154.642, 494.437
+ ------ Primary ------ 
+ Truth primary 
+199.885, 46.5318, 369.855
+ True primary 
+-35.0821, -36.6628, 325.571
+ This track 
+-35.0821, -36.6628, 325.571
+ ------ Primary ------ 
+ Truth primary 
+-143.798, 126.315, 209.736
+ True primary 
+34.7653, 120.208, 224.735
+ This track 
+34.7653, 120.208, 224.735
+ ------ Primary ------ 
+ Truth primary 
+-186.535, -17.0169, 298.666
+ True primary 
+14.2289, -15.7735, 295.94
+ This track 
+14.2289, -15.7735, 295.94
+ ---- Non-primary ---- 
+ Truth primary 
+-186.535, -17.0169, 298.666
+ True primary 
+14.2289, -15.7735, 295.94
+ This track 
+8.54236, -2.537, 265.481
+ ------ Primary ------ 
+ Truth primary 
+-186.535, -17.0169, 298.666
+ True primary 
+14.2289, -15.7735, 295.94
+ This track 
+14.2216, -15.8296, 296.11
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_14/prodgenie_sbnd_GenieGen-20170905T141838_0bc3a15e-f4c1-47f9-a534-8c54dfd591ae_G4-20170905T143106_DetSim-20170905T151608_Reco-20170905T163550.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_15/prodgenie_sbnd_GenieGen-20170905T141639_e8ebb6b0-d999-49a2-b944-94c23f56e3e3_G4-20170905T143134_DetSim-20170905T151630_Reco-20170905T163327.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_15/prodgenie_sbnd_GenieGen-20170905T141639_e8ebb6b0-d999-49a2-b944-94c23f56e3e3_G4-20170905T143134_DetSim-20170905T151630_Reco-20170905T163327.root"
+ ------ Primary ------ 
+ Truth primary 
+-170.605, -37.1634, 150.607
+ True primary 
+29.7129, -37.3035, 150.491
+ This track 
+29.7129, -37.3035, 150.491
+ ------ Primary ------ 
+ Truth primary 
+-126.788, -102.174, 207.139
+ True primary 
+35.2208, -137.805, 378.658
+ This track 
+35.2208, -137.805, 378.658
+ ---- Non-primary ---- 
+ Truth primary 
+-126.788, -102.174, 207.139
+ True primary 
+35.2208, -137.805, 378.658
+ This track 
+27.6492, -144.988, 414.915
+ ------ Primary ------ 
+ Truth primary 
+180.852, -93.9171, 38.8469
+ True primary 
+-20.667, -93.9266, 39.0507
+ This track 
+-20.7708, -93.8877, 39.2653
+ ---- Non-primary ---- 
+ Truth primary 
+180.852, -93.9171, 38.8469
+ True primary 
+-20.667, -93.9266, 39.0507
+ This track 
+-18.9347, -95.8624, 47.9242
+ ---- Non-primary ---- 
+ Truth primary 
+180.852, -93.9171, 38.8469
+ True primary 
+-20.667, -93.9266, 39.0507
+ This track 
+-20.4329, -94.149, 40.1127
+ ------ Primary ------ 
+ Truth primary 
+169.808, -22.7431, 469.984
+ True primary 
+-30.5212, -22.7433, 470.098
+ This track 
+-30.5212, -22.7433, 470.098
+ ------ Primary ------ 
+ Truth primary 
+-152.656, -14.5946, 293.819
+ True primary 
+35.0133, -11.9606, 293.282
+ This track 
+35.0133, -11.9606, 293.282
+ ------ Primary ------ 
+ Truth primary 
+-151.669, 118.076, 362.176
+ True primary 
+34.6492, 115.443, 375.539
+ This track 
+34.6492, 115.443, 375.539
+ ------ Primary ------ 
+ Truth primary 
+192.093, -93.8548, 100.292
+ True primary 
+-8.0488, -93.7118, 100.174
+ This track 
+-7.96841, -93.8946, 100.537
+ ---- Non-primary ---- 
+ Truth primary 
+192.093, -93.8548, 100.292
+ True primary 
+-8.0488, -93.7118, 100.174
+ This track 
+-5.98854, -100.623, 114.3
+ ---- Non-primary ---- 
+ Truth primary 
+192.093, -93.8548, 100.292
+ True primary 
+-8.0488, -93.7118, 100.174
+ This track 
+-9.81158, -100.85, 118.619
+ ---- Non-primary ---- 
+ Truth primary 
+192.093, -93.8548, 100.292
+ True primary 
+-8.0488, -93.7118, 100.174
+ This track 
+-7.65455, -93.3088, 100.776
+ ------ Primary ------ 
+ Truth primary 
+108.305, -67.5527, 455.692
+ True primary 
+-35.2724, -168.128, 450.423
+ This track 
+-35.2724, -168.128, 450.423
+ ------ Primary ------ 
+ Truth primary 
+127.66, 4.58063, 11.1533
+ True primary 
+-31.657, 11.228, 41.5236
+ This track 
+-31.657, 11.228, 41.5236
+ ------ Primary ------ 
+ Truth primary 
+187.021, -158.174, 435.738
+ True primary 
+-13.1073, -158.304, 435.903
+ This track 
+-13.1073, -158.304, 435.903
+ ------ Primary ------ 
+ Truth primary 
+-152.071, -47.3713, 165.169
+ True primary 
+35.089, -66.3323, 232.907
+ This track 
+35.089, -66.3323, 232.907
+ ---- Non-primary ---- 
+ Truth primary 
+-152.071, -47.3713, 165.169
+ True primary 
+35.089, -66.3323, 232.907
+ This track 
+30.5363, -68.0612, 251.164
+ ---- Non-primary ---- 
+ Truth primary 
+-146.675, -28.1803, 100.05
+ True primary 
+34.8874, -25.1436, 115.192
+ This track 
+34.9594, 19.7853, 158.8
+ ------ Primary ------ 
+ Truth primary 
+-146.675, -28.1803, 100.05
+ True primary 
+34.8874, -25.1436, 115.192
+ This track 
+34.8874, -25.1436, 115.192
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_15/prodgenie_sbnd_GenieGen-20170905T141639_e8ebb6b0-d999-49a2-b944-94c23f56e3e3_G4-20170905T143134_DetSim-20170905T151630_Reco-20170905T163327.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_16/prodgenie_sbnd_GenieGen-20170905T141745_91c22d7f-732d-4d37-b317-6614dc771a3f_G4-20170905T143126_DetSim-20170905T151619_Reco-20170905T163333.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_16/prodgenie_sbnd_GenieGen-20170905T141745_91c22d7f-732d-4d37-b317-6614dc771a3f_G4-20170905T143126_DetSim-20170905T151619_Reco-20170905T163333.root"
+ ------ Primary ------ 
+ Truth primary 
+111.693, -88.0472, 168.517
+ True primary 
+-35.0006, -35.6563, 264.968
+ This track 
+-35.0006, -35.6563, 264.968
+ ---- Non-primary ---- 
+ Truth primary 
+-169.911, -47.9857, 21.5559
+ True primary 
+31.9165, -48.6805, 23.4739
+ This track 
+30.3441, -34.758, 5.37869
+ ------ Primary ------ 
+ Truth primary 
+-169.911, -47.9857, 21.5559
+ True primary 
+31.9165, -48.6805, 23.4739
+ This track 
+31.9165, -48.6805, 23.4739
+ ------ Primary ------ 
+ Truth primary 
+-199.912, -191.674, 56.0666
+ True primary 
+2.21075, -188.963, 58.2699
+ This track 
+2.21075, -188.963, 58.2699
+ ------ Primary ------ 
+ Truth primary 
+-187.251, 159.288, 275.848
+ True primary 
+14.2137, 159.364, 275.755
+ This track 
+14.2137, 159.364, 275.755
+ ---- Non-primary ---- 
+ Truth primary 
+-187.251, 159.288, 275.848
+ True primary 
+14.2137, 159.364, 275.755
+ This track 
+9.27017, 157.692, 271.754
+ ------ Primary ------ 
+ Truth primary 
+-199.681, 51.9001, 160.351
+ True primary 
+2.28902, 50.6951, 162.301
+ This track 
+2.28902, 50.6951, 162.301
+ ------ Primary ------ 
+ Truth primary 
+-169.938, 169.483, 446.117
+ True primary 
+30.1614, 169.551, 446.084
+ This track 
+30.1418, 169.578, 446.398
+ ------ Primary ------ 
+ Truth primary 
+-169.938, 169.483, 446.117
+ True primary 
+30.1614, 169.551, 446.084
+ This track 
+30.1614, 169.551, 446.084
+ ---- Non-primary ---- 
+ Truth primary 
+-169.938, 169.483, 446.117
+ True primary 
+30.1614, 169.551, 446.084
+ This track 
+25.6945, 165.476, 445.837
+ ------ Primary ------ 
+ Truth primary 
+36.3409, -80.5375, 95.9158
+ True primary 
+35.1238, -40.4765, 451.246
+ This track 
+35.1238, -40.4765, 451.246
+ ---- Non-primary ---- 
+ Truth primary 
+36.3409, -80.5375, 95.9158
+ True primary 
+35.1238, -40.4765, 451.246
+ This track 
+13.6621, -35.084, 491.494
+ ------ Primary ------ 
+ Truth primary 
+164.966, 166.599, 202.137
+ True primary 
+-34.7346, 166.834, 205.215
+ This track 
+-34.7346, 166.834, 205.215
+ ------ Primary ------ 
+ Truth primary 
+178, -93.0396, 48.1186
+ True primary 
+-22.2636, -93.0535, 48.1108
+ This track 
+-22.3251, -93.0215, 48.2334
+ ------ Primary ------ 
+ Truth primary 
+178, -93.0396, 48.1186
+ True primary 
+-22.2636, -93.0535, 48.1108
+ This track 
+-22.3052, -93.043, 48.0581
+ ------ Primary ------ 
+ Truth primary 
+-199.276, -30.6602, 151.772
+ True primary 
+2.4305, -30.6324, 151.852
+ This track 
+2.46861, -30.6149, 151.868
+ ------ Primary ------ 
+ Truth primary 
+-199.276, -30.6602, 151.772
+ True primary 
+2.4305, -30.6324, 151.852
+ This track 
+2.45214, -30.6882, 151.87
+ ------ Primary ------ 
+ Truth primary 
+191.717, 26.0339, 477.74
+ True primary 
+-9.51413, 26.0271, 477.774
+ This track 
+-9.57334, 26.0451, 477.95
+ ------ Primary ------ 
+ Truth primary 
+191.717, 26.0339, 477.74
+ True primary 
+-9.51413, 26.0271, 477.774
+ This track 
+-9.57926, 26.049, 477.737
+Begin processing the 1700th record. run: 1 subRun: 106 event: 10600 at 10-Oct-2017 12:53:57 CDT
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_16/prodgenie_sbnd_GenieGen-20170905T141745_91c22d7f-732d-4d37-b317-6614dc771a3f_G4-20170905T143126_DetSim-20170905T151619_Reco-20170905T163333.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_17/prodgenie_sbnd_GenieGen-20170905T141706_c047fd35-9146-4977-a9e2-bdad5196fd96_G4-20170905T143115_DetSim-20170905T151617_Reco-20170905T163614.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_17/prodgenie_sbnd_GenieGen-20170905T141706_c047fd35-9146-4977-a9e2-bdad5196fd96_G4-20170905T143115_DetSim-20170905T151617_Reco-20170905T163614.root"
+ ------ Primary ------ 
+ Truth primary 
+166.235, 21.3059, 51.8445
+ True primary 
+-34.7556, 21.5238, 50.771
+ This track 
+-34.7556, 21.5238, 50.771
+ ---- Non-primary ---- 
+ Truth primary 
+187.735, -197.651, 16.3121
+ True primary 
+-10.9936, -198.136, 16.2559
+ This track 
+-12.5837, -197.213, 17.4053
+ ---- Non-primary ---- 
+ Truth primary 
+187.735, -197.651, 16.3121
+ True primary 
+-10.9936, -198.136, 16.2559
+ This track 
+-12.9469, -196.816, 17.0089
+ ------ Primary ------ 
+ Truth primary 
+187.735, -197.651, 16.3121
+ True primary 
+-10.9936, -198.136, 16.2559
+ This track 
+-10.9936, -198.136, 16.2559
+ ------ Primary ------ 
+ Truth primary 
+-142.026, 36.2498, 45.4541
+ True primary 
+35.1846, 93.556, 107.983
+ This track 
+35.1846, 93.556, 107.983
+ ------ Primary ------ 
+ Truth primary 
+164.277, -77.8824, 115.063
+ True primary 
+-35.2598, -80.7673, 115.57
+ This track 
+-35.2598, -80.7673, 115.57
+ ---- Non-primary ---- 
+ Truth primary 
+-177.016, 191.105, 407.675
+ True primary 
+24.0992, 191.147, 407.554
+ This track 
+24.2138, 192.151, 408.78
+ ---- Non-primary ---- 
+ Truth primary 
+-177.016, 191.105, 407.675
+ True primary 
+24.0992, 191.147, 407.554
+ This track 
+24.1601, 191.68, 408.205
+ ---- Non-primary ---- 
+ Truth primary 
+195.896, 163.56, 250.95
+ True primary 
+-4.88668, 161.869, 248.342
+ This track 
+-3.89092, 168.981, 255.128
+ ------ Primary ------ 
+ Truth primary 
+195.896, 163.56, 250.95
+ True primary 
+-4.88668, 161.869, 248.342
+ This track 
+-4.88668, 161.869, 248.342
+ ---- Non-primary ---- 
+ Truth primary 
+195.896, 163.56, 250.95
+ True primary 
+-4.88668, 161.869, 248.342
+ This track 
+-3.84772, 169.744, 255.417
+ ------ Primary ------ 
+ Truth primary 
+167.356, -104.946, 202.137
+ True primary 
+-33.4663, -105.48, 205.47
+ This track 
+-33.4663, -105.48, 205.47
+ ---- Non-primary ---- 
+ Truth primary 
+167.356, -104.946, 202.137
+ True primary 
+-33.4663, -105.48, 205.47
+ This track 
+-22.2204, -120.538, 201.982
+ ---- Non-primary ---- 
+ Truth primary 
+167.356, -104.946, 202.137
+ True primary 
+-33.4663, -105.48, 205.47
+ This track 
+-35.1715, -92.6852, 202.947
+ ---- Non-primary ---- 
+ Truth primary 
+167.356, -104.946, 202.137
+ True primary 
+-33.4663, -105.48, 205.47
+ This track 
+-15.9602, -126.19, 201.6
+ ------ Primary ------ 
+ Truth primary 
+-120.834, 30.2926, 108.304
+ True primary 
+34.9508, 0.411095, 193.132
+ This track 
+34.9508, 0.411095, 193.132
+ ---- Non-primary ---- 
+ Truth primary 
+-120.834, 30.2926, 108.304
+ True primary 
+34.9508, 0.411095, 193.132
+ This track 
+26.4591, -2.35921, 209.561
+ ------ Primary ------ 
+ Truth primary 
+199.753, 89.3713, 181.964
+ True primary 
+-1.74992, 90.0773, 182.799
+ This track 
+-1.74992, 90.0773, 182.799
+ ------ Primary ------ 
+ Truth primary 
+32.4072, -166.025, 265.141
+ True primary 
+-35.1135, -97.1632, 286.044
+ This track 
+-35.1135, -97.1632, 286.044
+ ------ Primary ------ 
+ Truth primary 
+134.596, 99.2177, 237.475
+ True primary 
+-34.6617, 33.0181, 408.092
+ This track 
+-34.6617, 33.0181, 408.092
+ ------ Primary ------ 
+ Truth primary 
+132.155, -105.141, 185.539
+ True primary 
+-35.0467, -153.872, 241.651
+ This track 
+-35.0467, -153.872, 241.651
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_17/prodgenie_sbnd_GenieGen-20170905T141706_c047fd35-9146-4977-a9e2-bdad5196fd96_G4-20170905T143115_DetSim-20170905T151617_Reco-20170905T163614.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_18/prodgenie_sbnd_GenieGen-20170905T141709_e5608345-b445-4e33-8f4d-461de1c537a5_G4-20170905T143057_DetSim-20170905T151551_Reco-20170905T163040.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_18/prodgenie_sbnd_GenieGen-20170905T141709_e5608345-b445-4e33-8f4d-461de1c537a5_G4-20170905T143057_DetSim-20170905T151551_Reco-20170905T163040.root"
+ ------ Primary ------ 
+ Truth primary 
+-105.352, 108.095, 101.481
+ True primary 
+34.9052, 6.27157, 274.227
+ This track 
+34.9052, 6.27157, 274.227
+ ------ Primary ------ 
+ Truth primary 
+153.964, 191.426, 397.68
+ True primary 
+-34.8241, 174.338, 428.367
+ This track 
+-34.8241, 174.338, 428.367
+ ------ Primary ------ 
+ Truth primary 
+134.014, 199.177, 268.862
+ True primary 
+-35.1196, 172.786, 336.515
+ This track 
+-35.1196, 172.786, 336.515
+ ---- Non-primary ---- 
+ Truth primary 
+134.014, 199.177, 268.862
+ True primary 
+-35.1196, 172.786, 336.515
+ This track 
+-1.9335, 161.501, 371.187
+ ---- Non-primary ---- 
+ Truth primary 
+134.014, 199.177, 268.862
+ True primary 
+-35.1196, 172.786, 336.515
+ This track 
+-16.9508, 164.019, 359.586
+ ---- Non-primary ---- 
+ Truth primary 
+134.014, 199.177, 268.862
+ True primary 
+-35.1196, 172.786, 336.515
+ This track 
+-16.5768, 163.659, 362.295
+ ---- Non-primary ---- 
+ Truth primary 
+134.014, 199.177, 268.862
+ True primary 
+-35.1196, 172.786, 336.515
+ This track 
+-8.91118, 160.98, 376.57
+ ---- Non-primary ---- 
+ Truth primary 
+134.014, 199.177, 268.862
+ True primary 
+-35.1196, 172.786, 336.515
+ This track 
+-5.17259, 162.982, 377.721
+ ------ Primary ------ 
+ Truth primary 
+-130.049, -25.2905, 197.941
+ True primary 
+34.5933, 14.3368, 211.299
+ This track 
+34.5933, 14.3368, 211.299
+ ------ Primary ------ 
+ Truth primary 
+183.3, -11.1931, 362.9
+ True primary 
+-1.85381, -31.7813, 358.121
+ This track 
+-1.85381, -31.7813, 358.121
+ ------ Primary ------ 
+ Truth primary 
+-94.1319, -57.6027, 229.692
+ True primary 
+34.9035, -120.042, 444.7
+ This track 
+34.9035, -120.042, 444.7
+ ------ Primary ------ 
+ Truth primary 
+57.5263, -84.1174, 25.9786
+ True primary 
+-33.3908, -67.2846, 145.506
+ This track 
+-33.3908, -67.2846, 145.506
+ ------ Primary ------ 
+ Truth primary 
+-176.333, 0.121447, 147.536
+ True primary 
+25.0752, -1.02784, 147.95
+ This track 
+25.0752, -1.02784, 147.95
+ ---- Non-primary ---- 
+ Truth primary 
+-176.333, 0.121447, 147.536
+ True primary 
+25.0752, -1.02784, 147.95
+ This track 
+19.3961, -9.17351, 154.356
+ ------ Primary ------ 
+ Truth primary 
+198.256, -125.308, 137.991
+ True primary 
+-2.69071, -125.506, 139.072
+ This track 
+-2.69071, -125.506, 139.072
+ ---- Non-primary ---- 
+ Truth primary 
+198.256, -125.308, 137.991
+ True primary 
+-2.69071, -125.506, 139.072
+ This track 
+-1.5487, -123.109, 138.524
+ ---- Non-primary ---- 
+ Truth primary 
+-161.904, -4.10816, 455.437
+ True primary 
+34.8526, -5.74607, 460.368
+ This track 
+34.7648, -6.28047, 462.468
+ ---- Non-primary ---- 
+ Truth primary 
+-161.904, -4.10816, 455.437
+ True primary 
+34.8526, -5.74607, 460.368
+ This track 
+34.0491, -7.45316, 460.452
+ ---- Non-primary ---- 
+ Truth primary 
+-161.904, -4.10816, 455.437
+ True primary 
+34.8526, -5.74607, 460.368
+ This track 
+16.1911, -14.2558, 469.478
+ ---- Non-primary ---- 
+ Truth primary 
+-161.904, -4.10816, 455.437
+ True primary 
+34.8526, -5.74607, 460.368
+ This track 
+20.427, -12.4709, 471.234
+ ---- Non-primary ---- 
+ Truth primary 
+-161.904, -4.10816, 455.437
+ True primary 
+34.8526, -5.74607, 460.368
+ This track 
+26.5407, -10.895, 477.301
+ ------ Primary ------ 
+ Truth primary 
+-161.904, -4.10816, 455.437
+ True primary 
+34.8526, -5.74607, 460.368
+ This track 
+34.8526, -5.74607, 460.368
+ ------ Primary ------ 
+ Truth primary 
+-151.399, -119.235, 248.335
+ True primary 
+35.074, -96.9797, 281.322
+ This track 
+35.074, -96.9797, 281.322
+10-Oct-2017 12:53:57 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_18/prodgenie_sbnd_GenieGen-20170905T141709_e5608345-b445-4e33-8f4d-461de1c537a5_G4-20170905T143057_DetSim-20170905T151551_Reco-20170905T163040.root"
+10-Oct-2017 12:53:57 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_19/prodgenie_sbnd_GenieGen-20170905T141712_05760fec-2d03-4cb0-942f-75b3b54fcbcc_G4-20170905T143123_DetSim-20170905T151638_Reco-20170905T163101.root"
+10-Oct-2017 12:53:57 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_19/prodgenie_sbnd_GenieGen-20170905T141712_05760fec-2d03-4cb0-942f-75b3b54fcbcc_G4-20170905T143123_DetSim-20170905T151638_Reco-20170905T163101.root"
+ ------ Primary ------ 
+ Truth primary 
+-173.157, -87.5714, 10.7076
+ True primary 
+27.1499, -87.8499, 9.80053
+ This track 
+27.1499, -87.8499, 9.80053
+ ------ Primary ------ 
+ Truth primary 
+197.336, -139.967, 130.348
+ True primary 
+-7.45105, -144.603, 144.763
+ This track 
+-7.45105, -144.603, 144.763
+ ---- Non-primary ---- 
+ Truth primary 
+197.336, -139.967, 130.348
+ True primary 
+-7.45105, -144.603, 144.763
+ This track 
+-26.2361, -160.58, 185.388
+ ---- Non-primary ---- 
+ Truth primary 
+197.336, -139.967, 130.348
+ True primary 
+-7.45105, -144.603, 144.763
+ This track 
+-17.5177, -152.023, 169.721
+ ---- Non-primary ---- 
+ Truth primary 
+197.336, -139.967, 130.348
+ True primary 
+-7.45105, -144.603, 144.763
+ This track 
+-20.7762, -158.545, 177.276
+ ---- Non-primary ---- 
+ Truth primary 
+197.336, -139.967, 130.348
+ True primary 
+-7.45105, -144.603, 144.763
+ This track 
+-20.8969, -157.978, 176.606
+ ------ Primary ------ 
+ Truth primary 
+10.8618, 83.8446, 101.902
+ True primary 
+-34.949, 83.6771, 142.423
+ This track 
+-34.949, 83.6771, 142.423
+ ------ Primary ------ 
+ Truth primary 
+46.3906, -15.8738, 296.594
+ True primary 
+-34.776, -69.1107, 414.141
+ This track 
+-34.776, -69.1107, 414.141
+ ------ Primary ------ 
+ Truth primary 
+-190.402, -72.5492, 234.349
+ True primary 
+11.0453, -73.8772, 232.957
+ This track 
+11.0453, -73.8772, 232.957
+ ---- Non-primary ---- 
+ Truth primary 
+-190.402, -72.5492, 234.349
+ True primary 
+11.0453, -73.8772, 232.957
+ This track 
+10.3832, -48.4258, 265.009
+ ------ Primary ------ 
+ Truth primary 
+147.77, -83.309, 213.609
+ True primary 
+-35.094, -75.7407, 263.604
+ This track 
+-35.094, -75.7407, 263.604
+ ------ Primary ------ 
+ Truth primary 
+193.158, -92.1158, 480.941
+ True primary 
+-8.74484, -92.0823, 480.515
+ This track 
+-8.74484, -92.0823, 480.515
+ ------ Primary ------ 
+ Truth primary 
+127.354, -37.0503, 200.519
+ True primary 
+-34.7258, -74.0939, 221.778
+ This track 
+-34.7258, -74.0939, 221.778
+ ---- Non-primary ---- 
+ Truth primary 
+127.354, -37.0503, 200.519
+ True primary 
+-34.7258, -74.0939, 221.778
+ This track 
+-2.49343, -82.1921, 282.09
+ ------ Primary ------ 
+ Truth primary 
+178.389, -69.2092, 480.6
+ True primary 
+-1.05882, -67.5067, 458.136
+ This track 
+-1.05882, -67.5067, 458.136
+ ------ Primary ------ 
+ Truth primary 
+146.897, 32.5469, 474.569
+ True primary 
+-35.0224, 37.7368, 496.744
+ This track 
+-35.0224, 37.7368, 496.744
+ ------ Primary ------ 
+ Truth primary 
+139.079, 70.3761, 121.42
+ True primary 
+-34.8687, 66.5813, 135.126
+ This track 
+-34.8687, 66.5813, 135.126
+ ---- Non-primary ---- 
+ Truth primary 
+-141.506, 182.321, 301.43
+ True primary 
+34.4318, 195.106, 381.455
+ This track 
+34.1456, 194.336, 385.438
+ ------ Primary ------ 
+ Truth primary 
+-141.506, 182.321, 301.43
+ True primary 
+34.4318, 195.106, 381.455
+ This track 
+34.4318, 195.106, 381.455
+ ------ Primary ------ 
+ Truth primary 
+96.9639, 2.10917, 451.8
+ True primary 
+-11.7338, -20.3223, 467.233
+ This track 
+-11.7338, -20.3223, 467.233
+ ------ Primary ------ 
+ Truth primary 
+182.68, -103.802, 482.55
+ True primary 
+-17.9984, -103.603, 482.574
+ This track 
+-17.938, -103.551, 482.542
+ ------ Primary ------ 
+ Truth primary 
+182.68, -103.802, 482.55
+ True primary 
+-17.9984, -103.603, 482.574
+ This track 
+-17.941, -103.494, 482.717
+ ---- Non-primary ---- 
+ Truth primary 
+182.68, -103.802, 482.55
+ True primary 
+-17.9984, -103.603, 482.574
+ This track 
+-18.8651, -104.353, 483.036
+10-Oct-2017 12:53:58 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/mcc0.75/v06_48_00_MCC/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/19889636_19/prodgenie_sbnd_GenieGen-20170905T141712_05760fec-2d03-4cb0-942f-75b3b54fcbcc_G4-20170905T143123_DetSim-20170905T151638_Reco-20170905T163101.root"
+
+TrigReport ---------- Event  Summary ------------
+TrigReport Events total = 2000 passed = 2000 failed = 0
+
+TrigReport ------ Modules in End-Path: end_path ------------
+TrigReport  Trig Bit#        Run    Success      Error Name
+TrigReport     0    0       2000       2000          0 vtxParameters
+
+TimeReport ---------- Time  Summary ---[sec]----
+TimeReport CPU = 2.254658 Real = 2.462908
+
+MemReport  ---------- Memory  Summary ---[base-10 MB]----
+MemReport  VmPeak = 897.683 VmHWM = 322.642
+
+Art has completed and will exit with status 0.

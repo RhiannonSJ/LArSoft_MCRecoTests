@@ -1,0 +1,10 @@
+%MSG-w ColorDrawingOptions:  Early 26-Oct-2017 16:35:58 CDT JobSetup
+only 1 value given for raw color scale: number of divisions, low and high values.
+Pad out those values for the number of signal types.
+%MSG
+%MSG-w ColorDrawingOptions:  Early 26-Oct-2017 16:35:58 CDT JobSetup
+only 1 value given for reco color scale: number of divisions, low and high values.
+Pad out those values for the number of signal types.
+%MSG
+26-Oct-2017 16:35:58 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/SBNWorkshop1017/v06_53_00_SBNWorkshop1017/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/558808_59/prodgenie_sbnd_GenieGen-20171018T120758_db84a68c-0955-4df7-82a3-c84ec51a921d_G4-20171018T141557_DetSim-20171018T171338_Reco-20171018T211423.root"
+26-Oct-2017 16:36:02 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/SBNWorkshop1017/v06_53_00_SBNWorkshop1017/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/558808_59/prodgenie_sbnd_GenieGen-20171018T120758_db84a68c-0955-4df7-82a3-c84ec51a921d_G4-20171018T141557_DetSim-20171018T171338_Reco-20171018T211423.root"

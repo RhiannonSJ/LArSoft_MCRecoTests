@@ -1,0 +1,55 @@
+%MSG-w ColorDrawingOptions:  Early 26-Oct-2017 17:41:54 CDT JobSetup
+only 1 value given for raw color scale: number of divisions, low and high values.
+Pad out those values for the number of signal types.
+%MSG
+%MSG-w ColorDrawingOptions:  Early 26-Oct-2017 17:41:54 CDT JobSetup
+only 1 value given for reco color scale: number of divisions, low and high values.
+Pad out those values for the number of signal types.
+%MSG
+26-Oct-2017 17:41:55 CDT  Initiating request to open input file "/pnfs/sbnd/persistent/sbndpro/SBNWorkshop1017/v06_53_00_SBNWorkshop1017/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/558808_0/prodgenie_sbnd_GenieGen-20171018T120720_2762539e-5aa3-4b7a-a17e-26fb9038105a_G4-20171018T141637_DetSim-20171018T165335_Reco-20171018T211207.root"
+26-Oct-2017 17:41:58 CDT  Opened input file "/pnfs/sbnd/persistent/sbndpro/SBNWorkshop1017/v06_53_00_SBNWorkshop1017/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/558808_0/prodgenie_sbnd_GenieGen-20171018T120720_2762539e-5aa3-4b7a-a17e-26fb9038105a_G4-20171018T141637_DetSim-20171018T165335_Reco-20171018T211207.root"
+26-Oct-2017 17:46:27 CDT  Closed input file "/pnfs/sbnd/persistent/sbndpro/SBNWorkshop1017/v06_53_00_SBNWorkshop1017/prodgenie_nu_singleinteraction_cryostat_gsimple-configb-v1/reco/558808_0/prodgenie_sbnd_GenieGen-20171018T120720_2762539e-5aa3-4b7a-a17e-26fb9038105a_G4-20171018T141637_DetSim-20171018T165335_Reco-20171018T211207.root"
+
+====================================================================================================================
+TimeTracker printout (sec)            Min           Avg           Max         Median          RMS         nEvts   
+====================================================================================================================
+Full event                        5.6557e-05    0.00167981    0.00652537    6.86605e-05   0.00279759        4     
+--------------------------------------------------------------------------------------------------------------------
+source:RootInput(read)             4.932e-06    0.000465851     0.00459      7.837e-06    0.00137472       10     
+end_path:evdisp:EVD                3.743e-06    1.52856e-05   0.000100673   5.5565e-06    2.85142e-05      10     
+====================================================================================================================
+
+====================================================================================================
+MemoryTracker summary (base-10 MB units used)
+
+  Peak virtual memory usage (VmPeak)  : 1616.39 MB
+  Peak resident set size usage (VmHWM): 1006.59 MB
+  Details saved in: 'memory.db'
+====================================================================================================
+
+TrigReport ---------- Event  Summary ------------
+TrigReport Events total = 10 passed = 10 failed = 0
+
+TrigReport ------ Modules in End-Path: end_path ------------
+TrigReport  Trig Bit#        Run    Success      Error Name
+TrigReport     0    0         10         10          0 evdisp
+
+TimeReport ---------- Time  Summary ---[sec]----
+TimeReport CPU = 122.361398 Real = 267.570545
+
+MemReport  ---------- Memory  Summary ---[base-10 MB]----
+MemReport  VmPeak = 1616.4 VmHWM = 1006.65
+
+%MSG-s ArtException:  PostEndJob 26-Oct-2017 17:46:27 CDT ModuleEndJob
+cet::exception caught in art
+---- OtherArt BEGIN
+  ---- EventProcessorFailure BEGIN
+    EventProcessor: an exception occurred during current event processing
+    ---- FatalRootError BEGIN
+      Fatal Root Error: @SUB=TPad::ResizePad
+      fWireProjTPC0Plane0 width changed from 0 to 10
+      
+    ---- FatalRootError END
+  ---- EventProcessorFailure END
+---- OtherArt END
+%MSG
