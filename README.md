@@ -12,12 +12,9 @@ To look at the particle gun events
 ## VtxParameters
 Main module for calculating parameters which may characterise the primary vertex for NuMuCC events
 
-## Fhicl files
-Corresponding to the running of each analyser
-
-## SBN\_Workshop [folder]
-Folder containing plots from the SBN workshop, October 23-27th 2017
+## fcl [folder]
+Fhicl files corresponding to the running of each analyser
 
 ## macros, plots [folders]
-Some older directories holding a macro and some original plots
+Directories holding a macro and any plots produced
 

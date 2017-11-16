@@ -278,7 +278,7 @@ void recotests::MCRecoComp::endJob()
 {
  
   // Implementation of optional member function here.
-    TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/sbn_single_interaction_nt.root", "UPDATE" );
+    TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/sbn_single_interaction_nt.root", "UPDATE" );
  
     fNt_int->Write();
     fNt_ev->Write();

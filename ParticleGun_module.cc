@@ -251,7 +251,7 @@ void recotests::ParticleGun::endJob()
 {
  
   // Implementation of optional member function here.
-    TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/pg_proton_plots/sbn_pg_proton_nt.root", "UPDATE" );
+    TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/pg_proton_plots/sbn_pg_proton_nt.root", "UPDATE" );
    
     fNt->Write();
     f->Close();
