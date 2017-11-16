@@ -1,0 +1,10 @@
+BEGIN_PROLOG
+
+calorimetryVtx:
+{ 
+    module_type:                "CalorimetryVtx"
+
+}
+
+END_PROLOG
+
