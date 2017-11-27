@@ -431,7 +431,7 @@ void recotests::VtxParameters::endJob()
 
   // Implementation of optional member function here.
   // Initiate file and write the nTuples
-  TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/primary_vtx_metrics.root", "RECREATE" );
+  TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/primary_vtx_metrics.root", "RECREATE" );
 
   fNt_tracks->Write();
   fNt_primary->Write();

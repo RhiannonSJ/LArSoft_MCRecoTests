@@ -1,0 +1,717 @@
+////////////////////////////////////////////////////////////////////////
+// Class:       TopologyPrimaryVtx
+// Plugin Type: analyzer (art v2_08_04)
+// File:        TopologyPrimaryVtx_module.cc
+//
+// Generated at Fri Nov 17 10:44:05 2017 by Rhiannon Jones using cetskelgen
+// from cetlib version v3_01_01.
+////////////////////////////////////////////////////////////////////////
+
+#include "art/Framework/Core/EDAnalyzer.h"
+#include "art/Framework/Core/ModuleMacros.h"
+#include "art/Framework/Principal/Event.h"
+#include "art/Framework/Principal/Handle.h"
+#include "art/Framework/Principal/Run.h"
+#include "art/Framework/Principal/SubRun.h"
+#include "canvas/Utilities/InputTag.h"
+#include "canvas/Persistency/Common/FindMany.h"
+#include "fhiclcpp/ParameterSet.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "art/Framework/Services/Registry/ServiceHandle.h"
+#include "art/Framework/Services/Optional/TFileService.h"
+
+#include "nusimdata/SimulationBase/MCTruth.h"
+#include "nusimdata/SimulationBase/MCNeutrino.h"
+#include "nusimdata/SimulationBase/MCParticle.h"
+#include "lardataobj/RecoBase/Hit.h"
+#include "lardataobj/RecoBase/Vertex.h"
+#include "lardataobj/RecoBase/Track.h"
+#include "lardataobj/MCBase/MCTrack.h"
+#include "larreco/RecoAlg/PMAlg/PmaTrack3D.h"
+#include "lardataobj/AnalysisBase/Calorimetry.h"
+
+#include <cmath>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+
+#include "TROOT.h"
+#include "TTree.h"
+#include "TNtuple.h"
+#include "TFile.h"
+
+namespace recotests {
+  class TopologyPrimaryVtx;
+}
+
+
+class recotests::TopologyPrimaryVtx : public art::EDAnalyzer {
+public:
+  explicit TopologyPrimaryVtx(fhicl::ParameterSet const & p);
+  // The compiler-generated destructor is fine for non-base
+  // classes without bare pointers or other resource use.
+
+  // Plugins should not be copied or assigned.
+  TopologyPrimaryVtx(TopologyPrimaryVtx const &) = delete;
+  TopologyPrimaryVtx(TopologyPrimaryVtx &&) = delete;
+  TopologyPrimaryVtx & operator = (TopologyPrimaryVtx const &) = delete;
+  TopologyPrimaryVtx & operator = (TopologyPrimaryVtx &&) = delete;
+
+  // Required functions.
+  void analyze(art::Event const & e) override;
+
+  // Selected optional functions.
+  void beginJob() override;
+  void endJob() override;
+  void reconfigure(fhicl::ParameterSet const & p) override;
+
+private:
+
+  // Declare member data here.
+  std::map< std::vector< int >, int > m_selection;
+  float m_detectorHalfLengthX;
+  float m_detectorHalfLengthY;
+  float m_detectorHalfLengthZ;
+  float m_coordinateOffsetX;
+  float m_coordinateOffsetY;
+  float m_coordinateOffsetZ;
+  float m_selectedBorderX;
+  float m_selectedBorderY;
+  float m_selectedBorderZ;
+
+  // Initialisers
+  int cc0pi, other, primary_found, not_found, event_number, n_tracks, n_flip, no_vtx, one_vtx, more_vtx, n_calo, n_vtx, flip_yes, flip_no, both;
+
+  double cut, eff;
+
+  TNtuple *fNt_tracks;
+  TNtuple *fNt_primary;
+  TNtuple *fNt_calo;
+
+};
+
+
+recotests::TopologyPrimaryVtx::TopologyPrimaryVtx(fhicl::ParameterSet const & p)
+  :
+  EDAnalyzer(p)  // ,
+ // More initializers here.
+{
+
+  this->reconfigure(p);
+
+}
+
+void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
+{
+  // Implementation of required member function here
+  //
+  // Boolean for whether or not we have the correct topology within
+  // the fiducial volume of the detector.
+
+  // Initialise to be true, and if any of the counters don't match, 
+  // change to false
+  bool correct = true;
+
+  typedef::std::map< std::vector< int >, int > topology_map;
+ 
+  /*
+  // Loop over everything and check it's working  
+  // Show the chosen topology to filter on
+  std::cout << "Filtering on topology:" << std::endl;
+ 
+  for ( topology_map::iterator it = m_selection.begin(); 
+        it != m_selection.end(); 
+        ++it ) {
+    
+    std::vector< int > pdgVect = it->first;
+    int                count   = it->second;
+ 
+    std::cout << "  " << count << " particles with PDG in [";
+    
+    for ( int pdg : pdgVect ) {
+        std::cout << " " << pdg << " ";
+    }
+    
+    std::cout << "]" << std::endl;
+ 
+  }
+ */
+  // Get the MCTruth information 
+  art::Handle< std::vector< simb::MCTruth > > mct_handle;
+  e.getByLabel("generator", mct_handle );
+  int size = mct_handle->size();
+ 
+  if(mct_handle.isValid() && size) {
+  
+    // Loop over the truth info
+    for(auto const& mct : (*mct_handle)) {
+ 
+      // Check the neutrino came from the beam
+      if(mct.Origin() != simb::kBeamNeutrino) continue;
+ 
+      //-----------------------------------------------------------
+      // Check the neutrino vertex is within the fiducial volume
+      //-----------------------------------------------------------
+      float nuVtxX = mct.GetNeutrino().Nu().Vx();
+      float nuVtxY = mct.GetNeutrino().Nu().Vy();
+      float nuVtxZ = mct.GetNeutrino().Nu().Vz();
+ 
+ 
+      if (    (nuVtxX > (m_detectorHalfLengthX - m_coordinateOffsetX - m_selectedBorderX)) 
+           || (nuVtxX < (-m_coordinateOffsetX + m_selectedBorderX)) 
+           || (nuVtxY > (m_detectorHalfLengthY - m_coordinateOffsetY - m_selectedBorderY)) 
+           || (nuVtxY < (-m_coordinateOffsetY + m_selectedBorderY)) 
+           || (nuVtxZ > (m_detectorHalfLengthZ - m_coordinateOffsetZ - m_selectedBorderZ)) 
+           || (nuVtxZ < (-m_coordinateOffsetZ + m_selectedBorderZ))){
+ 
+        correct = false;
+        //continue;
+    
+      }
+
+ 
+      //-----------------------------------------------------------
+      //            Check the interaction
+      //-----------------------------------------------------------
+ 
+      // Get the number of particles
+      const int n_particles = mct.NParticles();
+      //std::cout << " Number of particles in the event : " << n_particles << std::endl;
+ 
+      // Loop over the map and get the elements
+      for( topology_map::iterator it = m_selection.begin(); it != m_selection.end(); ++it ){
+
+        std::vector< int > pdgVect = it->first;
+        int                count   = it->second;
+
+        // Initialise a counter for the number within the mct vector
+        int particle_counter = 0;
+
+        // Loop over the particles in the event
+        for( int i = 0; i < n_particles; ++i ){
+
+          // Find if the pdg code of the current particle is one of the ones in the map
+          if( std::find( pdgVect.begin(), pdgVect.end(), mct.GetParticle(i).PdgCode() ) != pdgVect.end() ) ++particle_counter;
+
+        }
+
+        // If the counters don't match, return false
+        if( particle_counter != count ){
+
+          // Not cc0pi event
+          correct =  false;
+
+        }
+
+        /*
+        else{
+          std::cout << " PDG codes of particles before filtering : " << std::endl;
+          // Loop over the particles in the event
+          for( int i = 0; i < n_particles; ++i ){
+            std::cout << "           " << mct.GetParticle(i).PdgCode() << std::endl;
+        }*/
+      }
+    }
+  }
+
+  // Make sure we are definining the filtered events correctly
+  if( correct ){
+  
+    // Looking at a cc 0pi event so do analysis
+    cc0pi++;
+  
+    event_number++;
+
+    // Get the vertex positions from each event
+    // Get the Vertex handle
+    art::Handle< std::vector< recob::Vertex > > vtx_handle;
+    e.getByLabel( "pmalgtrackmaker", vtx_handle );
+
+    // Get the Track handle
+    art::Handle< std::vector< recob::Track > > trk_handle;
+    e.getByLabel( "pmalgtrackmaker", trk_handle );
+
+    // Get something out of the vertices and print
+    // Check the validity of the handle
+    int trk_size = trk_handle->size();
+    int vtx_size = vtx_handle->size();
+
+    // If at least one vertex has been reconstructed
+    if( trk_size && vtx_size && size && mct_handle.isValid() && vtx_handle.isValid() && trk_handle.isValid() ){
+      // Loop over truth
+      for( auto & mct : (*mct_handle) ){
+
+        // True neutrino vertex ( primary vertex position)
+        double nu_x, nu_y, nu_z;
+
+        nu_x = mct.GetNeutrino().Lepton().Vx();
+        nu_y = mct.GetNeutrino().Lepton().Vy();
+        nu_z = mct.GetNeutrino().Lepton().Vz();
+
+        // Only print the events which occur within the active volume and only CC muon neutrino interactions
+        if( vtx_size ){
+
+          // Vector to hold the square-distances between the true primary vertex and the reconstructed vertices
+          // Find which is the smallest and assume this was reconstructed as the primary
+          // Vectors to hold vertex location information for determining the true primary
+          std::vector< double > dR, dX, dY, dZ, X, Y, Z;
+
+          dR.clear();
+          dX.clear();
+          dY.clear();
+          dZ.clear();
+  
+          int vtx_cut_count = 0;
+
+          for( auto & vtx : (*vtx_handle) ){
+        
+            // Access 3D reconstructed vertex position using:  
+            // Array to hold points
+            double xyz[3];
+  
+            // Set array to be current vertex position
+            vtx.XYZ(xyz);
+  
+            // x,y,z of current vertex
+            double x, y, z, R;
+  
+            x = xyz[0];
+            y = xyz[1];
+            z = xyz[2];
+            R =  sqrt( pow( ( x - nu_x ), 2 ) + pow( ( y - nu_y ), 2 ) + pow( ( z - nu_z ), 2 ) ); 
+            
+            dR.push_back( R );
+            X.push_back( x );
+            Y.push_back( y );
+            Z.push_back( z );
+
+            // If the distance to the true vertex is within the cut value of the true 
+            if( R < cut ){
+              vtx_cut_count++;
+            } 
+          }
+          if( vtx_cut_count == 0 ){
+            no_vtx++;
+          }
+          else if( vtx_cut_count == 1 ){
+            one_vtx++;
+          }
+          else{
+            more_vtx++;
+          }
+          
+          // Find the minimum value in the vector of distances and append txt file
+          std::vector< double >::iterator result  = std::min_element( std::begin( dR ), std::end( dR ) );
+
+          // Primary vertex position to compare with track vertices 
+          double x_r = X[ std::distance( std::begin( dR ), result ) ];
+          double y_r = Y[ std::distance( std::begin( dR ), result ) ];
+          double z_r = Z[ std::distance( std::begin( dR ), result ) ];
+
+          // Find the track vertex distance and corresponding track lengths
+          std::vector< double >   reco_trk_vtx_dists;
+          std::vector< double >   reco_trk_end_dists;
+          std::vector< double >   true_trk_vtx_dists;
+          std::vector< double >   true_trk_end_dists;
+          std::vector< double >   trk_lengths;
+          std::vector< double >   KE;
+
+          std::vector< TVector3 > vertices;
+
+          // Use track <=> vertex associations to find how many tracks leave a vertex
+          for( auto & trk : (*trk_handle) ){
+
+            n_tracks++;
+              
+            TVector3 trk_vtx = trk.Vertex();
+            TVector3 trk_end = trk.End();
+            
+            double reco_trk_vtx_dist = sqrt( pow( ( x_r - trk_vtx[0] ), 2 ) + pow( ( y_r - trk_vtx[1] ), 2 ) + pow( ( z_r - trk_vtx[2] ), 2 ) );
+            double reco_trk_end_dist = sqrt( pow( ( x_r - trk_end[0] ), 2 ) + pow( ( y_r - trk_end[1] ), 2 ) + pow( ( z_r - trk_end[2] ), 2 ) );
+            double true_trk_vtx_dist = sqrt( pow( ( trk_vtx[0] - nu_x ), 2 ) + pow( ( trk_vtx[1] - nu_y ), 2 ) + pow( ( trk_vtx[2] - nu_z ), 2 ) );
+            double true_trk_end_dist = sqrt( pow( ( trk_end[0] - nu_x ), 2 ) + pow( ( trk_end[1] - nu_y ), 2 ) + pow( ( trk_end[2] - nu_z ), 2 ) );
+
+            if( true_trk_vtx_dist >  true_trk_end_dist ){
+              n_flip++;
+            }
+
+            reco_trk_vtx_dists.push_back( reco_trk_vtx_dist );
+            reco_trk_end_dists.push_back( reco_trk_end_dist );
+            true_trk_vtx_dists.push_back( true_trk_vtx_dist );
+            true_trk_end_dists.push_back( true_trk_end_dist );
+            
+            trk_lengths.push_back( trk.Length() );
+          }
+          
+          // Initialise vertex and calo handles and the primary and non-primary counters
+          art::FindMany< recob::Track >      ftrk( vtx_handle, e, "pmalgtrackmaker" );
+          art::FindMany< recob::Vertex >     fvtx( trk_handle, e, "pmalgtrackmaker" );
+          art::FindMany< anab::Calorimetry > fmcal(trk_handle, e, "pmatrackcalo");
+          
+          // Is the track a primary
+          bool trk_primary = false;
+
+          // Loop over tracks
+          for( int i = 0; i < trk_size; ++i ){
+
+            // Push back large number onto KE vector so that we can cut on 
+            // these later and all elements are filled
+            KE.push_back( -std::numeric_limits<double>::max() );
+
+            // Get a pointer to the current track
+            art::Ptr< recob::Track > trk( trk_handle, i );
+            
+            // x,y,z of current track's vertex
+            double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
+            TVector3 trk_vtx = trk->Vertex();
+            TVector3 trk_end = trk->End();
+
+            x_t_v = trk_vtx[0];
+            y_t_v = trk_vtx[1];
+            z_t_v = trk_vtx[2];
+            x_t_e = trk_end[0];
+            y_t_e = trk_end[1];
+            z_t_e = trk_end[2];
+            r_t_v = sqrt( pow( x_t_v - x_r, 2 ) + pow( y_t_v - y_r, 2 ) + pow( z_t_v - z_r, 2 ) );  
+            r_t_e = sqrt( pow( x_t_e - x_r, 2 ) + pow( y_t_e - y_r, 2 ) + pow( z_t_e - z_r, 2 ) );  
+              
+            // Define calorimetry handle
+            std::vector<const anab::Calorimetry*> cal_assn = fmcal.at(i);
+     
+            // Loop over calorimetry association
+            for ( size_t j = 0; j < cal_assn.size(); ++j ){
+
+              if (!cal_assn[j]) continue;
+              if (!cal_assn[j]->PlaneID().isValid) continue;
+                
+              // Get the plane number
+              int planenum = cal_assn[j]->PlaneID().Plane;
+    
+              // Should only be 1,2 or 3
+              if (planenum<0||planenum>2) continue;
+
+              if( planenum == 2 ){
+                  
+                n_calo++;
+                  
+                // Find if track is associated to reconstructed primary
+                if( r_t_v < 0.5 ){
+                 
+                  flip_no++;
+                  trk_primary  = true;
+
+                }
+                else if( r_t_e < 0.5 ){
+                
+                  flip_yes++;
+                  trk_primary = true;
+                
+                }
+ 
+                else if( r_t_e < 0.5 && r_t_v < 0.5 ){
+                  both++;
+                }
+
+                // For the collection plane only (ICARUS' best defined plane)
+                const size_t NHits = cal_assn[j]->dEdx().size();
+                KE[i] = cal_assn[j]->KineticEnergy();
+                fNt_calo->Fill(trk_primary, cal_assn[j]->KineticEnergy(), cal_assn[j]->Range(), cal_assn[j]->TrkPitchC(), trk->Length(), (int) NHits );
+
+              }
+            } 
+          } 
+            
+          // Find the closest track to the tre primary and call it the primary
+          std::vector< double >::iterator max = std::max_element( std::begin( trk_lengths ), std::end( trk_lengths ) );
+
+          double max_length                   = trk_lengths[ std::distance( std::begin( trk_lengths ), max ) ];
+          double max_length_dist_reco_vtx     = reco_trk_vtx_dists[ std::distance( std::begin( trk_lengths ), max ) ];
+          double max_length_dist_reco_end     = reco_trk_end_dists[ std::distance( std::begin( trk_lengths ), max ) ];
+          double max_length_dist_true_vtx     = true_trk_vtx_dists[ std::distance( std::begin( trk_lengths ), max ) ];
+          double max_length_dist_true_end     = true_trk_end_dists[ std::distance( std::begin( trk_lengths ), max ) ];
+          double max_KE                       = KE[ std::distance( std::begin( trk_lengths ), max ) ];
+
+          fNt_tracks->Fill( event_number, max_length, max_length_dist_reco_vtx, max_length_dist_reco_end, max_length_dist_true_vtx, max_length_dist_true_end, vtx_cut_count, max_KE );
+
+          // Count how often we find the true vertex to within 5 cm
+          // Also, if primary has been found - count number of tracks corresponding to that reconstructed vertex
+          if( ( max_length_dist_true_vtx > max_length_dist_true_end && max_length_dist_true_end < cut ) || ( max_length_dist_true_vtx < max_length_dist_true_end && max_length_dist_true_vtx < cut ) ){
+            primary_found++;
+          }
+          else{
+            not_found++;
+          }
+         
+          // Loop over vertices, if the current vertex is within 7 cm of the true primary
+          // count the number of tracks as from the primary
+          // if not, count them as the number of tracks from other vertices
+          for( int i = 0; i < vtx_size; ++i ){
+
+            art::Ptr< recob::Vertex > vtx( vtx_handle, i );
+
+            bool primary = false; 
+            int track_counter = 0;
+            double KE_sum = 0.;
+
+            // Vertex location
+            double xyz[3];
+  
+            // Set array to be current vertex position
+            vtx->XYZ(xyz);
+  
+            double x, y, z, r;
+
+            x = xyz[0];
+            y = xyz[1];
+            z = xyz[2];
+            r = sqrt( pow( x - x_r, 2 ) + pow( y - y_r, 2 ) + pow( z - z_r, 2 ) );
+                
+            // Vertexing infomation
+            // Define track association 
+            std::vector<const recob::Track*> trk_assn = ftrk.at(i);
+    
+            std::vector< double > lengths;
+            std::vector< int > js;
+            lengths.clear();
+
+            // Find longest track associated with each vertex
+            for( size_t j = 0; j < trk_assn.size(); ++j ){
+            
+              lengths.push_back( trk_assn[j]->Length() );
+              js.push_back( j );
+
+            }
+           
+            // For the current vertex, get the maximum track length
+            std::vector< double >::iterator max_l = std::max_element( std::begin( lengths ), std::end( lengths ) );
+            double m_length                       = lengths[          std::distance( std::begin( lengths ), max_l ) ];
+            unsigned int m_j                      = js[               std::distance( std::begin( lengths ), max_l ) ];
+
+            // Variables for kinetic energy, range and hits
+            double longest_track_KE    = std::numeric_limits< double >::lowest();
+            double longest_track_range = std::numeric_limits< double >::lowest();
+            int longest_track_hits     = std::numeric_limits< int >::lowest();
+            
+            for( size_t j = 0; j < trk_assn.size(); ++j ){
+            
+              // x,y,z of current vertex
+              double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
+              TVector3 trk_vtx = trk_assn[j]->Vertex();
+              TVector3 trk_end = trk_assn[j]->End();
+              
+  
+              x_t_e = trk_end[0];
+              y_t_e = trk_end[1];
+              z_t_e = trk_end[2];
+              r_t_e = sqrt( pow( x_t_e - x_r, 2 ) + pow( y_t_e - y_r, 2 ) + pow( z_t_e - z_r, 2 ) );  
+              
+              x_t_v = trk_vtx[0];
+              y_t_v = trk_vtx[1];
+              z_t_v = trk_vtx[2];
+              x_t_e = trk_end[0];
+              y_t_e = trk_end[1];
+              z_t_e = trk_end[2];
+              r_t_v = sqrt( pow( x_t_v - x, 2 ) + pow( y_t_v - y, 2 ) + pow( z_t_v - z, 2 ) );  
+              r_t_e = sqrt( pow( x_t_e - x, 2 ) + pow( y_t_e - y, 2 ) + pow( z_t_e - z, 2 ) );  
+              
+              // Find the number of tracks coming out of every vertex
+              if( r_t_v < 0.5 || r_t_e < 0.5 ){
+                track_counter++;
+              }
+            
+              // Get the calorimetry associated with the tracks associated with each vertex
+              std::vector<const anab::Calorimetry*> cal_assn_vtx = fmcal.at(j);
+     
+              // Loop over calorimetry association
+              for ( size_t k = 0; k < cal_assn_vtx.size(); ++k ){
+
+                if (!cal_assn_vtx[k]) continue;
+                if (!cal_assn_vtx[k]->PlaneID().isValid) continue;
+                
+                // Get the plane number
+                int planenum = cal_assn_vtx[k]->PlaneID().Plane;
+    
+                // Should only be 1,2 or 3
+                if (planenum<0||planenum>2) continue;
+
+                if( planenum == 2 ){
+                  
+                  // For the collection plane only (ICARUS' best defined plane)
+                  KE_sum += cal_assn_vtx[k]->KineticEnergy();
+                  
+                  // If we are looking at the longest track
+                  
+                  if( j == m_j ){
+               
+                    longest_track_hits  = cal_assn_vtx[k]->dEdx().size();
+                    longest_track_range = cal_assn_vtx[k]->Range();
+                    longest_track_KE    = cal_assn_vtx[k]->KineticEnergy();
+
+                  }
+                }
+              } 
+            }
+
+            if( r < 0.5 ){
+              primary = true;
+            }
+
+            // If the doubles exist 
+            // nTuple of counters to plot
+            fNt_primary->Fill( primary, track_counter, KE_sum, m_length, longest_track_KE, longest_track_hits, longest_track_range );
+          }
+        }
+      }
+    }
+  }
+  else{
+  
+    // Not looking at a cc 0pi event
+    other++;
+ 
+  }
+}
+
+void recotests::TopologyPrimaryVtx::beginJob()
+{
+  // Implementation of optional member function here.
+
+  // Counters for topology check
+  cc0pi         = 0;
+  other         = 0;
+  primary_found = 0;
+  not_found     = 0;
+  event_number  = 0;
+  n_tracks      = 0;
+  n_vtx         = 0;
+  n_calo        = 0;
+  n_flip        = 0;
+  no_vtx        = 0;
+  one_vtx       = 0;
+  more_vtx      = 0;
+  flip_yes      = 0;
+  flip_no       = 0;
+  both          = 0;
+
+  cut = 10; // 10 cm
+
+  // Implementation of optional member function here.
+  // Define nTuple
+  //  reconstructed vertex position, angle in xz plane, 
+  //  angle in yz plane, vertex momentum, length
+  fNt_tracks       = new TNtuple( "fNt_tracks",  "Track length and distance from a vertex", "evt:L:r_dist_vtx:r_dist_end:t_dist_vtx:t_dist_end:nVtx:KE" );
+  fNt_primary      = new TNtuple( "fNt_primary", "Primary vertex metrics",                  "primary:nTrk:keSum:maxL:maxKE:maxHits:maxRange" );
+  fNt_calo         = new TNtuple( "fNt_calo",    "Track calorimetry information",           "primary:ke:range:pitch:L:hits" );
+
+  fNt_tracks->SetDirectory(0);
+  fNt_primary->SetDirectory(0);
+  fNt_calo->SetDirectory(0);
+
+
+}
+
+void recotests::TopologyPrimaryVtx::endJob()
+{
+  // Implementation of optional member function here.
+  
+  std::cout << "-------------------------------------" << std::endl;
+  std::cout << " Number of CC 0pi events   : " << cc0pi << std::endl;
+  std::cout << " Number of other events    : " << other << std::endl;
+  std::cout << " Fraction of CC 0pi events : " << cc0pi / double( other + cc0pi ) << std::endl;
+  std::cout << "-------------------------------------" << std::endl;
+
+  // Effiency of finding the true primary to within some distance
+  eff = primary_found / double(primary_found + not_found );
+
+  std::cout << " ------------------------------------------------- " << std::endl;
+
+  std::cout << std::setw(5) << " Primary found "     << primary_found << " times " << std::endl;
+  std::cout << std::setw(5) << " Primary not found " << not_found     << " times " << std::endl;
+  std::cout << std::setw(5) << " Efficiency of finding the primary vertex : " << 100 * eff << std::endl;
+
+  std::cout << " ------------------------------------------------- " << std::endl;
+
+  std::cout << std::setw(5) << " Number of tracks : "   << n_tracks << std::endl;
+  std::cout << std::setw(5) << " Number to flip : "     << n_flip   << std::endl;
+  std::cout << std::setw(5) << " Percentage to flip : " << 100 * ( n_flip / double( n_tracks ) ) << std::endl;
+  
+  std::cout << " ------------------------------------------------- " << std::endl;
+ 
+  std::cout << std::setw(5) << " No vertices found "       << no_vtx << " times " << std::endl; 
+  std::cout << std::setw(5) << " 1 vertex found "          << one_vtx << " times " << std::endl; 
+  std::cout << std::setw(5) << " > 1 vertices found "      << more_vtx << " times " << std::endl; 
+  std::cout << std::setw(5) << " Percentage of 1 found : " << 100 * ( one_vtx / double( no_vtx + one_vtx + more_vtx ) ) << std::endl; 
+
+  std::cout << " ------------------------------------------------- " << std::endl;
+
+  std::cout << " N, tracks : " << n_tracks << ", vertices : " << n_vtx << ", calorimetry : " << n_calo << std::endl;
+  
+  std::cout << " ------------------------------------------------- " << std::endl;
+
+  std::cout << " Track end closest " << flip_yes << " times, track start closest " << flip_no << " times, both : " << both << std::endl;
+  
+  std::cout << " ------------------------------------------------- " << std::endl;
+
+  // Implementation of optional member function here.
+  // Initiate file and write the nTuples
+  TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_primary_vtx_metrics.root", "RECREATE" );
+
+  fNt_tracks->Write();
+  fNt_primary->Write();
+  fNt_calo->Write();
+
+  f->Close();
+
+  delete f;
+  delete fNt_tracks;
+  delete fNt_primary;
+  delete fNt_calo;
+}
+
+void recotests::TopologyPrimaryVtx::reconfigure(fhicl::ParameterSet const & p)
+{
+  // Implementation of optional member function here.
+
+   std::vector< int > blankVect;
+   std::vector< std::vector< int > > input;
+ 
+   std::vector< int > selection1 = p.get< std::vector< int > >("Selection1",        blankVect);
+   if ( selection1.size() != 0 ) input.push_back(selection1);
+ 
+   std::vector< int > selection2 = p.get< std::vector< int > >("Selection2",        blankVect);
+   if ( selection2.size() != 0 ) input.push_back(selection2);
+ 
+   std::vector< int > selection3 = p.get< std::vector< int > >("Selection3",        blankVect);
+   if ( selection3.size() != 0 ) input.push_back(selection3);
+ 
+ 
+   for ( auto & inputVect : input ) {
+     if ( inputVect.size() < 2 ) {
+       std::cerr << " Error: Selection vector must have at least 2 elements " <<    std::endl;
+       std::cerr << "        First element:     Number of particles of PDG code(s)  specified " << std::endl;
+       std::cerr << "        Remaining element: PDG codes to filter on " << std::   endl;
+       exit(1);
+     }
+ 
+     int count = inputVect[0];
+     inputVect.erase( inputVect.begin() );
+ 
+     m_selection.insert( std::make_pair( inputVect, count ) );
+   }
+ 
+   m_detectorHalfLengthX = p.get<float>("DetectorHalfLengthX");
+   m_detectorHalfLengthY = p.get<float>("DetectorHalfLengthY");
+   m_detectorHalfLengthZ = p.get<float>("DetectorHalfLengthZ");
+   m_coordinateOffsetX   = p.get<float>("CoordinateOffsetX");
+   m_coordinateOffsetY   = p.get<float>("CoordinateOffsetY");
+   m_coordinateOffsetZ   = p.get<float>("CoordinateOffsetZ");
+   m_selectedBorderX     = p.get<float>("SelectedBorderX");
+   m_selectedBorderY     = p.get<float>("SelectedBorderY");
+   m_selectedBorderZ     = p.get<float>("SelectedBorderZ");
+ 
+
+}
+
+DEFINE_ART_MODULE(recotests::TopologyPrimaryVtx)

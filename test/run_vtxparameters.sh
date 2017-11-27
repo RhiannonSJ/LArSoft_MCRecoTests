@@ -15,12 +15,12 @@ TEST_SBN_FULL=/pnfs/sbnd/scratch/users/rsjones/sbn_workshop/full_spill_files.txt
 
 TEST_SBN_COSMICS=/pnfs/sbnd/scratch/users/rsjones/sbn_workshop/plus_cosmics_files.txt
 
-rm -rf /sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/primary_vtx_metrics.root
+rm -rf /sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/primary_vtx_metrics.root
 
 cd $WORKING_DIR
 
-lar -c fcl/run_vtxParameters.fcl -S $TEST_SBN_SINGLE
-#lar -c fcl/run_vtxParameters.fcl -S $TEST_SBN_SINGLE_20
-#lar -c fcl/run_vtxParameters.fcl -s $TEST_SBN_SINGLE_1
+lar -c run_vtxParameters.fcl -S $TEST_SBN_SINGLE
+#lar -c run_vtxParameters.fcl -S $TEST_SBN_SINGLE_20
+#lar -c run_vtxParameters.fcl -s $TEST_SBN_SINGLE_1
 
 cd $RECO_COMP_DIR
