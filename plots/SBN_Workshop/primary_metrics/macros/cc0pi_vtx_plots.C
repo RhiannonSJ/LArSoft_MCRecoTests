@@ -32,6 +32,7 @@ void cc0pi_vtx_plots() {
   std::vector< float > maxKE;
   std::vector< float > maxHits;
   std::vector< float > maxRange;
+  std::vector< float > zPos;
 
   int n_entries_cal = t_single_cal->GetEntries();
   int n_entries_pri = t_single_pri->GetEntries();
@@ -41,10 +42,10 @@ void cc0pi_vtx_plots() {
     t_single_cal->GetEntry(i);
 
     t_primary.push_back( t_single_cal->GetLeaf("primary")->GetValue() );
-    L.push_back( t_single_cal->GetLeaf("L")->GetValue() );
-    ke.push_back( t_single_cal->GetLeaf("ke")->GetValue() );
-    hits.push_back( t_single_cal->GetLeaf("hits")->GetValue() );
-    range.push_back( t_single_cal->GetLeaf("range")->GetValue() );
+    L.push_back(         t_single_cal->GetLeaf("L")->GetValue() );
+    ke.push_back(        t_single_cal->GetLeaf("ke")->GetValue() );
+    hits.push_back(      t_single_cal->GetLeaf("hits")->GetValue() );
+    range.push_back(     t_single_cal->GetLeaf("range")->GetValue() );
   
   }
    
@@ -53,45 +54,49 @@ void cc0pi_vtx_plots() {
     t_single_pri->GetEntry(i);
 
     v_primary.push_back( t_single_pri->GetLeaf("primary")->GetValue() );
-    nTrk.push_back( t_single_pri->GetLeaf("nTrk")->GetValue() );
-    keSum.push_back( t_single_pri->GetLeaf("keSum")->GetValue() );
-    maxL.push_back( t_single_pri->GetLeaf("maxL")->GetValue() );
-    maxKE.push_back( t_single_pri->GetLeaf("maxKE")->GetValue() );
-    maxHits.push_back( t_single_pri->GetLeaf("maxHits")->GetValue() );
-    maxRange.push_back( t_single_pri->GetLeaf("maxRange")->GetValue() );
+    nTrk.push_back(      t_single_pri->GetLeaf("nTrk")->GetValue() );
+    keSum.push_back(     t_single_pri->GetLeaf("keSum")->GetValue() );
+    maxL.push_back(      t_single_pri->GetLeaf("maxL")->GetValue() );
+    maxKE.push_back(     t_single_pri->GetLeaf("maxKE")->GetValue() );
+    maxHits.push_back(   t_single_pri->GetLeaf("maxHits")->GetValue() );
+    maxRange.push_back(  t_single_pri->GetLeaf("maxRange")->GetValue() );
+    zPos.push_back(      t_single_pri->GetLeaf("zPos")->GetValue() );
   
   }
 
 
-  TH1D *h_L_p     = new TH1D( "h_L_p",     "Track length", 100, 0, 500 );
-  TH1D *h_L_n     = new TH1D( "h_L_n",     "Track length", 100, 0, 500 );
+  TH1D *h_L_p        = new TH1D( "h_L_p",        "Track length", 100, 0, 500 );
+  TH1D *h_L_n        = new TH1D( "h_L_n",        "Track length", 100, 0, 500 );
   
-  TH1D *h_ke_p    = new TH1D( "h_ke_p",    "Kinetic energy", 100, 0, 2000 );
-  TH1D *h_ke_n    = new TH1D( "h_ke_n",    "Kinetic energy", 100, 0, 2000 );
+  TH1D *h_ke_p       = new TH1D( "h_ke_p",       "Kinetic energy", 100, 0, 2000 );
+  TH1D *h_ke_n       = new TH1D( "h_ke_n",       "Kinetic energy", 100, 0, 2000 );
   
-  TH1D *h_hits_p  = new TH1D( "h_hits_p",  "Number of hits per track", 2000, 0, 2000 );
-  TH1D *h_hits_n  = new TH1D( "h_hits_n",  "Number of hits per track", 2000, 0, 2000 );
+  TH1D *h_hits_p     = new TH1D( "h_hits_p",     "Number of hits per track", 2000, 0, 2000 );
+  TH1D *h_hits_n     = new TH1D( "h_hits_n",     "Number of hits per track", 2000, 0, 2000 );
   
-  TH1D *h_range_p = new TH1D( "h_range_p", "Track range", 100, 0, 500 );
-  TH1D *h_range_n = new TH1D( "h_range_n", "Track range", 100, 0, 500 );
+  TH1D *h_range_p    = new TH1D( "h_range_p",    "Track range", 100, 0, 500 );
+  TH1D *h_range_n    = new TH1D( "h_range_n",    "Track range", 100, 0, 500 );
   
-  TH1D *h_nTrk_p  = new TH1D( "h_nTrk_p",  "Number of tracks from a vertex", 8, 0, 8 );
-  TH1D *h_nTrk_n  = new TH1D( "h_nTrk_n",  "Number of tracks from a vertex", 8, 0, 8 );
+  TH1D *h_nTrk_p     = new TH1D( "h_nTrk_p",     "Number of tracks from a vertex", 8, 0, 8 );
+  TH1D *h_nTrk_n     = new TH1D( "h_nTrk_n",     "Number of tracks from a vertex", 8, 0, 8 );
   
-  TH1D *h_keSum_p = new TH1D( "h_keSum_p", "Sum of the track kinetic energy out of a vertex", 100, 0, 2000 );
-  TH1D *h_keSum_n = new TH1D( "h_keSum_n", "Sum of the track kinetic energy out of a vertex", 100, 0, 2000 );
+  TH1D *h_keSum_p    = new TH1D( "h_keSum_p",    "Sum of the track kinetic energy out of a vertex", 100, 0, 2000 );
+  TH1D *h_keSum_n    = new TH1D( "h_keSum_n",    "Sum of the track kinetic energy out of a vertex", 100, 0, 2000 );
   
-  TH1D *h_maxL_p = new TH1D( "h_maxL_p", "Length of the longest track out of a vertex", 100, 0, 500 );
-  TH1D *h_maxL_n = new TH1D( "h_maxL_n", "Length of the longest track out of a vertex", 100, 0, 500 );
+  TH1D *h_maxL_p     = new TH1D( "h_maxL_p",     "Length of the longest track out of a vertex", 100, 0, 100 );
+  TH1D *h_maxL_n     = new TH1D( "h_maxL_n",     "Length of the longest track out of a vertex", 100, 0, 100 );
   
-  TH1D *h_maxKE_p = new TH1D( "h_maxKE_p", "Kinetic energy of the longest track out of a vertex", 100, 0, 2000 );
-  TH1D *h_maxKE_n = new TH1D( "h_maxKE_n", "Kinetic energy of the longest track out of a vertex", 100, 0, 2000 );
+  TH1D *h_maxKE_p    = new TH1D( "h_maxKE_p",    "Kinetic energy of the longest track out of a vertex", 100, 0, 2000 );
+  TH1D *h_maxKE_n    = new TH1D( "h_maxKE_n",    "Kinetic energy of the longest track out of a vertex", 100, 0, 2000 );
   
-  TH1D *h_maxHits_p = new TH1D( "h_maxHits_p", "Number of hits in the longest track out of a vertex", 200, 0, 200 );
-  TH1D *h_maxHits_n = new TH1D( "h_maxHits_n", "Number of hits in the longest track out of a vertex", 200, 0, 200 );
+  TH1D *h_maxHits_p  = new TH1D( "h_maxHits_p",  "Number of hits in the longest track out of a vertex", 200, 0, 200 );
+  TH1D *h_maxHits_n  = new TH1D( "h_maxHits_n",  "Number of hits in the longest track out of a vertex", 200, 0, 200 );
   
   TH1D *h_maxRange_p = new TH1D( "h_maxRange_p", "Range of the longest track out of a vertex", 100, 0, 500 );
   TH1D *h_maxRange_n = new TH1D( "h_maxRange_n", "Range of the longest track out of a vertex", 100, 0, 500 );
+  
+  TH1D *h_zPos_p     = new TH1D( "h_zPos_p",     "Z position of the vertex", 50, 0, 500 );
+  TH1D *h_zPos_n     = new TH1D( "h_zPos_n",     "Z position of the vertex", 50, 0, 500 );
   
   // Fill histrograms
   for( int i = 0; i < n_entries_cal; ++i ){
@@ -121,6 +126,7 @@ void cc0pi_vtx_plots() {
       h_maxKE_p->Fill( maxKE[i] );
       h_maxRange_p->Fill( maxRange[i] );
       h_maxHits_p->Fill( maxHits[i] );
+      h_zPos_p->Fill( zPos[i] );
 
     }
     else{
@@ -131,10 +137,38 @@ void cc0pi_vtx_plots() {
       h_maxKE_n->Fill( maxKE[i] );
       h_maxRange_n->Fill( maxRange[i] );
       h_maxHits_n->Fill( maxHits[i] );
+      h_zPos_n->Fill( zPos[i] );
 
     }
   }
 
+  // ----------------------------------------------------------------------------
+  //                  Get the likelihood distributions
+  // ----------------------------------------------------------------------------
+
+  // Divide primary by sum of primary and non-primary in each histogram
+  
+  // Setup the likelihood histograms
+  // Longest track length
+  TH1D *h_length_sum  = (TH1D*) h_maxL_p->Clone( "h_length_sum" );
+  TH1D *h_length_prob = (TH1D*) h_maxL_p->Clone( "h_length_prob" );
+  h_length_sum->Add( h_maxL_n );
+  h_length_prob->Divide( h_length_sum );
+  
+  // Number of tracks from the vertex
+  TH1D *h_nTrk_sum  = (TH1D*) h_nTrk_p->Clone( "h_nTrk_sum" );
+  TH1D *h_nTrk_prob = (TH1D*) h_nTrk_p->Clone( "h_nTrk_prob" );
+  h_nTrk_sum->Add( h_nTrk_n );
+  h_nTrk_prob->Divide( h_nTrk_sum );
+ 
+  // Draw the likelihood plots
+  h_length_prob->SetStats(kFALSE);
+  h_length_prob->GetXaxis()->SetTitle( "Longest track length [cm] ");
+  h_length_prob->GetXaxis()->SetTitleOffset(1.2);
+
+  h_nTrk_prob->SetStats(kFALSE);
+  h_nTrk_prob->GetXaxis()->SetTitle( "Number of tracks out of a vertex ");
+  h_nTrk_prob->GetXaxis()->SetTitleOffset(1.2);
 
   gStyle->SetPalette(57);
   gStyle->SetNumberContours(250);
@@ -280,6 +314,20 @@ void cc0pi_vtx_plots() {
   double scale_maxHits_n = h_maxHits_n->Integral();
   h_maxHits_n->Scale(1/scale_maxHits_n);
 
+  h_zPos_p->SetStats(kFALSE);
+  h_zPos_p->SetLineColor(2);
+  h_zPos_p->GetXaxis()->SetTitle( "Z position of the vertex" );
+  h_zPos_p->GetXaxis()->SetTitleOffset(1.2);
+  double scale_zPos_p = h_zPos_p->Integral();
+  h_zPos_p->Scale(1/scale_zPos_p);
+
+  h_zPos_n->SetStats(kFALSE);
+  h_zPos_n->SetLineColor(4);
+  h_zPos_n->GetXaxis()->SetTitle( "Z position of the vertex" );
+  h_zPos_n->GetXaxis()->SetTitleOffset(1.2);
+  double scale_zPos_n = h_zPos_n->Integral();
+  h_zPos_n->Scale(1/scale_zPos_n);
+
   TLegend *l_L        = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_ke       = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_range    = new TLegend(0.5, 0.65, 0.85, 0.85);
@@ -290,6 +338,7 @@ void cc0pi_vtx_plots() {
   TLegend *l_maxKE    = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_maxRange = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_maxHits  = new TLegend(0.5, 0.65, 0.85, 0.85);
+  TLegend *l_zPos     = new TLegend(0.5, 0.65, 0.85, 0.85);
  
   l_L->AddEntry(        h_L_p,        "Primary",     "l" );
   l_L->AddEntry(        h_L_n,        "Non-primary", "l" );
@@ -320,6 +369,9 @@ void cc0pi_vtx_plots() {
   
   l_maxHits->AddEntry(  h_maxHits_p,  "Primary",     "l" );
   l_maxHits->AddEntry(  h_maxHits_n,  "Non-primary", "l" );
+  
+  l_zPos->AddEntry(     h_zPos_p,     "Primary",     "l" );
+  l_zPos->AddEntry(     h_zPos_n,     "Non-primary", "l" );
   
   TCanvas *c  = new TCanvas( "c", "Canvas", 800, 600 );
 
@@ -371,8 +423,8 @@ void cc0pi_vtx_plots() {
 
   c->Clear();
 
-  h_maxL_p->Draw("hist");
-  h_maxL_n->Draw("hist same");
+  h_maxL_n->Draw("hist");
+  h_maxL_p->Draw("hist same");
   l_maxL->Draw();
 
   c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/plots/max_track_length.root" );
@@ -402,6 +454,27 @@ void cc0pi_vtx_plots() {
   c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/plots/max_track_nHits.root" );
 
   c->Clear();
+
+  h_zPos_p->Draw("hist");
+  h_zPos_n->Draw("hist same");
+  l_zPos->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/plots/vertex_z_position.root" );
+
+  c->Clear();
+
+  h_length_prob->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/plots/likelihood_max_length.root" );
+
+  c->Clear();
+
+  h_nTrk_prob->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/plots/likelihood_nTrk.root" );
+
+  c->Clear();
+
 
 
 

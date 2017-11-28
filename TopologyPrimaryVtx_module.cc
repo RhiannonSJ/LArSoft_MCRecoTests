@@ -310,6 +310,10 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
           double y_r = Y[ std::distance( std::begin( dR ), result ) ];
           double z_r = Z[ std::distance( std::begin( dR ), result ) ];
 
+          // 3D distance between true neutrino vertex and closest reconstructed
+          // vertex
+          double r_r = dR[ std::distance( std::begin( dR ), result ) ];
+
           // Find the track vertex distance and corresponding track lengths
           std::vector< double >   reco_trk_vtx_dists;
           std::vector< double >   reco_trk_end_dists;
@@ -345,85 +349,7 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
             trk_lengths.push_back( trk.Length() );
           }
           
-          // Initialise vertex and calo handles and the primary and non-primary counters
-          art::FindMany< recob::Track >      ftrk( vtx_handle, e, "pmalgtrackmaker" );
-          art::FindMany< recob::Vertex >     fvtx( trk_handle, e, "pmalgtrackmaker" );
-          art::FindMany< anab::Calorimetry > fmcal(trk_handle, e, "pmatrackcalo");
-          
-          // Is the track a primary
-          bool trk_primary = false;
-
-          // Loop over tracks
-          for( int i = 0; i < trk_size; ++i ){
-
-            // Push back large number onto KE vector so that we can cut on 
-            // these later and all elements are filled
-            KE.push_back( -std::numeric_limits<double>::max() );
-
-            // Get a pointer to the current track
-            art::Ptr< recob::Track > trk( trk_handle, i );
-            
-            // x,y,z of current track's vertex
-            double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
-            TVector3 trk_vtx = trk->Vertex();
-            TVector3 trk_end = trk->End();
-
-            x_t_v = trk_vtx[0];
-            y_t_v = trk_vtx[1];
-            z_t_v = trk_vtx[2];
-            x_t_e = trk_end[0];
-            y_t_e = trk_end[1];
-            z_t_e = trk_end[2];
-            r_t_v = sqrt( pow( x_t_v - x_r, 2 ) + pow( y_t_v - y_r, 2 ) + pow( z_t_v - z_r, 2 ) );  
-            r_t_e = sqrt( pow( x_t_e - x_r, 2 ) + pow( y_t_e - y_r, 2 ) + pow( z_t_e - z_r, 2 ) );  
-              
-            // Define calorimetry handle
-            std::vector<const anab::Calorimetry*> cal_assn = fmcal.at(i);
-     
-            // Loop over calorimetry association
-            for ( size_t j = 0; j < cal_assn.size(); ++j ){
-
-              if (!cal_assn[j]) continue;
-              if (!cal_assn[j]->PlaneID().isValid) continue;
-                
-              // Get the plane number
-              int planenum = cal_assn[j]->PlaneID().Plane;
-    
-              // Should only be 1,2 or 3
-              if (planenum<0||planenum>2) continue;
-
-              if( planenum == 2 ){
-                  
-                n_calo++;
-                  
-                // Find if track is associated to reconstructed primary
-                if( r_t_v < 0.5 ){
-                 
-                  flip_no++;
-                  trk_primary  = true;
-
-                }
-                else if( r_t_e < 0.5 ){
-                
-                  flip_yes++;
-                  trk_primary = true;
-                
-                }
- 
-                else if( r_t_e < 0.5 && r_t_v < 0.5 ){
-                  both++;
-                }
-
-                // For the collection plane only (ICARUS' best defined plane)
-                const size_t NHits = cal_assn[j]->dEdx().size();
-                KE[i] = cal_assn[j]->KineticEnergy();
-                fNt_calo->Fill(trk_primary, cal_assn[j]->KineticEnergy(), cal_assn[j]->Range(), cal_assn[j]->TrkPitchC(), trk->Length(), (int) NHits );
-
-              }
-            } 
-          } 
-            
-          // Find the closest track to the tre primary and call it the primary
+          // Find the closest track to the true primary and call it the primary
           std::vector< double >::iterator max = std::max_element( std::begin( trk_lengths ), std::end( trk_lengths ) );
 
           double max_length                   = trk_lengths[ std::distance( std::begin( trk_lengths ), max ) ];
@@ -443,124 +369,210 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
           else{
             not_found++;
           }
-         
-          // Loop over vertices, if the current vertex is within 7 cm of the true primary
-          // count the number of tracks as from the primary
-          // if not, count them as the number of tracks from other vertices
-          for( int i = 0; i < vtx_size; ++i ){
-
-            art::Ptr< recob::Vertex > vtx( vtx_handle, i );
-
-            bool primary = false; 
-            int track_counter = 0;
-            double KE_sum = 0.;
-
-            // Vertex location
-            double xyz[3];
-  
-            // Set array to be current vertex position
-            vtx->XYZ(xyz);
-  
-            double x, y, z, r;
-
-            x = xyz[0];
-            y = xyz[1];
-            z = xyz[2];
-            r = sqrt( pow( x - x_r, 2 ) + pow( y - y_r, 2 ) + pow( z - z_r, 2 ) );
-                
-            // Vertexing infomation
-            // Define track association 
-            std::vector<const recob::Track*> trk_assn = ftrk.at(i);
-    
-            std::vector< double > lengths;
-            std::vector< int > js;
-            lengths.clear();
-
-            // Find longest track associated with each vertex
-            for( size_t j = 0; j < trk_assn.size(); ++j ){
-            
-              lengths.push_back( trk_assn[j]->Length() );
-              js.push_back( j );
-
-            }
            
-            // For the current vertex, get the maximum track length
-            std::vector< double >::iterator max_l = std::max_element( std::begin( lengths ), std::end( lengths ) );
-            double m_length                       = lengths[          std::distance( std::begin( lengths ), max_l ) ];
-            unsigned int m_j                      = js[               std::distance( std::begin( lengths ), max_l ) ];
+          // Continue if r_r < 2.523, a cut value determined by fitting 
+          // the distribution of these distances and finding the mean + 3sigma
 
-            // Variables for kinetic energy, range and hits
-            double longest_track_KE    = std::numeric_limits< double >::lowest();
-            double longest_track_range = std::numeric_limits< double >::lowest();
-            int longest_track_hits     = std::numeric_limits< int >::lowest();
+          if( r_r < 2.523 ){
             
-            for( size_t j = 0; j < trk_assn.size(); ++j ){
+            ++primary_reconstructed;
+
+            // Initialise vertex and calo handles and the primary and non-primary counters
+            art::FindMany< recob::Track >      ftrk( vtx_handle, e, "pmalgtrackmaker" );
+            art::FindMany< recob::Vertex >     fvtx( trk_handle, e, "pmalgtrackmaker" );
+            art::FindMany< anab::Calorimetry > fmcal(trk_handle, e, "pmatrackcalo");
             
-              // x,y,z of current vertex
+            // Is the track a primary
+            bool trk_primary = false;
+
+            // Loop over tracks
+            for( int i = 0; i < trk_size; ++i ){
+
+              // Push back large number onto KE vector so that we can cut on 
+              // these later and all elements are filled
+              KE.push_back( -std::numeric_limits<double>::max() );
+
+              // Get a pointer to the current track
+              art::Ptr< recob::Track > trk( trk_handle, i );
+              
+              // x,y,z of current track's vertex
               double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
-              TVector3 trk_vtx = trk_assn[j]->Vertex();
-              TVector3 trk_end = trk_assn[j]->End();
-              
-  
-              x_t_e = trk_end[0];
-              y_t_e = trk_end[1];
-              z_t_e = trk_end[2];
-              r_t_e = sqrt( pow( x_t_e - x_r, 2 ) + pow( y_t_e - y_r, 2 ) + pow( z_t_e - z_r, 2 ) );  
-              
+              TVector3 trk_vtx = trk->Vertex();
+              TVector3 trk_end = trk->End();
+
               x_t_v = trk_vtx[0];
               y_t_v = trk_vtx[1];
               z_t_v = trk_vtx[2];
               x_t_e = trk_end[0];
               y_t_e = trk_end[1];
               z_t_e = trk_end[2];
-              r_t_v = sqrt( pow( x_t_v - x, 2 ) + pow( y_t_v - y, 2 ) + pow( z_t_v - z, 2 ) );  
-              r_t_e = sqrt( pow( x_t_e - x, 2 ) + pow( y_t_e - y, 2 ) + pow( z_t_e - z, 2 ) );  
-              
-              // Find the number of tracks coming out of every vertex
-              if( r_t_v < 0.5 || r_t_e < 0.5 ){
-                track_counter++;
-              }
-            
-              // Get the calorimetry associated with the tracks associated with each vertex
-              std::vector<const anab::Calorimetry*> cal_assn_vtx = fmcal.at(j);
-     
-              // Loop over calorimetry association
-              for ( size_t k = 0; k < cal_assn_vtx.size(); ++k ){
-
-                if (!cal_assn_vtx[k]) continue;
-                if (!cal_assn_vtx[k]->PlaneID().isValid) continue;
+              r_t_v = sqrt( pow( x_t_v - x_r, 2 ) + pow( y_t_v - y_r, 2 ) + pow( z_t_v - z_r, 2 ) );  
+              r_t_e = sqrt( pow( x_t_e - x_r, 2 ) + pow( y_t_e - y_r, 2 ) + pow( z_t_e - z_r, 2 ) );  
                 
+              // Define calorimetry handle
+              std::vector<const anab::Calorimetry*> cal_assn = fmcal.at(i);
+       
+              // Loop over calorimetry association
+              for ( size_t j = 0; j < cal_assn.size(); ++j ){
+
+                if (!cal_assn[j]) continue;
+                if (!cal_assn[j]->PlaneID().isValid) continue;
+                  
                 // Get the plane number
-                int planenum = cal_assn_vtx[k]->PlaneID().Plane;
-    
+                int planenum = cal_assn[j]->PlaneID().Plane;
+      
                 // Should only be 1,2 or 3
                 if (planenum<0||planenum>2) continue;
 
                 if( planenum == 2 ){
-                  
-                  // For the collection plane only (ICARUS' best defined plane)
-                  KE_sum += cal_assn_vtx[k]->KineticEnergy();
-                  
-                  // If we are looking at the longest track
-                  
-                  if( j == m_j ){
-               
-                    longest_track_hits  = cal_assn_vtx[k]->dEdx().size();
-                    longest_track_range = cal_assn_vtx[k]->Range();
-                    longest_track_KE    = cal_assn_vtx[k]->KineticEnergy();
+                    
+                  n_calo++;
+                    
+                  // Find if track is associated to reconstructed primary
+                  if( r_t_v < 0.5 ){
+                   
+                    flip_no++;
+                    trk_primary  = true;
 
                   }
+                  else if( r_t_e < 0.5 ){
+                  
+                    flip_yes++;
+                    trk_primary = true;
+                  
+                  }
+   
+                  else if( r_t_e < 0.5 && r_t_v < 0.5 ){
+                    both++;
+                  }
+
+                  // For the collection plane only (ICARUS' best defined plane)
+                  const size_t NHits = cal_assn[j]->dEdx().size();
+                  KE[i] = cal_assn[j]->KineticEnergy();
+                  fNt_calo->Fill(trk_primary, cal_assn[j]->KineticEnergy(), cal_assn[j]->Range(), cal_assn[j]->TrkPitchC(), trk->Length(), (int) NHits );
+
                 }
               } 
-            }
+            } 
+              
+            // Loop over vertices, if the current vertex is within 7 cm of the true primary
+            // count the number of tracks as from the primary
+            // if not, count them as the number of tracks from other vertices
+            for( int i = 0; i < vtx_size; ++i ){
 
-            if( r < 0.5 ){
-              primary = true;
-            }
+              art::Ptr< recob::Vertex > vtx( vtx_handle, i );
 
-            // If the doubles exist 
-            // nTuple of counters to plot
-            fNt_primary->Fill( primary, track_counter, KE_sum, m_length, longest_track_KE, longest_track_hits, longest_track_range );
+              bool primary = false; 
+              int track_counter = 0;
+              double KE_sum = 0.;
+
+              // Vertex location
+              double xyz[3];
+    
+              // Set array to be current vertex position
+              vtx->XYZ(xyz);
+    
+              double x, y, z, r;
+
+              x = xyz[0];
+              y = xyz[1];
+              z = xyz[2];
+              r = sqrt( pow( x - x_r, 2 ) + pow( y - y_r, 2 ) + pow( z - z_r, 2 ) );
+                  
+              // Vertexing infomation
+              // Define track association 
+              std::vector<const recob::Track*> trk_assn = ftrk.at(i);
+      
+              std::vector< double > lengths;
+              std::vector< int > js;
+              lengths.clear();
+
+              // Find longest track associated with each vertex
+              for( size_t j = 0; j < trk_assn.size(); ++j ){
+              
+                lengths.push_back( trk_assn[j]->Length() );
+                js.push_back( j );
+
+              }
+             
+              // For the current vertex, get the maximum track length
+              std::vector< double >::iterator max_l = std::max_element( std::begin( lengths ), std::end( lengths ) );
+              double m_length                       = lengths[          std::distance( std::begin( lengths ), max_l ) ];
+              unsigned int m_j                      = js[               std::distance( std::begin( lengths ), max_l ) ];
+
+              // Variables for kinetic energy, range and hits
+              double longest_track_KE    = std::numeric_limits< double >::lowest();
+              double longest_track_range = std::numeric_limits< double >::lowest();
+              int longest_track_hits     = std::numeric_limits< int >::lowest();
+              
+              for( size_t j = 0; j < trk_assn.size(); ++j ){
+              
+                // x,y,z of current vertex
+                double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
+                TVector3 trk_vtx = trk_assn[j]->Vertex();
+                TVector3 trk_end = trk_assn[j]->End();
+                
+    
+                x_t_e = trk_end[0];
+                y_t_e = trk_end[1];
+                z_t_e = trk_end[2];
+                r_t_e = sqrt( pow( x_t_e - x_r, 2 ) + pow( y_t_e - y_r, 2 ) + pow( z_t_e - z_r, 2 ) );  
+                
+                x_t_v = trk_vtx[0];
+                y_t_v = trk_vtx[1];
+                z_t_v = trk_vtx[2];
+                x_t_e = trk_end[0];
+                y_t_e = trk_end[1];
+                z_t_e = trk_end[2];
+                r_t_v = sqrt( pow( x_t_v - x, 2 ) + pow( y_t_v - y, 2 ) + pow( z_t_v - z, 2 ) );  
+                r_t_e = sqrt( pow( x_t_e - x, 2 ) + pow( y_t_e - y, 2 ) + pow( z_t_e - z, 2 ) );  
+                
+                // Find the number of tracks coming out of every vertex
+                if( r_t_v < 0.5 || r_t_e < 0.5 ){
+                  track_counter++;
+                }
+              
+                // Get the calorimetry associated with the tracks associated with each vertex
+                std::vector<const anab::Calorimetry*> cal_assn_vtx = fmcal.at(j);
+       
+                // Loop over calorimetry association
+                for ( size_t k = 0; k < cal_assn_vtx.size(); ++k ){
+
+                  if (!cal_assn_vtx[k]) continue;
+                  if (!cal_assn_vtx[k]->PlaneID().isValid) continue;
+                  
+                  // Get the plane number
+                  int planenum = cal_assn_vtx[k]->PlaneID().Plane;
+      
+                  // Should only be 1,2 or 3
+                  if (planenum<0||planenum>2) continue;
+
+                  if( planenum == 2 ){
+                    
+                    // For the collection plane only (ICARUS' best defined plane)
+                    KE_sum += cal_assn_vtx[k]->KineticEnergy();
+                    
+                    // If we are looking at the longest track
+                    
+                    if( j == m_j ){
+                 
+                      longest_track_hits  = cal_assn_vtx[k]->dEdx().size();
+                      longest_track_range = cal_assn_vtx[k]->Range();
+                      longest_track_KE    = cal_assn_vtx[k]->KineticEnergy();
+
+                    }
+                  }
+                } 
+              }
+
+              if( r < 0.5 ){
+                primary = true;
+              }
+
+              // If the doubles exist 
+              // nTuple of counters to plot
+              fNt_primary->Fill( primary, track_counter, KE_sum, m_length, longest_track_KE, longest_track_hits, longest_track_range, z );
+            }
           }
         }
       }
@@ -602,7 +614,7 @@ void recotests::TopologyPrimaryVtx::beginJob()
   //  reconstructed vertex position, angle in xz plane, 
   //  angle in yz plane, vertex momentum, length
   fNt_tracks       = new TNtuple( "fNt_tracks",  "Track length and distance from a vertex", "evt:L:r_dist_vtx:r_dist_end:t_dist_vtx:t_dist_end:nVtx:KE" );
-  fNt_primary      = new TNtuple( "fNt_primary", "Primary vertex metrics",                  "primary:nTrk:keSum:maxL:maxKE:maxHits:maxRange" );
+  fNt_primary      = new TNtuple( "fNt_primary", "Primary vertex metrics",                  "primary:nTrk:keSum:maxL:maxKE:maxHits:maxRange:zPos" );
   fNt_calo         = new TNtuple( "fNt_calo",    "Track calorimetry information",           "primary:ke:range:pitch:L:hits" );
 
   fNt_tracks->SetDirectory(0);
