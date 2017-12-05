@@ -8,11 +8,11 @@
 #include <string>
 #include "TFile.h"
 
-void cc0pi_vtx_plots() {
+void neutrino_vtx_plots() {
 
   // Read in the sample files
   // Single interaction
-  TFile *f_single = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_primary_vtx_metrics.root" );
+  TFile *f_single = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_vertex_finder.root" );
 
   TTree *t_single_cal = (TTree*)f_single->Get("fNt_calo");
   TTree *t_single_pri = (TTree*)f_single->Get("fNt_primary");
@@ -379,7 +379,7 @@ void cc0pi_vtx_plots() {
   h_L_n->Draw("hist same");
   l_L->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/track_length.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/track_length.root" );
 
   c->Clear();
 
@@ -387,7 +387,7 @@ void cc0pi_vtx_plots() {
   h_ke_n->Draw("hist same");
   l_ke->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/track_KE.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/track_KE.root" );
 
   c->Clear();
 
@@ -395,7 +395,7 @@ void cc0pi_vtx_plots() {
   h_range_n->Draw("hist same");
   l_range->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/track_range.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/track_range.root" );
 
   c->Clear();
 
@@ -403,7 +403,7 @@ void cc0pi_vtx_plots() {
   h_hits_n->Draw("hist same");
   l_hits->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/track_nHits.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/track_nHits.root" );
 
   c->Clear();
 
@@ -411,7 +411,7 @@ void cc0pi_vtx_plots() {
   h_keSum_p->Draw("hist same");
   l_keSum->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/vertex_keSum.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/vertex_keSum.root" );
 
   c->Clear();
 
@@ -419,7 +419,7 @@ void cc0pi_vtx_plots() {
   h_nTrk_p->Draw("hist same");
   l_nTrk->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/vertex_nTracks.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/vertex_nTracks.root" );
 
   c->Clear();
 
@@ -427,7 +427,7 @@ void cc0pi_vtx_plots() {
   h_maxL_p->Draw("hist same");
   l_maxL->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/max_track_length.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/max_track_length.root" );
 
   c->Clear();
 
@@ -435,7 +435,7 @@ void cc0pi_vtx_plots() {
   h_maxKE_n->Draw("hist same");
   l_maxKE->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/max_track_KE.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/max_track_KE.root" );
 
   c->Clear();
 
@@ -443,7 +443,7 @@ void cc0pi_vtx_plots() {
   h_maxRange_n->Draw("hist same");
   l_maxRange->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/max_track_range.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/max_track_range.root" );
 
   c->Clear();
 
@@ -451,7 +451,7 @@ void cc0pi_vtx_plots() {
   h_maxHits_n->Draw("hist same");
   l_maxHits->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/max_track_nHits.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/max_track_nHits.root" );
 
   c->Clear();
 
@@ -459,19 +459,19 @@ void cc0pi_vtx_plots() {
   h_zPos_n->Draw("hist same");
   l_zPos->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/vertex_z_position.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/vertex_z_position.root" );
 
   c->Clear();
 
   h_length_prob->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/likelihood_max_length.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/likelihood_max_length.root" );
 
   c->Clear();
 
   h_nTrk_prob->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_plots/likelihood_nTrk.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/likelihood_nTrk.root" );
 
   c->Clear();
 

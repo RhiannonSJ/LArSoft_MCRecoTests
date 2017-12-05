@@ -23,6 +23,7 @@
 #include "nusimdata/SimulationBase/MCTruth.h"
 #include "nusimdata/SimulationBase/MCNeutrino.h"
 #include "nusimdata/SimulationBase/MCParticle.h"
+#include "lardataobj/RecoBase/PFParticle.h"
 #include "lardataobj/RecoBase/Hit.h"
 #include "lardataobj/RecoBase/Vertex.h"
 #include "lardataobj/RecoBase/Track.h"
@@ -82,11 +83,10 @@ private:
   float m_selectedBorderZ;
 
   // Initialisers
-  int cc0pi, other, primary_found, not_found, event_number, n_tracks, n_flip, no_vtx, one_vtx, more_vtx, n_calo, n_vtx, flip_yes, flip_no, both;
+  int cc0pi, other, event_number, n_tracks, no_vtx, one_vtx, more_vtx, n_calo, n_vtx, flip_yes, flip_no, both, primary_reco;
 
-  double cut, eff;
+  double cut, eff, primary_reco_cut;
 
-  TNtuple *fNt_tracks;
   TNtuple *fNt_primary;
   TNtuple *fNt_calo;
 
@@ -109,6 +109,8 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
   //
   // Boolean for whether or not we have the correct topology within
   // the fiducial volume of the detector.
+
+  event_number++;
 
   // Initialise to be true, and if any of the counters don't match, 
   // change to false
@@ -222,8 +224,6 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
     // Looking at a cc 0pi event so do analysis
     cc0pi++;
   
-    event_number++;
-
     // Get the vertex positions from each event
     // Get the Vertex handle
     art::Handle< std::vector< recob::Vertex > > vtx_handle;
@@ -233,13 +233,18 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
     art::Handle< std::vector< recob::Track > > trk_handle;
     e.getByLabel( "pmalgtrackmaker", trk_handle );
 
+    // Get the Vertex handle
+    art::Handle< std::vector< recob::PFParticle > > pfp_handle;
+    e.getByLabel( "pmalgtrackmaker", pfp_handle );
+    
     // Get something out of the vertices and print
     // Check the validity of the handle
     int trk_size = trk_handle->size();
     int vtx_size = vtx_handle->size();
+    int pfp_size = pfp_handle->size();
 
     // If at least one vertex has been reconstructed
-    if( trk_size && vtx_size && size && mct_handle.isValid() && vtx_handle.isValid() && trk_handle.isValid() ){
+    if( pfp_size && trk_size && vtx_size && size && mct_handle.isValid() && vtx_handle.isValid() && trk_handle.isValid() && pfp_handle.isValid() ){
       // Loop over truth
       for( auto & mct : (*mct_handle) ){
 
@@ -314,76 +319,24 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
           // vertex
           double r_r = dR[ std::distance( std::begin( dR ), result ) ];
 
-          // Find the track vertex distance and corresponding track lengths
-          std::vector< double >   reco_trk_vtx_dists;
-          std::vector< double >   reco_trk_end_dists;
-          std::vector< double >   true_trk_vtx_dists;
-          std::vector< double >   true_trk_end_dists;
-          std::vector< double >   trk_lengths;
-          std::vector< double >   KE;
-
-          std::vector< TVector3 > vertices;
-
-          // Use track <=> vertex associations to find how many tracks leave a vertex
-          for( auto & trk : (*trk_handle) ){
-
-            n_tracks++;
-              
-            TVector3 trk_vtx = trk.Vertex();
-            TVector3 trk_end = trk.End();
-            
-            double reco_trk_vtx_dist = sqrt( pow( ( x_r - trk_vtx[0] ), 2 ) + pow( ( y_r - trk_vtx[1] ), 2 ) + pow( ( z_r - trk_vtx[2] ), 2 ) );
-            double reco_trk_end_dist = sqrt( pow( ( x_r - trk_end[0] ), 2 ) + pow( ( y_r - trk_end[1] ), 2 ) + pow( ( z_r - trk_end[2] ), 2 ) );
-            double true_trk_vtx_dist = sqrt( pow( ( trk_vtx[0] - nu_x ), 2 ) + pow( ( trk_vtx[1] - nu_y ), 2 ) + pow( ( trk_vtx[2] - nu_z ), 2 ) );
-            double true_trk_end_dist = sqrt( pow( ( trk_end[0] - nu_x ), 2 ) + pow( ( trk_end[1] - nu_y ), 2 ) + pow( ( trk_end[2] - nu_z ), 2 ) );
-
-            if( true_trk_vtx_dist >  true_trk_end_dist ){
-              n_flip++;
-            }
-
-            reco_trk_vtx_dists.push_back( reco_trk_vtx_dist );
-            reco_trk_end_dists.push_back( reco_trk_end_dist );
-            true_trk_vtx_dists.push_back( true_trk_vtx_dist );
-            true_trk_end_dists.push_back( true_trk_end_dist );
-            
-            trk_lengths.push_back( trk.Length() );
-          }
-          
-          // Find the closest track to the true primary and call it the primary
-          std::vector< double >::iterator max = std::max_element( std::begin( trk_lengths ), std::end( trk_lengths ) );
-
-          double max_length                   = trk_lengths[ std::distance( std::begin( trk_lengths ), max ) ];
-          double max_length_dist_reco_vtx     = reco_trk_vtx_dists[ std::distance( std::begin( trk_lengths ), max ) ];
-          double max_length_dist_reco_end     = reco_trk_end_dists[ std::distance( std::begin( trk_lengths ), max ) ];
-          double max_length_dist_true_vtx     = true_trk_vtx_dists[ std::distance( std::begin( trk_lengths ), max ) ];
-          double max_length_dist_true_end     = true_trk_end_dists[ std::distance( std::begin( trk_lengths ), max ) ];
-          double max_KE                       = KE[ std::distance( std::begin( trk_lengths ), max ) ];
-
-          fNt_tracks->Fill( event_number, max_length, max_length_dist_reco_vtx, max_length_dist_reco_end, max_length_dist_true_vtx, max_length_dist_true_end, vtx_cut_count, max_KE );
-
-          // Count how often we find the true vertex to within 5 cm
-          // Also, if primary has been found - count number of tracks corresponding to that reconstructed vertex
-          if( ( max_length_dist_true_vtx > max_length_dist_true_end && max_length_dist_true_end < cut ) || ( max_length_dist_true_vtx < max_length_dist_true_end && max_length_dist_true_vtx < cut ) ){
-            primary_found++;
-          }
-          else{
-            not_found++;
-          }
-           
           // Continue if r_r < 2.523, a cut value determined by fitting 
           // the distribution of these distances and finding the mean + 3sigma
 
-          if( r_r < 2.523 ){
+          if( r_r < primary_reco_cut ){
             
-            ++primary_reconstructed;
+            ++primary_reco;
 
             // Initialise vertex and calo handles and the primary and non-primary counters
-            art::FindMany< recob::Track >      ftrk( vtx_handle, e, "pmalgtrackmaker" );
-            art::FindMany< recob::Vertex >     fvtx( trk_handle, e, "pmalgtrackmaker" );
-            art::FindMany< anab::Calorimetry > fmcal(trk_handle, e, "pmatrackcalo");
+            art::FindMany< recob::Track >      ftrk(  vtx_handle, e, "pmalgtrackmaker" );
+            art::FindMany< recob::Vertex >     fvtx(  trk_handle, e, "pmalgtrackmaker" );
+            art::FindMany< recob::PFParticle > fpfp(  vtx_handle, e, "pmalgtrackmaker" );
+            art::FindMany< recob::PFParticle > fpfpt( trk_handle, e, "pmalgtrackmaker" );
+            art::FindMany< anab::Calorimetry > fmcal( trk_handle, e, "pmatrackcalo" );
             
+
             // Is the track a primary
             bool trk_primary = false;
+            std::vector< double > KE;
 
             // Loop over tracks
             for( int i = 0; i < trk_size; ++i ){
@@ -466,19 +419,22 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
               int track_counter = 0;
               double KE_sum = 0.;
 
+              ++n_vtx;
+
               // Vertex location
               double xyz[3];
     
               // Set array to be current vertex position
               vtx->XYZ(xyz);
     
-              double x, y, z, r;
+              double x, y, z, r; // s;
 
               x = xyz[0];
               y = xyz[1];
               z = xyz[2];
               r = sqrt( pow( x - x_r, 2 ) + pow( y - y_r, 2 ) + pow( z - z_r, 2 ) );
-                  
+              //s = sqrt( pow( x, 2 ) + pow( y, 2 ) + pow( z, 2 ) );  
+
               // Vertexing infomation
               // Define track association 
               std::vector<const recob::Track*> trk_assn = ftrk.at(i);
@@ -507,16 +463,12 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
               
               for( size_t j = 0; j < trk_assn.size(); ++j ){
               
+                ++n_tracks;
+              
                 // x,y,z of current vertex
                 double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
                 TVector3 trk_vtx = trk_assn[j]->Vertex();
                 TVector3 trk_end = trk_assn[j]->End();
-                
-    
-                x_t_e = trk_end[0];
-                y_t_e = trk_end[1];
-                z_t_e = trk_end[2];
-                r_t_e = sqrt( pow( x_t_e - x_r, 2 ) + pow( y_t_e - y_r, 2 ) + pow( z_t_e - z_r, 2 ) );  
                 
                 x_t_v = trk_vtx[0];
                 y_t_v = trk_vtx[1];
@@ -563,6 +515,14 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
                     }
                   }
                 } 
+              
+                std::vector<const recob::PFParticle*> pfp_assn = fpfpt.at(j);
+                
+                // Loop over pfparticle association
+                for ( size_t k = 0; k < pfp_assn.size(); ++k ){
+
+                  std::cout << " Parents: " << pfp_assn[k]->Parent() << std::endl;
+                }
               }
 
               if( r < 0.5 ){
@@ -591,33 +551,30 @@ void recotests::TopologyPrimaryVtx::beginJob()
   // Implementation of optional member function here.
 
   // Counters for topology check
-  cc0pi         = 0;
-  other         = 0;
-  primary_found = 0;
-  not_found     = 0;
-  event_number  = 0;
-  n_tracks      = 0;
-  n_vtx         = 0;
-  n_calo        = 0;
-  n_flip        = 0;
-  no_vtx        = 0;
-  one_vtx       = 0;
-  more_vtx      = 0;
-  flip_yes      = 0;
-  flip_no       = 0;
-  both          = 0;
+  cc0pi             = 0;
+  other             = 0;
+  event_number      = 0;
+  n_tracks          = 0;
+  n_vtx             = 0;
+  n_calo            = 0;
+  no_vtx            = 0;
+  one_vtx           = 0;
+  more_vtx          = 0;
+  flip_yes          = 0;
+  flip_no           = 0;
+  both              = 0;
+  primary_reco      = 0;
 
+  primary_reco_cut = 2.523;
   cut = 10; // 10 cm
 
   // Implementation of optional member function here.
   // Define nTuple
   //  reconstructed vertex position, angle in xz plane, 
   //  angle in yz plane, vertex momentum, length
-  fNt_tracks       = new TNtuple( "fNt_tracks",  "Track length and distance from a vertex", "evt:L:r_dist_vtx:r_dist_end:t_dist_vtx:t_dist_end:nVtx:KE" );
   fNt_primary      = new TNtuple( "fNt_primary", "Primary vertex metrics",                  "primary:nTrk:keSum:maxL:maxKE:maxHits:maxRange:zPos" );
   fNt_calo         = new TNtuple( "fNt_calo",    "Track calorimetry information",           "primary:ke:range:pitch:L:hits" );
 
-  fNt_tracks->SetDirectory(0);
   fNt_primary->SetDirectory(0);
   fNt_calo->SetDirectory(0);
 
@@ -635,24 +592,24 @@ void recotests::TopologyPrimaryVtx::endJob()
   std::cout << "-------------------------------------" << std::endl;
 
   // Effiency of finding the true primary to within some distance
-  eff = primary_found / double(primary_found + not_found );
+  eff = primary_reco / double( event_number );
 
   std::cout << " ------------------------------------------------- " << std::endl;
 
-  std::cout << std::setw(5) << " Primary found "     << primary_found << " times " << std::endl;
-  std::cout << std::setw(5) << " Primary not found " << not_found     << " times " << std::endl;
+  std::cout << std::setw(5) << " Primary found "     << primary_reco << " times "   << std::endl;
+  std::cout << std::setw(5) << " Primary not found " << event_number - primary_reco << " times " << std::endl;
   std::cout << std::setw(5) << " Efficiency of finding the primary vertex : " << 100 * eff << std::endl;
 
   std::cout << " ------------------------------------------------- " << std::endl;
 
-  std::cout << std::setw(5) << " Number of tracks : "   << n_tracks << std::endl;
-  std::cout << std::setw(5) << " Number to flip : "     << n_flip   << std::endl;
-  std::cout << std::setw(5) << " Percentage to flip : " << 100 * ( n_flip / double( n_tracks ) ) << std::endl;
+  std::cout << std::setw(5) << " Number of tracks : "   << n_tracks   << std::endl;
+  std::cout << std::setw(5) << " Number to flip : "     << flip_yes   << std::endl;
+  std::cout << std::setw(5) << " Percentage to flip : " << 100 * ( flip_yes / double( n_tracks ) ) << std::endl;
   
   std::cout << " ------------------------------------------------- " << std::endl;
  
-  std::cout << std::setw(5) << " No vertices found "       << no_vtx << " times " << std::endl; 
-  std::cout << std::setw(5) << " 1 vertex found "          << one_vtx << " times " << std::endl; 
+  std::cout << std::setw(5) << " No vertices found "       << no_vtx   << " times " << std::endl; 
+  std::cout << std::setw(5) << " 1 vertex found "          << one_vtx  << " times " << std::endl; 
   std::cout << std::setw(5) << " > 1 vertices found "      << more_vtx << " times " << std::endl; 
   std::cout << std::setw(5) << " Percentage of 1 found : " << 100 * ( one_vtx / double( no_vtx + one_vtx + more_vtx ) ) << std::endl; 
 
@@ -670,14 +627,12 @@ void recotests::TopologyPrimaryVtx::endJob()
   // Initiate file and write the nTuples
   TFile *f = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/cc0pi_primary_vtx_metrics.root", "RECREATE" );
 
-  fNt_tracks->Write();
   fNt_primary->Write();
   fNt_calo->Write();
 
   f->Close();
 
   delete f;
-  delete fNt_tracks;
   delete fNt_primary;
   delete fNt_calo;
 }

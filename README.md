@@ -10,6 +10,12 @@ Initial nTuples containing information about the true and reconstructed vertices
 To look at the particle gun events
 
 ## VtxParameters
+Old module for calculating parameters which may characterise the primary vertex for NuMuCC events
+
+## TopologyPrimaryVtx
+Main module for calculating parameters which may characterise the primary vertex for NuMuCC0Pi events
+
+## NeutrinoVtxFinder
 Main module for calculating parameters which may characterise the primary vertex for NuMuCC events
 
 ## fcl [folder]
