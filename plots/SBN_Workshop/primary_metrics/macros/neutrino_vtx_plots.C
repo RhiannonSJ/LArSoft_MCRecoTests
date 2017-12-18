@@ -33,6 +33,7 @@ void neutrino_vtx_plots() {
   std::vector< float > maxHits;
   std::vector< float > maxRange;
   std::vector< float > zPos;
+  std::vector< float > zDiff;
 
   int n_entries_cal = t_single_cal->GetEntries();
   int n_entries_pri = t_single_pri->GetEntries();
@@ -61,6 +62,7 @@ void neutrino_vtx_plots() {
     maxHits.push_back(   t_single_pri->GetLeaf("maxHits")->GetValue() );
     maxRange.push_back(  t_single_pri->GetLeaf("maxRange")->GetValue() );
     zPos.push_back(      t_single_pri->GetLeaf("zPos")->GetValue() );
+    zDiff.push_back(     t_single_pri->GetLeaf("zDiff")->GetValue() );
   
   }
 
@@ -80,8 +82,8 @@ void neutrino_vtx_plots() {
   TH1D *h_nTrk_p     = new TH1D( "h_nTrk_p",     "Number of tracks from a vertex", 8, 0, 8 );
   TH1D *h_nTrk_n     = new TH1D( "h_nTrk_n",     "Number of tracks from a vertex", 8, 0, 8 );
   
-  TH1D *h_keSum_p    = new TH1D( "h_keSum_p",    "Sum of the track kinetic energy out of a vertex", 100, 0, 2000 );
-  TH1D *h_keSum_n    = new TH1D( "h_keSum_n",    "Sum of the track kinetic energy out of a vertex", 100, 0, 2000 );
+  TH1D *h_keSum_p    = new TH1D( "h_keSum_p",    "Sum of the track kinetic energy out of a vertex", 100, 0, 1000 );
+  TH1D *h_keSum_n    = new TH1D( "h_keSum_n",    "Sum of the track kinetic energy out of a vertex", 100, 0, 1000 );
   
   TH1D *h_maxL_p     = new TH1D( "h_maxL_p",     "Length of the longest track out of a vertex", 100, 0, 100 );
   TH1D *h_maxL_n     = new TH1D( "h_maxL_n",     "Length of the longest track out of a vertex", 100, 0, 100 );
@@ -97,6 +99,9 @@ void neutrino_vtx_plots() {
   
   TH1D *h_zPos_p     = new TH1D( "h_zPos_p",     "Z position of the vertex", 50, 0, 500 );
   TH1D *h_zPos_n     = new TH1D( "h_zPos_n",     "Z position of the vertex", 50, 0, 500 );
+  
+  TH1D *h_zDiff_p    = new TH1D( "h_zDiff_p",    "Distance of a vertex from the one with the smallest Z position", 60, 0, 60 );
+  TH1D *h_zDiff_n    = new TH1D( "h_zDiff_n",    "Distance of a vertex from the one with the smallest Z position", 60, 0, 60 );
   
   // Fill histrograms
   for( int i = 0; i < n_entries_cal; ++i ){
@@ -127,6 +132,7 @@ void neutrino_vtx_plots() {
       h_maxRange_p->Fill( maxRange[i] );
       h_maxHits_p->Fill( maxHits[i] );
       h_zPos_p->Fill( zPos[i] );
+      h_zDiff_p->Fill( zDiff[i] );
 
     }
     else{
@@ -138,6 +144,7 @@ void neutrino_vtx_plots() {
       h_maxRange_n->Fill( maxRange[i] );
       h_maxHits_n->Fill( maxHits[i] );
       h_zPos_n->Fill( zPos[i] );
+      h_zDiff_n->Fill( zDiff[i] );
 
     }
   }
@@ -161,6 +168,12 @@ void neutrino_vtx_plots() {
   h_nTrk_sum->Add( h_nTrk_n );
   h_nTrk_prob->Divide( h_nTrk_sum );
  
+  // Number of tracks from the vertex
+  TH1D *h_zDiff_sum  = (TH1D*) h_zDiff_p->Clone( "h_zDiff_sum" );
+  TH1D *h_zDiff_prob = (TH1D*) h_zDiff_p->Clone( "h_zDiff_prob" );
+  h_zDiff_sum->Add( h_zDiff_n );
+  h_zDiff_prob->Divide( h_zDiff_sum );
+ 
   // Draw the likelihood plots
   h_length_prob->SetStats(kFALSE);
   h_length_prob->GetXaxis()->SetTitle( "Longest track length [cm] ");
@@ -169,6 +182,10 @@ void neutrino_vtx_plots() {
   h_nTrk_prob->SetStats(kFALSE);
   h_nTrk_prob->GetXaxis()->SetTitle( "Number of tracks out of a vertex ");
   h_nTrk_prob->GetXaxis()->SetTitleOffset(1.2);
+
+  h_zDiff_prob->SetStats(kFALSE);
+  h_zDiff_prob->GetXaxis()->SetTitle( "Distance from smallest Z position [cm]");
+  h_zDiff_prob->GetXaxis()->SetTitleOffset(1.2);
 
   gStyle->SetPalette(57);
   gStyle->SetNumberContours(250);
@@ -316,18 +333,32 @@ void neutrino_vtx_plots() {
 
   h_zPos_p->SetStats(kFALSE);
   h_zPos_p->SetLineColor(2);
-  h_zPos_p->GetXaxis()->SetTitle( "Z position of the vertex" );
+  h_zPos_p->GetXaxis()->SetTitle( "Z position of the vertex [cm]" );
   h_zPos_p->GetXaxis()->SetTitleOffset(1.2);
   double scale_zPos_p = h_zPos_p->Integral();
   h_zPos_p->Scale(1/scale_zPos_p);
 
   h_zPos_n->SetStats(kFALSE);
   h_zPos_n->SetLineColor(4);
-  h_zPos_n->GetXaxis()->SetTitle( "Z position of the vertex" );
+  h_zPos_n->GetXaxis()->SetTitle( "Z position of the vertex [cm]" );
   h_zPos_n->GetXaxis()->SetTitleOffset(1.2);
   double scale_zPos_n = h_zPos_n->Integral();
   h_zPos_n->Scale(1/scale_zPos_n);
 
+  h_zDiff_p->SetStats(kFALSE);
+  h_zDiff_p->SetLineColor(2);
+  h_zDiff_p->GetXaxis()->SetTitle( "Distance from smallest Z position [cm]" );
+  h_zDiff_p->GetXaxis()->SetTitleOffset(1.2);
+  double scale_zDiff_p = h_zDiff_p->Integral();
+  h_zDiff_p->Scale(1/scale_zDiff_p);
+
+  h_zDiff_n->SetStats(kFALSE);
+  h_zDiff_n->SetLineColor(4);
+  h_zDiff_n->GetXaxis()->SetTitle( "Distance from smallest Z position [cm]" );
+  h_zDiff_n->GetXaxis()->SetTitleOffset(1.2);
+  double scale_zDiff_n = h_zDiff_n->Integral();
+  h_zDiff_n->Scale(1/scale_zDiff_n);
+  
   TLegend *l_L        = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_ke       = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_range    = new TLegend(0.5, 0.65, 0.85, 0.85);
@@ -339,6 +370,7 @@ void neutrino_vtx_plots() {
   TLegend *l_maxRange = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_maxHits  = new TLegend(0.5, 0.65, 0.85, 0.85);
   TLegend *l_zPos     = new TLegend(0.5, 0.65, 0.85, 0.85);
+  TLegend *l_zDiff    = new TLegend(0.5, 0.65, 0.85, 0.85);
  
   l_L->AddEntry(        h_L_p,        "Primary",     "l" );
   l_L->AddEntry(        h_L_n,        "Non-primary", "l" );
@@ -372,6 +404,9 @@ void neutrino_vtx_plots() {
   
   l_zPos->AddEntry(     h_zPos_p,     "Primary",     "l" );
   l_zPos->AddEntry(     h_zPos_n,     "Non-primary", "l" );
+  
+  l_zDiff->AddEntry(    h_zDiff_p,    "Primary",     "l" );
+  l_zDiff->AddEntry(    h_zDiff_n,    "Non-primary", "l" );
   
   TCanvas *c  = new TCanvas( "c", "Canvas", 800, 600 );
 
@@ -407,8 +442,8 @@ void neutrino_vtx_plots() {
 
   c->Clear();
 
-  h_keSum_n->Draw("hist");
-  h_keSum_p->Draw("hist same");
+  h_keSum_p->Draw("hist");
+  h_keSum_n->Draw("hist same");
   l_keSum->Draw();
 
   c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/vertex_keSum.root" );
@@ -463,6 +498,14 @@ void neutrino_vtx_plots() {
 
   c->Clear();
 
+  h_zDiff_p->Draw("hist");
+  h_zDiff_n->Draw("hist same");
+  l_zDiff->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/distance_from_smallest_z_position.root" );
+
+  c->Clear();
+  
   h_length_prob->Draw();
 
   c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/likelihood_max_length.root" );
@@ -472,6 +515,12 @@ void neutrino_vtx_plots() {
   h_nTrk_prob->Draw();
 
   c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/likelihood_nTrk.root" );
+
+  c->Clear();
+
+  h_zDiff_prob->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/primary_metrics/root/neutrino_plots/likelihood_zDiff.root" );
 
   c->Clear();
 

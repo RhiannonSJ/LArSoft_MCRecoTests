@@ -115,6 +115,14 @@ void recotests::VtxParameters::analyze(art::Event const & e)
   int vtx_size = vtx_handle->size();
   int mct_size = mct_handle->size();
 
+  if( vtx_size > 20 ){
+  
+    std::cout << " More than 20 vertices, event : " << event_number << ", number of vertices : " << vtx_size;
+    std::cout << ", number of tracks : " << trk_size << std::endl;
+    std::cin.get();
+
+  }
+
   // If at least one vertex has been reconstructed
   if( trk_size && vtx_size && mct_size && mct_handle.isValid() && vtx_handle.isValid() && trk_handle.isValid() ){
     // Loop over truth

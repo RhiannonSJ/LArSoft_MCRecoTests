@@ -228,13 +228,20 @@ void recotests::SimplePrimaryVtx::analyze(art::Event const & e)
         // true primary
         // Vectors to hold the length of the longest track in the event
         std::vector< double > dR, dX, dY, dZ, X, Y, Z, lengths, KE;
+        std::vector< TVector3 > vertices, ends;
         std::vector< int > true_it_vect;
+
         int reco_it = -1;
         int temp_it = -1;
+        
         double current_max = -1;
         double current_KE  = -1;
         double current_dR  = -1;
+        double current_dX  = -1;
+        double current_dY  = -1;
+        double current_dZ  = -1;
 
+        TVector3 current_vtx, current_end;
 
         dR.clear();
         dX.clear();
@@ -243,12 +250,15 @@ void recotests::SimplePrimaryVtx::analyze(art::Event const & e)
         KE.clear();
         lengths.clear();
         true_it_vect.clear();
+        vertices.clear();
+        ends.clear();
 
         art::FindMany< recob::Track >      ftrk(  vtx_handle, e, "pmalgtrackmaker" );
         art::FindMany< anab::Calorimetry > fcal( trk_handle, e, "pmatrackcalo" );
         
         // Boolean to check whether the vertex is the true reconstructed 
         // primary
+ 
         bool is_primary = true;
 
         // Loop over vertices, get track associations and find longest track
@@ -272,6 +282,9 @@ void recotests::SimplePrimaryVtx::analyze(art::Event const & e)
           R =  sqrt( pow( ( x - nu_x ), 2 ) + pow( ( y - nu_y ), 2 ) + pow( ( z - nu_z ), 2 ) ); 
           
           dR.push_back( R );
+          dX.push_back( x - nu_x );
+          dY.push_back( y - nu_y );
+          dZ.push_back( z - nu_z );
           X.push_back( x );
           Y.push_back( y );
           Z.push_back( z );
@@ -283,11 +296,16 @@ void recotests::SimplePrimaryVtx::analyze(art::Event const & e)
           // Find longest track associated with each vertex
           for( size_t j = 0; j < trk_assn.size(); ++j ){
           
+            TVector3 trk_vtx = trk_assn[j]->Vertex();
+            TVector3 trk_end = trk_assn[j]->End();
+        
             // Push back large number onto KE vector so that we can cut on 
             // these later and all elements are filled
             KE.push_back( -std::numeric_limits<double>::max() );
             lengths.push_back( trk_assn[j]->Length() );
-            
+            vertices.push_back( trk_assn[j]->Vertex() );
+            ends.push_back( trk_assn[j]->End() );
+
             // Calorimetry - track association
             std::vector<const anab::Calorimetry*> cal_assn = fcal.at(j);
           
@@ -312,14 +330,21 @@ void recotests::SimplePrimaryVtx::analyze(art::Event const & e)
           }
           
           std::vector< double >::iterator temp_max = std::max_element(       std::begin( lengths ), std::end( lengths ) );
-          double temp_max_length                   = lengths[ std::distance( std::begin( lengths ), temp_max ) ];
-          double temp_max_length_KE                = KE[      std::distance( std::begin( lengths ), temp_max ) ];
+          double temp_max_length                   = lengths[  std::distance( std::begin( lengths ), temp_max ) ];
+          double temp_max_length_KE                = KE[       std::distance( std::begin( lengths ), temp_max ) ];
+          TVector3 temp_max_vertex                 = vertices[ std::distance( std::begin( lengths ), temp_max ) ];
+          TVector3 temp_max_end                    = ends[     std::distance( std::begin( lengths ), temp_max ) ];
         
           if( temp_max_length > current_max ){
         
             current_dR  = R; 
+            current_dX  = x - nu_x; 
+            current_dY  = y - nu_y; 
+            current_dZ  = z - nu_z; 
             current_max = temp_max_length;
             current_KE  = temp_max_length_KE;
+            current_vtx = temp_max_vertex;
+            current_end = temp_max_end;
             temp_it     = i;
 
           }
@@ -329,11 +354,25 @@ void recotests::SimplePrimaryVtx::analyze(art::Event const & e)
         //                The reconstructed primary
         // -------------------------------------------------------------------
         // For the current vertex, get the maximum track length
-        double max_length    = current_max;
-        double max_length_KE = current_KE;
-        double max_length_dR = current_dR;
+        double   max_length     = current_max;
+        double   max_length_KE  = current_KE;
+        double   max_length_dR  = current_dR;
+        double   max_length_dX  = current_dX;
+        double   max_length_dY  = current_dY;
+        double   max_length_dZ  = current_dZ;
+        TVector3 max_length_vtx = current_vtx;
+        TVector3 max_length_end = current_end;
         reco_it = temp_it;
 
+        double x_t_v, y_t_v, z_t_v, x_t_e, y_t_e, z_t_e;
+        
+        x_t_v = max_length_vtx[0];
+        x_t_e = max_length_end[0];
+        y_t_v = max_length_vtx[1];
+        y_t_e = max_length_end[1];
+        z_t_v = max_length_vtx[2];
+        z_t_e = max_length_end[2];
+        
         // -------------------------------------------------------------------
         //                The true reconstructed primary
         // -------------------------------------------------------------------
@@ -343,21 +382,36 @@ void recotests::SimplePrimaryVtx::analyze(art::Event const & e)
         //double primary_dR                       = dR[           std::distance( std::begin( dR ), closest ) ];
         int true_it                             = true_it_vect[ std::distance( std::begin( dR ), closest ) ];           
 
-        // If the iterators match, we have found the primary!
-        if( reco_it == true_it ){
+        // If the 
+        if (    (x_t_v < (m_detectorHalfLengthX - m_coordinateOffsetX - m_selectedBorderX)) 
+             && (x_t_v > (-m_coordinateOffsetX + m_selectedBorderX)) 
+             && (x_t_e < (m_detectorHalfLengthX - m_coordinateOffsetX - m_selectedBorderX)) 
+             && (x_t_e > (-m_coordinateOffsetX + m_selectedBorderX)) 
+             && (y_t_v < (m_detectorHalfLengthY - m_coordinateOffsetY - m_selectedBorderY)) 
+             && (y_t_v > (-m_coordinateOffsetY + m_selectedBorderY)) 
+             && (y_t_e < (m_detectorHalfLengthY - m_coordinateOffsetY - m_selectedBorderY)) 
+             && (y_t_e > (-m_coordinateOffsetY + m_selectedBorderY)) 
+             && (z_t_v < (m_detectorHalfLengthZ - m_coordinateOffsetZ - m_selectedBorderZ)) 
+             && (z_t_v > (-m_coordinateOffsetZ + m_selectedBorderZ))
+             && (z_t_e < (m_detectorHalfLengthZ - m_coordinateOffsetZ - m_selectedBorderZ)) 
+             && (z_t_e > (-m_coordinateOffsetZ + m_selectedBorderZ))){
+              
+          // If the iterators match, we have found the primary!
+          if( reco_it == true_it ){
+          
+            reco_correct++;
+
+          } 
+          else{
+         
+            is_primary = false;
+            reco_wrong++;
+
+          }
+
+          fNt_length->Fill( is_primary, max_length, max_length_dR, max_length_KE, max_length_dX, max_length_dY, max_length_dZ ); 
         
-          reco_correct++;
-
         } 
-        else{
-       
-          is_primary = false;
-          reco_wrong++;
-
-        }
-
-        fNt_length->Fill( is_primary, max_length, max_length_dR, max_length_KE ); 
-    
       }
     }
   }
@@ -374,7 +428,7 @@ void recotests::SimplePrimaryVtx::beginJob()
   reco_correct   = 0;
   reco_wrong     = 0;
 
-  fNt_length = new TNtuple( "fNt_length", "Longest track vertex information", "primary:L:dR:KE" );
+  fNt_length = new TNtuple( "fNt_length", "Longest track vertex information", "primary:L:dR:KE:dX:dY:dZ" );
   fNt_length->SetDirectory(0);
 
 }

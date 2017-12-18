@@ -12,7 +12,7 @@ void plots() {
 
   // Read in the sample files
   // Single interaction
-  TFile *f_single = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/sbn_single_interaction_nt.root" );
+  TFile *f_single = new TFile( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/sbn_single_interaction_nt.root" );
 
   TTree *t_single_ev = (TTree*)f_single->Get("fNt_ev");
   TTree *t_single_vtx = (TTree*)f_single->Get("fNt_vtx");
@@ -22,6 +22,9 @@ void plots() {
   std::vector< float > dY;
   std::vector< float > dZ;
   std::vector< float > dR;
+  std::vector< float > dx;
+  std::vector< float > dy;
+  std::vector< float > dz;
   std::vector< float > dr;
   std::vector< float > Xr;
   std::vector< float > Yr;
@@ -56,6 +59,9 @@ void plots() {
   
     t_single_ev->GetEntry(i);
 
+    dx.push_back( t_single_ev->GetLeaf("dx")->GetValue() );
+    dy.push_back( t_single_ev->GetLeaf("dy")->GetValue() );
+    dz.push_back( t_single_ev->GetLeaf("dz")->GetValue() );
     dr.push_back( t_single_ev->GetLeaf("dr")->GetValue() );
     Xt.push_back( t_single_ev->GetLeaf("Xt")->GetValue() );
     Yt.push_back( t_single_ev->GetLeaf("Yt")->GetValue() );
@@ -79,6 +85,9 @@ void plots() {
   TH1D *h_dZ           = new TH1D( "h_dZ",           "Z distance between true and closest reconstructed vertex", 200, -10, 10);
 
   TH1D *h_dr           = new TH1D( "h_dr",           "Distance between true and closest reconstructed vertex", 200, 0, 20);
+  TH1D *h_dx           = new TH1D( "h_dx",           "Distance in X between true and closest reconstructed vertex", 60, -30, 30);
+  TH1D *h_dy           = new TH1D( "h_dy",           "Distance in Y between true and closest reconstructed vertex", 60, -30, 30);
+  TH1D *h_dz           = new TH1D( "h_dz",           "Distance in Z between true and closest reconstructed vertex", 60, -30, 30);
   
   TH1D *h_xt           = new TH1D( "h_xt",           "True x positions ", 200, -200, 200);
   TH1D *h_xr           = new TH1D( "h_xr",           "Reco x positions ", 200, -200, 200);
@@ -117,6 +126,9 @@ void plots() {
 
     h_xt->Fill( Xt[i]);
 
+    h_dx->Fill( dx[i] );
+    h_dy->Fill( dy[i] );
+    h_dz->Fill( dz[i] );
     h_dr->Fill( dr[i] );
 
     h_nVtx_3cm->Fill(nVtx_above_thresh[i]);
@@ -174,6 +186,18 @@ void plots() {
   h_dZ->GetXaxis()->SetTitle( "Z distance between the true neutrino vertex and all reconstructed vertices [cm]" );
   h_dZ->GetXaxis()->SetTitleOffset(1.2);
 
+  h_dx->SetLineColor(12);
+  h_dx->GetXaxis()->SetTitle( "Distance in X between the true neutrino vertex and closest reconstructed vertex [cm]" );
+  h_dx->GetXaxis()->SetTitleOffset(1.2);
+
+  h_dy->SetLineColor(12);
+  h_dy->GetXaxis()->SetTitle( "Distance in Y between the true neutrino vertex and closest reconstructed vertex [cm]" );
+  h_dy->GetXaxis()->SetTitleOffset(1.2);
+
+  h_dz->SetLineColor(12);
+  h_dz->GetXaxis()->SetTitle( "Distance in Z between the true neutrino vertex and closest reconstructed vertex [cm]" );
+  h_dz->GetXaxis()->SetTitleOffset(1.2);
+
   h_dr->SetLineColor(12);
   h_dr->GetXaxis()->SetTitle( "Distance between the true neutrino vertex and closest reconstructed vertex [cm]" );
   h_dr->GetXaxis()->SetTitleOffset(1.2);
@@ -215,25 +239,25 @@ void plots() {
 
   h_nVtx->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nVtx_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nVtx_single.root" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nVtx_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nVtx_single.pdf" );
 
   c->Clear();
 
   h_nTrk->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_single.root" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_single.pdf" );
 
   c->Clear();
 
   h_trk_vtx->Draw( "colz" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_nVtx_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_nVtx_single.root" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_nVtx_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_nVtx_single.pdf" );
 
   c->Clear();
 
@@ -242,9 +266,9 @@ void plots() {
 
   l_z->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/z_distance.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/z_distance.root" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/z_distance.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/z_distance.pdf" );
   
   c->Clear();
 
@@ -253,9 +277,9 @@ void plots() {
 
   l_x->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/x_distance.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/x_distance.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/x_distance.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/x_distance.pdf" );
   
   c->Clear();
 
@@ -263,43 +287,61 @@ void plots() {
 
   //c1->SetLogy();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dr_closest_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dr_closest_single.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dr_closest_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dr_closest_single.pdf" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dr_closest_single.png" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dr_closest_single.png" );
+
   c->Clear();
 
+  h_dx->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dx_closest_single.root" );
+  
+  c->Clear();
+
+  h_dy->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dy_closest_single.root" );
+  
+  c->Clear();
+
+  h_dz->Draw();
+
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dz_closest_single.root" );
+  
+  c->Clear();
 
   h_dR->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dr_all_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dr_all_single.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dr_all_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dr_all_single.pdf" );
 
   c->Clear();
 
   h_dX->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dX_all_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dX_all_single.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dX_all_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dX_all_single.pdf" );
 
   c->Clear();
 
   h_dY->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dY_all_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dY_all_single.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dY_all_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dY_all_single.pdf" );
 
   c->Clear();
 
   h_dZ->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dZ_all_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dZ_all_single.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dZ_all_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dZ_all_single.pdf" );
 
   c->Clear();
 
@@ -311,9 +353,9 @@ void plots() {
 
   l_dr->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dr_comp_single.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dr_comp_single.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/dr_comp_single.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/dr_comp_single.pdf" );
 
   c->Clear();
 
@@ -322,9 +364,9 @@ void plots() {
 
   h_nVtx_3cm->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nVtx_single_3cm.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nVtx_single_3cm.root" );
   
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nVtx_single_3cm.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nVtx_single_3cm.pdf" );
 
   c->Clear();
 
@@ -335,17 +377,17 @@ void plots() {
   /*  
   h_nTrk_3cm->Draw();
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_single_3cm.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_single_3cm.root" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_single_3cm.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_single_3cm.pdf" );
 
   c->Clear();
 
   h_trk_vtx_3cm->Draw( "colz" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_nVtx_single_3cm.root" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_nVtx_single_3cm.root" );
 
-  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_52_00/LArSoft-v06_52_00/srcs/recoperformance/recoperformance/SBN_Workshop/single_plots/nTrk_nVtx_single_3cm.pdf" );
+  c->SaveAs( "/sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperformance/recoperformance/plots/SBN_Workshop/single_plots/nTrk_nVtx_single_3cm.pdf" );
 
   c->Clear();
   */

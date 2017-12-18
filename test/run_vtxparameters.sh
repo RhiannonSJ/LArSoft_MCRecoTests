@@ -19,8 +19,8 @@ rm -rf /sbnd/app/users/rsjones/LArSoft_v06_56_00/LArSoft-v06_56_00/srcs/recoperf
 
 cd $WORKING_DIR
 
-lar -c run_vtxParameters.fcl -S $TEST_SBN_SINGLE
-#lar -c run_vtxParameters.fcl -S $TEST_SBN_SINGLE_20
+#lar -c run_vtxParameters.fcl -S $TEST_SBN_SINGLE
+lar -c run_vtxParameters.fcl -S $TEST_SBN_SINGLE_20
 #lar -c run_vtxParameters.fcl -s $TEST_SBN_SINGLE_1
 
 cd $RECO_COMP_DIR

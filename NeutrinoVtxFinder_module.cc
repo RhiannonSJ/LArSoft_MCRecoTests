@@ -83,7 +83,8 @@ private:
   float m_selectedBorderZ;
 
   // Initialisers
-  int event, not_fiducial, fiducial, numu_topology, n_tracks, no_vtx, one_vtx, more_vtx, n_calo, n_vtx, flip_yes, flip_no, primary_reco, no_primary;
+  int event, longest_contained, longest_not_contained, not_fiducial, fiducial, numu_topology;
+  int no_vtx, one_vtx, more_vtx, n_track, n_calo, n_vtx, flip_yes, flip_no, primary_reco, no_primary;
 
   double cut, eff, primary_reco_cut;
 
@@ -215,7 +216,7 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
       for( auto & mct : (*mct_handle) ){
 
         // True neutrino vertex ( primary vertex position)
-        double nu_x, nu_y, nu_z;
+        double nu_x, nu_y, nu_z, closest_z;
 
         nu_x = mct.GetNeutrino().Lepton().Vx();
         nu_y = mct.GetNeutrino().Lepton().Vy();
@@ -224,14 +225,13 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
         // Vector to hold the square-distances between the true primary vertex and the reconstructed vertices
         // Find which is the smallest and assume this was reconstructed as the primary
         // Vectors to hold vertex location information for determining the true primary
-        std::vector< double > dR, dX, dY, dZ, X, Y, Z;
+        std::vector< double > dR, X, Y, Z;
 
         dR.clear();
-        dX.clear();
-        dY.clear();
-        dZ.clear();
 
         int vtx_cut_count = 0;
+
+        closest_z = std::numeric_limits< double >::max();
 
         for( auto & vtx : (*vtx_handle) ){
       
@@ -249,17 +249,28 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
           y = xyz[1];
           z = xyz[2];
           R =  sqrt( pow( ( x - nu_x ), 2 ) + pow( ( y - nu_y ), 2 ) + pow( ( z - nu_z ), 2 ) ); 
-          
+        
           dR.push_back( R );
           X.push_back( x );
           Y.push_back( y );
           Z.push_back( z );
 
+          // If the current z position is smaller than the temporary one
+          // Set the current z position to be the temporary
+          // Continue and should find the value of the closest z
+          if( closest_z > z ){
+          
+            closest_z = z;
+
+          }
+
           // If the distance to the true vertex is within the cut value of the true 
           if( R < primary_reco_cut ){
             vtx_cut_count++;
-          } 
+          }
+
         }
+
         if( vtx_cut_count == 0 ){
           no_vtx++;
         }
@@ -280,7 +291,7 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
 
         // 3D distance between true neutrino vertex and closest reconstructed
         // vertex
-        double r_r = dR[ std::distance( std::begin( dR ), result ) ];
+        double r_r  = dR[ std::distance( std::begin( dR ), result ) ];
 
         // Continue if r_r < 2.523, a cut value determined by fitting 
         // the distribution of these distances and finding the mean + 3sigma
@@ -326,6 +337,8 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
           // Loop over calorimetry association
           for ( size_t j = 0; j < cal_assn.size(); ++j ){
 
+            n_calo++;
+
             if (!cal_assn[j]) continue;
             if (!cal_assn[j]->PlaneID().isValid) continue;
               
@@ -368,6 +381,7 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
               KE[i] = cal_assn[j]->KineticEnergy();
               fNt_calo->Fill(trk_primary, cal_assn[j]->KineticEnergy(), cal_assn[j]->Range(), cal_assn[j]->TrkPitchC(), trk->Length(), (int) NHits );
 
+            
             }
           } 
         } 
@@ -379,9 +393,9 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
 
           art::Ptr< recob::Vertex > vtx( vtx_handle, i );
 
-          bool primary = false; 
           int track_counter = 0;
-          double KE_sum = 0.;
+          bool primary      = false;
+          double KE_sum     = 0.;
 
           ++n_vtx;
 
@@ -391,25 +405,38 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
           // Set array to be current vertex position
           vtx->XYZ(xyz);
 
-          double x, y, z, r; // s;
+          double x, y, z, r, closest_diff; // s;
 
           x = xyz[0];
           y = xyz[1];
           z = xyz[2];
           r = sqrt( pow( x - x_r, 2 ) + pow( y - y_r, 2 ) + pow( z - z_r, 2 ) );
-          //s = sqrt( pow( x, 2 ) + pow( y, 2 ) + pow( z, 2 ) );  
+          closest_diff = z - closest_z;
 
           // Vertexing infomation
           // Define track association 
           std::vector<const recob::Track*> trk_assn = ftrk.at(i);
-  
-          std::vector< double > lengths;
+        
+          std::vector< double > lengths, v_x, v_y, v_z, e_x, e_y, e_z;
           std::vector< int > js;
           lengths.clear();
+          v_x.clear();
+          e_x.clear();
+          v_y.clear();
+          e_y.clear();
+          v_z.clear();
+          e_z.clear();
+          js.clear();
 
           // Find longest track associated with each vertex
           for( size_t j = 0; j < trk_assn.size(); ++j ){
-          
+ 
+            v_x.push_back(     trk_assn[j]->Vertex()[0] );
+            v_y.push_back(     trk_assn[j]->Vertex()[1] );
+            v_z.push_back(     trk_assn[j]->Vertex()[2] );
+            e_x.push_back(     trk_assn[j]->End()[0] );
+            e_y.push_back(     trk_assn[j]->End()[1] );
+            e_z.push_back(     trk_assn[j]->End()[2] );
             lengths.push_back( trk_assn[j]->Length() );
             js.push_back( j );
 
@@ -417,92 +444,117 @@ void recotests::NeutrinoVtxFinder::analyze(art::Event const & e)
          
           // For the current vertex, get the maximum track length
           std::vector< double >::iterator max_l = std::max_element( std::begin( lengths ), std::end( lengths ) );
-          double m_length                       = lengths[          std::distance( std::begin( lengths ), max_l ) ];
-          unsigned int m_j                      = js[               std::distance( std::begin( lengths ), max_l ) ];
+          double m_length                       = lengths[          std::distance( std::begin( lengths ),  max_l ) ];
+          double m_v_x                          = v_x[              std::distance( std::begin( lengths ),  max_l ) ];
+          double m_v_y                          = v_y[              std::distance( std::begin( lengths ),  max_l ) ];
+          double m_v_z                          = v_z[              std::distance( std::begin( lengths ),  max_l ) ];
+          double m_e_x                          = e_x[              std::distance( std::begin( lengths ),  max_l ) ];
+          double m_e_y                          = e_y[              std::distance( std::begin( lengths ),  max_l ) ];
+          double m_e_z                          = e_z[              std::distance( std::begin( lengths ),  max_l ) ];
+          unsigned int m_j                      = js[               std::distance( std::begin( lengths ),  max_l ) ];
 
-          // Variables for kinetic energy, range and hits
-          double longest_track_KE    = std::numeric_limits< double >::lowest();
-          double longest_track_range = std::numeric_limits< double >::lowest();
-          int longest_track_hits     = std::numeric_limits< int >::lowest();
+          // If this is the longest track and the longest track is contained
+          if (    (m_v_x < (m_detectorHalfLengthX - m_coordinateOffsetX - m_selectedBorderX)) 
+               && (m_v_x > (-m_coordinateOffsetX + m_selectedBorderX)) 
+               && (m_e_x < (m_detectorHalfLengthX - m_coordinateOffsetX - m_selectedBorderX)) 
+               && (m_e_x > (-m_coordinateOffsetX + m_selectedBorderX)) 
+               && (m_v_y < (m_detectorHalfLengthY - m_coordinateOffsetY - m_selectedBorderY)) 
+               && (m_v_y > (-m_coordinateOffsetY + m_selectedBorderY)) 
+               && (m_e_y < (m_detectorHalfLengthY - m_coordinateOffsetY - m_selectedBorderY)) 
+               && (m_e_y > (-m_coordinateOffsetY + m_selectedBorderY)) 
+               && (m_v_z < (m_detectorHalfLengthZ - m_coordinateOffsetZ - m_selectedBorderZ)) 
+               && (m_v_z > (-m_coordinateOffsetZ + m_selectedBorderZ))
+               && (m_e_z < (m_detectorHalfLengthZ - m_coordinateOffsetZ - m_selectedBorderZ)) 
+               && (m_e_z > (-m_coordinateOffsetZ + m_selectedBorderZ))){
           
-          for( size_t j = 0; j < trk_assn.size(); ++j ){
-          
-            ++n_tracks;
-          
-            // x,y,z of current vertex
-            double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
-            TVector3 trk_vtx = trk_assn[j]->Vertex();
-            TVector3 trk_end = trk_assn[j]->End();
+            longest_contained++;
             
-            x_t_v = trk_vtx[0];
-            y_t_v = trk_vtx[1];
-            z_t_v = trk_vtx[2];
-        
-            x_t_e = trk_end[0];
-            y_t_e = trk_end[1];
-            z_t_e = trk_end[2];
+            // Variables for kinetic energy, range and hits
+            double longest_track_KE    = std::numeric_limits< double >::lowest();
+            double longest_track_range = std::numeric_limits< double >::lowest();
+            int longest_track_hits     = std::numeric_limits< int >::lowest();
             
-            r_t_v = sqrt( pow( x_t_v - x, 2 ) + pow( y_t_v - y, 2 ) + pow( z_t_v - z, 2 ) );  
-            r_t_e = sqrt( pow( x_t_e - x, 2 ) + pow( y_t_e - y, 2 ) + pow( z_t_e - z, 2 ) );  
+            for( size_t j = 0; j < trk_assn.size(); ++j ){
             
-            // Find the number of tracks coming out of every vertex
-            if( r_t_v < 0.5 || r_t_e < 0.5 ){
-              track_counter++;
-            }
+              ++n_track;
+            
+              // x,y,z of current vertex
+              double x_t_v, y_t_v, z_t_v, r_t_v, x_t_e, y_t_e, z_t_e, r_t_e;
+              TVector3 trk_vtx = trk_assn[j]->Vertex();
+              TVector3 trk_end = trk_assn[j]->End();
           
-            // Get the calorimetry associated with the tracks associated with each vertex
-            std::vector<const anab::Calorimetry*> cal_assn_vtx = fmcal.at(j);
-   
-            // Loop over calorimetry association
-            for ( size_t k = 0; k < cal_assn_vtx.size(); ++k ){
-
-              if (!cal_assn_vtx[k]) continue;
-              if (!cal_assn_vtx[k]->PlaneID().isValid) continue;
+              x_t_v = trk_vtx[0];
+              y_t_v = trk_vtx[1];
+              z_t_v = trk_vtx[2];
+          
+              x_t_e = trk_end[0];
+              y_t_e = trk_end[1];
+              z_t_e = trk_end[2];
               
-              // Get the plane number
-              int planenum = cal_assn_vtx[k]->PlaneID().Plane;
-  
-              // Should only be 1,2 or 3
-              if (planenum<0||planenum>2) continue;
-
-              if( planenum == 2 ){
-                
-                n_calo++;
-                
-                // For the collection plane only (ICARUS' best defined plane)
-                KE_sum += cal_assn_vtx[k]->KineticEnergy();
-                
-                // If we are looking at the longest track
-                
-                if( j == m_j ){
-             
-                  longest_track_hits  = cal_assn_vtx[k]->dEdx().size();
-                  longest_track_range = cal_assn_vtx[k]->Range();
-                  longest_track_KE    = cal_assn_vtx[k]->KineticEnergy();
-
-                }
+              r_t_v = sqrt( pow( x_t_v - x, 2 ) + pow( y_t_v - y, 2 ) + pow( z_t_v - z, 2 ) );  
+              r_t_e = sqrt( pow( x_t_e - x, 2 ) + pow( y_t_e - y, 2 ) + pow( z_t_e - z, 2 ) );  
+              
+              // Find the number of tracks coming out of every vertex
+              if( r_t_v < 0.5 || r_t_e < 0.5 ){
+                track_counter++;
               }
-            } 
-          }
-          if( r_r < primary_reco_cut ){
-          
-            if( r < 0.1 ){
-              primary = true;
+           
+              if( j == m_j ){
+
+                // Get the calorimetry associated with the tracks associated with each vertex
+                std::vector<const anab::Calorimetry*> cal_assn_vtx = fmcal.at(j);
+       
+                // Loop over calorimetry association
+                for ( size_t k = 0; k < cal_assn_vtx.size(); ++k ){
+
+                  if (!cal_assn_vtx[k]) continue;
+                  if (!cal_assn_vtx[k]->PlaneID().isValid) continue;
+                  
+                  // Get the plane number
+                  int planenum = cal_assn_vtx[k]->PlaneID().Plane;
+      
+                  // Should only be 1,2 or 3
+                  if (planenum<0||planenum>2) continue;
+
+                  if( planenum == 2 ){
+                    
+                    // For the collection plane only (ICARUS' best defined plane)
+                    KE_sum += cal_assn_vtx[k]->KineticEnergy();
+                    
+                    // If we are looking at the longest track
+                    longest_track_hits  = cal_assn_vtx[k]->dEdx().size();
+                    longest_track_range = cal_assn_vtx[k]->Range();
+                    longest_track_KE    = cal_assn_vtx[k]->KineticEnergy();
+                  
+                  }
+                }
+              } 
             }
+            if( r_r < primary_reco_cut ){
+            
+              if( r < 0.1 ){
+                primary = true;
+              }
+
+            }
+            
+            // If the doubles exist 
+            // nTuple of counters to plot
+            fNt_primary->Fill( primary, closest_diff, track_counter, KE_sum, m_length, longest_track_KE, longest_track_hits, longest_track_range, z );
 
           }
+          else{
           
-          // If the doubles exist 
-          // nTuple of counters to plot
-          fNt_primary->Fill( primary, track_counter, KE_sum, m_length, longest_track_KE, longest_track_hits, longest_track_range, z );
-      
+            longest_not_contained++;
+
+          }
         }
         if( r_r < primary_reco_cut ){
         
           // Current vertex distance from true neutrino vertex is within the 
           // cut value given by the distribution
           ++primary_reco;
-
+          
         }
         else{
         
@@ -519,20 +571,22 @@ void recotests::NeutrinoVtxFinder::beginJob()
   // Implementation of optional member function here.
 
   // Counters for topology check
-  event             = 0;
-  fiducial          = 0;
-  not_fiducial      = 0;
-  numu_topology     = 0;
-  n_tracks          = 0;
-  n_vtx             = 0;
-  n_calo            = 0;
-  no_vtx            = 0;
-  one_vtx           = 0;
-  more_vtx          = 0;
-  flip_yes          = 0;
-  flip_no           = 0;
-  primary_reco      = 0;
-  no_primary        = 0;
+  event                 = 0;
+  longest_contained     = 0;
+  longest_not_contained = 0;
+  fiducial              = 0;
+  not_fiducial          = 0;
+  numu_topology         = 0;
+  n_track               = 0;
+  n_vtx                 = 0;
+  n_calo                = 0;
+  no_vtx                = 0;
+  one_vtx               = 0;
+  more_vtx              = 0;
+  flip_yes              = 0;
+  flip_no               = 0;
+  primary_reco          = 0;
+  no_primary            = 0;
 
   primary_reco_cut = 2.523;
   cut = 10; // 10 cm
@@ -541,7 +595,7 @@ void recotests::NeutrinoVtxFinder::beginJob()
   // Define nTuple
   //  reconstructed vertex position, angle in xz plane, 
   //  angle in yz plane, vertex momentum, length
-  fNt_primary      = new TNtuple( "fNt_primary", "Primary vertex metrics",                  "primary:nTrk:keSum:maxL:maxKE:maxHits:maxRange:zPos" );
+  fNt_primary      = new TNtuple( "fNt_primary", "Primary vertex metrics",                  "primary:zDiff:nTrk:keSum:maxL:maxKE:maxHits:maxRange:zPos" );
   fNt_calo         = new TNtuple( "fNt_calo",    "Track calorimetry information",           "primary:ke:range:pitch:L:hits" );
 
   fNt_primary->SetDirectory(0);
@@ -556,8 +610,10 @@ void recotests::NeutrinoVtxFinder::endJob()
   
   std::cout << "---------------------------------------------------------------------- " << std::endl;
   std::cout << " Number of events                         : " << event                              << std::endl;
+  std::cout << " Number of longest tracks contained       : " << longest_contained                  << std::endl;
+  std::cout << " Number of longest tracks not contained   : " << longest_not_contained              << std::endl;
   std::cout << " Number of events in fiducial volume      : " << fiducial                           << std::endl;
-  std::cout << " Number of events outside fiducial volume : " << not_fiducial                           << std::endl;
+  std::cout << " Number of events outside fiducial volume : " << not_fiducial                       << std::endl;
   std::cout << " Number of NuMu CC events                 : " << numu_topology                      << std::endl;
   std::cout << " Number of other events                   : " << fiducial - numu_topology           << std::endl;
   std::cout << " Fraction of NuMu CC events               : " << numu_topology / double( fiducial ) << std::endl;
@@ -586,11 +642,9 @@ void recotests::NeutrinoVtxFinder::endJob()
 
   std::cout << "---------------------------------------------------------------------- " << std::endl;
 
-  std::cout << " N, tracks : " << n_tracks << ", vertices : " << n_vtx << ", calorimetry : " << n_calo << std::endl;
-  
-  std::cout << "---------------------------------------------------------------------- " << std::endl;
-
-  std::cout << " Track end closest " << flip_yes << " times, track start closest " << flip_no << " times " << std::endl;
+  std::cout << " N, tracks if longest contained : " << n_track << std::endl;
+  std::cout << " N, vertices in total           : " << n_vtx << std::endl;
+  std::cout << " N, calorimetry in total        : " << n_calo << std::endl;
   
   std::cout << "---------------------------------------------------------------------- " << std::endl;
 

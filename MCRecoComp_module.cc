@@ -205,11 +205,11 @@ void recotests::MCRecoComp::analyze(art::Event const & e)
 
                     // Define 2D distance and 1D distances for the 'primary' reconstructed vertex
                     double dr = dR[ std::distance( std::begin( dR ), result ) ]; 
-                    /*
                     double dx = dX[ std::distance( std::begin( dR ), result ) ];
                     double dy = dY[ std::distance( std::begin( dR ), result ) ];
                     double dz = dZ[ std::distance( std::begin( dR ), result ) ];
-    
+                    
+                    /*
                     double x_r = X[ std::distance( std::begin( dR ), result ) ];
                     double y_r = Y[ std::distance( std::begin( dR ), result ) ];
                     double z_r = Z[ std::distance( std::begin( dR ), result ) ];
@@ -240,7 +240,7 @@ void recotests::MCRecoComp::analyze(art::Event const & e)
                       
                     }
                     
-                    fNt_ev->Fill( primary, nu_x, nu_y, nu_z, vtx_size, trk_size, event_number, n_vtx, dr );
+                    fNt_ev->Fill( primary, nu_x, nu_y, nu_z, vtx_size, trk_size, event_number, n_vtx, dr, dx, dy, dz );
                 }
             }
         }
@@ -264,7 +264,7 @@ void recotests::MCRecoComp::beginJob()
 
   // Implementation of optional member function here.
   fNt_vtx = new TNtuple( "fNt_vtx", "True and reconstructed primary vertex position comparison", "primary:dX:dY:dZ:dR:Xr:Yr:Zr");
-  fNt_ev  = new TNtuple( "fNt_ev",  "True and reconstructed primary vertex position comparison", "primary:Xt:Yt:Zt:nVtx:nTrk:evt:nVtxThresh:dr");
+  fNt_ev  = new TNtuple( "fNt_ev",  "True and reconstructed primary vertex position comparison", "primary:Xt:Yt:Zt:nVtx:nTrk:evt:nVtxThresh:dr:dx:dy:dz");
   fNt_int = new TNtuple( "fNt_int", "Interaction type", "int");
   //fNt = new TNtuple( "fNt", "True and reconstructed primary vertex position comparison", "nVtx:nTrk");
 

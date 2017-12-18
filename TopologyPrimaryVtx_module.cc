@@ -206,7 +206,6 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
           correct =  false;
 
         }
-
         /*
         else{
           std::cout << " PDG codes of particles before filtering : " << std::endl;
@@ -242,6 +241,10 @@ void recotests::TopologyPrimaryVtx::analyze(art::Event const & e)
     int trk_size = trk_handle->size();
     int vtx_size = vtx_handle->size();
     int pfp_size = pfp_handle->size();
+
+    std::cout << " Event number of CC 0pi : " << event_number << std::endl;
+    std::cout << " It has : " << vtx_size << " reconstructed vertices and : " << trk_size << " reconstructed tracks " << std::endl;
+    std::cin.get();
 
     // If at least one vertex has been reconstructed
     if( pfp_size && trk_size && vtx_size && size && mct_handle.isValid() && vtx_handle.isValid() && trk_handle.isValid() && pfp_handle.isValid() ){
