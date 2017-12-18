@@ -18,6 +18,9 @@ Main module for calculating parameters which may characterise the primary vertex
 ## NeutrinoVtxFinder
 Main module for calculating parameters which may characterise the primary vertex for NuMuCC events
 
+## SimplePrimary
+Using the assumption that the longest track in the event is the primary, get performance parameters 
+
 ## fcl [folder]
 Fhicl files corresponding to the running of each analyser
 
